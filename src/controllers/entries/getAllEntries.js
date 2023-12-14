@@ -1,19 +1,19 @@
-import getPool from "../../src/db/getPool.js";
+import getPool from '../../db/getPool.js';
 
 const getAllEntries = async (req, res, next) => {
   try {
     const pool = await getPool();
 
-    const [entries] = await pool.query("SELECT * FROM entries");
+    const [entries] = await pool.query('SELECT * FROM entries');
 
     if (entries.length < 1) {
-      const err = new Error("No se ha encontrado ninguna recomendación");
+      const err = new Error('No se ha encontrado ninguna recomendación');
       err.httpStatus = 404;
       throw err;
     }
 
     res.send({
-      status: "ok",
+      status: 'ok',
       data: {
         entries,
       },

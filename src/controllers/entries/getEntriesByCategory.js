@@ -1,4 +1,4 @@
-import getPool from "../../src/db/getPool.js";
+import getPool from '../../db/getPool.js';
 
 const getEntriesByCategorie = async (req, res, next) => {
   try {
@@ -7,7 +7,7 @@ const getEntriesByCategorie = async (req, res, next) => {
     const { entriesCategory } = req.params;
 
     const [entries] = await pool.query(
-      "SELECT * FROM entries WHERE category = ?",
+      'SELECT * FROM entries WHERE category = ?',
       [entriesCategory]
     );
 
@@ -20,7 +20,7 @@ const getEntriesByCategorie = async (req, res, next) => {
     }
 
     res.send({
-      status: "ok",
+      status: 'ok',
       data: {
         // Si el entrie que buscamos existe, estará en la posición 0 del array de entries.
         post: entries[0],
