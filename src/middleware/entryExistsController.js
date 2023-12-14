@@ -1,5 +1,5 @@
-import getPool from '../../db/getPool.js';
-import { notFoundError } from '../../services/errorService.js';
+import getPool from '../db/getPool.js';
+import { notFoundError } from '../services/errorService.js';
 
 const entryExistsController = async (req, res, next) => {
   try {
