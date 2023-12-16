@@ -15,24 +15,33 @@ let pool;
 
 // Crea una función asíncrona para obtener una conexión a la base de datos.
 const getPool = async () => {
-    try {
-        // Si no existe un pool de conexiones, créalo.
-        if (!pool) {
-            pool = mysql.createPool({
-                connectionLimit: 10, // Establece un límite máximo de conexiones. Por defecto 10.
-                host: MYSQL_HOST,
-                user: MYSQL_USER,
-                password: MYSQL_PASSWORD,
-                database: MYSQL_DATABASE,
-                timezone: 'Z', // El valor Z establece la zona horaria como UTC.
-            });
-        }
+  try {
+    // Creamos una pool temporal.
+    const poolTemp = mysql.createPool({
+      host: MYSQL_HOST,
+      user: MYSQL_USER,
+      password: MYSQL_PASSWORD,
+    });
 
-        // Retorna el pool de conexiones.
-        return pool;
-    } catch (err) {
-        console.error(err);
+    // Con el pool temporal creamos la base de datos si no existe.
+    await poolTemp.query(`CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE}`);
+    // Si no existe un pool de conexiones, créalo.
+    if (!pool) {
+      pool = mysql.createPool({
+        connectionLimit: 10, // Establece un límite máximo de conexiones. Por defecto 10.
+        host: MYSQL_HOST,
+        user: MYSQL_USER,
+        password: MYSQL_PASSWORD,
+        database: MYSQL_DATABASE,
+        timezone: 'Z', // El valor Z establece la zona horaria como UTC.
+      });
     }
+
+    // Retorna el pool de conexiones.
+    return pool;
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 // Exporta la función "getPool" para usarla en otros archivos de tu proyecto.
