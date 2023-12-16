@@ -8,8 +8,10 @@ const selectEntryByIdModel = async (entryId, userId = '') => {
                 SELECT 
                     E.id,
                     E.title,
+                    E.category,
                     E.place, 
-                    E.description,
+                    E.sortDescription,
+                    E.text,
                     E.userId,
                     U.username,
                     BIT_OR(V.userId = ?) AS votedByMe, 
