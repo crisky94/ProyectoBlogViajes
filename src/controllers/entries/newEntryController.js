@@ -37,7 +37,7 @@ const newEntryController = async (req, res, next) => {
                     text,
                     photoPath: photoPath,
                     photoFormat: mimetype,
-                    userId: res.user.id,
+                    userId: req.user.id,
                     createdAt: new Date()
                 },
             }
