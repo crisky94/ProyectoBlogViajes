@@ -17,6 +17,7 @@ const upload = multer({ dest: 'uploads/' });
 router.post(
   '/entries',
   upload.single('image'),
+  authUserController,
   newEntryController,
   entryExistsController
 );
@@ -25,6 +26,7 @@ router.post(
 router.delete(
   '/entries',
   upload.single(''),
+  authUserController,
   deleteEntryController,
   entryExistsController
 );
