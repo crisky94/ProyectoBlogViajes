@@ -1,7 +1,7 @@
 // loginUserController.js
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import getPool from '../../db/getPool.js';
+import getPool from '../db/getPool.js';
 const { SECRET } = process.env.SECRET;
 
 async function loginUsuario(req, res) {
