@@ -13,37 +13,17 @@ const newEntryController = async (req, res, next) => {
     try {
         const { title, category, place, sortDescription, text } = req.body;
 
-        //borrar
-        let userTemp = '6d85f61f-db5c-4d0a-a8ab-0bf2ce26c0e6';
-
         await validateSchemaUtil(newEntrySchema, Object.assign(req.body));
         await validateSchemaUtil(imgSchema);
         //El método Object.assign() copia todas las propiedades enumerables de uno o más objetos fuente a un objeto destino.
         // Devuelve el objeto destino.
 
-        // const entryId = await insertEntryModel(title, category, place, sortDescription,text, req.user.id);
-        const entryId = await insertEntryModel(title, category, place, sortDescription, text, userTemp);
+        const entryId = await insertEntryModel(title, category, place, sortDescription, text, req.user.id);
         const photoPath = req.file.path;
         const mimetype = req.file.mimetype; //imagen/jpge
         const format = mimetype.split("/")[1]; //jpge
         const photoPathAbsolut = `${photoPath}.${format}`;
-        const photoId = await insertPhotoModel(photoPathAbsolut, entryId);
-
-        // res.send({
-        //     status: "ok",
-        //     data: {
-        //         entry: {
-        //             id: entryId,
-        //             title,
-        //             category,
-        //             place,
-        //             sortDescription,
-        //             text,
-        //             userId: req.user.id,
-        //             createdAt: new Date()
-        //         },
-        //     }
-        // });
+        await insertPhotoModel(photoPathAbsolut, entryId);
 
         res.json({
             status: "ok",
@@ -57,7 +37,7 @@ const newEntryController = async (req, res, next) => {
                     text,
                     photoPath: photoPath,
                     photoFormat: mimetype,
-                    userId: '1',
+                    userId: req.user.id,
                     createdAt: new Date()
                 },
             }
