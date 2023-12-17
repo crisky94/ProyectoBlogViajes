@@ -7,7 +7,7 @@ const voteEntrySchema = joi.object({
     .number()
     .integer()
     .min(1)
-    .max(3)
+    .max(1)
     .required()
     .messages(joiErrorMessages),
 });
