@@ -66,7 +66,7 @@ router.get("/entries/category/:entriesCategory", getEntriesByCategory);
 router.get("/entries/:id", getEntriesById);
 
 // Middleware que retorna las entries ordenadas por votos.
-router.get("/entries/ordered-by-votes", getEntriesOrderedController);
+router.get("/entries/order/ordered-by-votes", getEntriesOrderedController);
 
 // Middleware de ruta no encontrada.
 router.use(errorRouteController);
