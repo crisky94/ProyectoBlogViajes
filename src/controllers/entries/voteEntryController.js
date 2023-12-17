@@ -20,12 +20,12 @@ const voteEntryController = async (req, res, next) => {
     }
 
     // Insertar votos
-    const averageVotes = await insertVoteModel(value, entryId, req.user.id);
+    const totalVotes = await insertVoteModel(value, entryId, req.user.id);
 
     res.send({
       status: 'ok',
       data: {
-        averageVotes,
+        totalVotes,
       },
     });
   } catch (err) {

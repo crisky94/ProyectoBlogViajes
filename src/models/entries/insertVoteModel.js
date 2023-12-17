@@ -21,13 +21,13 @@ const insertVoteModel = async (value, entryId, userId) => {
     [uuid(), value, entryId, userId]
   );
 
-  const [votesAvg] = await pool.query(
-    `SELECT AVG(value) AS avg FROM entryVotes WHERE entryId = ?`,
+  const [votesCount] = await pool.query(
+    `SELECT COUNT(id) AS voteCount FROM entryVotes WHERE entryId = ?`,
     [entryId]
   );
 
-  // Devolvemos la media de votos
-  return Number(votesAvg[0].avg);
+  // Devolvemos el número total de votos
+  return votesCount[0].voteCount;
 };
 
 export default insertVoteModel;
