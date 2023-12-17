@@ -3,7 +3,6 @@ const app = express();
 import morgan from "morgan";
 import dotenv from "dotenv";
 dotenv.config();
-import getPool from "./src/db/getPool.js";
 import routes from "./src/routes/index.js";
 
 app.use(express.json());
