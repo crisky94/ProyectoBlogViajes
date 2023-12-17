@@ -17,6 +17,9 @@ import getEntriesById from "../controllers/entries/getEntriesById.js";
 import errorRouteController from "../controllers/errors/errorRouteController.js";
 import errorController from "../controllers/errors/errorController.js";
 
+// Importamos la función controladora del middleware de orden por votos
+import getEntriesOrderedController from "../controllers/entries/getEntriesOrderedController.js";
+
 import express from "express";
 const router = express.Router();
 
@@ -51,16 +54,19 @@ router.post(
 );
 
 // Middleware que retorna el listado de todas las entries.
-router.get("/recomendaciones", getAllEntries);
+router.get("/entries", getAllEntries);
 
 // Middleware que retorna entries por place.
-router.get("/recomendaciones/place/:entriesPlace", getEntriesByPlace);
+router.get("/entries/place/:entriesPlace", getEntriesByPlace);
 
 // Middleware que retorna entries por category.
-router.get("/recomendaciones/category/:entriesCategory", getEntriesByCategory);
+router.get("/entries/category/:entriesCategory", getEntriesByCategory);
 
 // Middleware que retorna entries por id
-router.get("/recomendaciones/:id", getEntriesById);
+router.get("/entries/:id", getEntriesById);
+
+// Middleware que retorna las entries ordenadas por votos.
+router.get("/entries/ordered-by-votes", getEntriesOrderedController);
 
 // Middleware de ruta no encontrada.
 router.use(errorRouteController);
