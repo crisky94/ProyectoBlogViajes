@@ -38,10 +38,9 @@ router.post(
 //ruta para borrar la foto y la recomendacion
 router.delete(
   "/entries",
-  upload.single(""),
+   upload.single(""),
   authUserController,
   deleteEntryController,
-  entryExistsController
 );
 
 // Votar una entrada.
