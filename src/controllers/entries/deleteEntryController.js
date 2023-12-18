@@ -1,6 +1,7 @@
 
 import deleteEntryModel from '../../models/entries/deleteEntryModel.js';
 import deletePhotoModel from '../../models/entries/deletePhotoModel.js';
+import deleteEntryVotesModel from '../../models/entries/deleteEntryVotesModel.js';
 import { notFoundError } from '../../services/errorService.js';
 import getPool from '../../db/getPool.js';
 
@@ -23,6 +24,7 @@ const deleteEntryController = async (req, res, next) => {
         }
 
         await deletePhotoModel(id);
+        await deleteEntryVotesModel(id)
         await deleteEntryModel(id, req.user.id);
 
         res.json({
