@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "5b1525bd-da22-484d-b5a7-2dff28d91b11",
+		"name": "ProyectoBlogViajes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31435917"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"usuario1\",\n    \"email\": \"usuario1@gmail.com\",\n    \"password\": \"Admin1$\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"usuario1@gmail.com\",\n    \"password\": \"Admin1$\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "entries",
+			"item": [
+				{
+					"name": "Crear entrada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE0OTEzZWU4LTkwYTYtNGJkMS05MGEzLTQzY2I1MGIwODhiMiIsImlhdCI6MTcwMjk3NjUyMywiZXhwIjoxNzAzNTgxMzIzfQ.a52bKdNHxnGF34tkzMrChOr8Lcm0rTFghXKhMrfz4WM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Madrid",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "ciudad",
+									"type": "text"
+								},
+								{
+									"key": "place",
+									"value": "España",
+									"type": "text"
+								},
+								{
+									"key": "sortDescription",
+									"value": "Madrid es un municipio y una ciudad de España. ",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Madrid es un municipio y una ciudad de España. La localidad, con categoría histórica de villa, ​ es la capital del Estado​ y de la Comunidad de Madrid.",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/germanrobles/Downloads/madrid.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/entries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"entries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todas las recomendaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/entries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"entries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Votar una entrada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNTg3MGRiLWU0Y2ItNDBlMC1hYWUyLWZkNTA3MWM4MTFhYSIsImlhdCI6MTcwMjk3NjY3MSwiZXhwIjoxNzAzNTgxNDcxfQ.vxSbDV-WXEM46Msyv4akFkYcDPwTumz94w_Qm26HZ0E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/entries/4f5d0a29-066f-4a75-b6f1-390f52382572/votes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"entries",
+								"4f5d0a29-066f-4a75-b6f1-390f52382572",
+								"votes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar recomendaciones por lugar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/entries/place/España",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"entries",
+								"place",
+								"España"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar recomendaciones por categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/entries/category/ciudad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"entries",
+								"category",
+								"ciudad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar recomendación por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/entries/4f5d0a29-066f-4a75-b6f1-390f52382572",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"entries",
+								"4f5d0a29-066f-4a75-b6f1-390f52382572"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ordenar recomendaciones por votos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/entries/order/ordered-by-votes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"entries",
+								"order",
+								"ordered-by-votes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar una recomendación",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE0OTEzZWU4LTkwYTYtNGJkMS05MGEzLTQzY2I1MGIwODhiMiIsImlhdCI6MTcwMjk3NzAxNywiZXhwIjoxNzAzNTgxODE3fQ.KsuJ_VUcogf57T_B-S2oSCYk7Sj3ZCBZWylOY_tKDeI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"4f5d0a29-066f-4a75-b6f1-390f52382572\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/entries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"entries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
