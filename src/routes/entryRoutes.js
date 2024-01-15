@@ -24,7 +24,18 @@ import express from "express";
 const router = express.Router();
 
 import multer from "multer";
-const upload = multer({ dest: "uploads/" });
+import path from "path";
+import { v4 as uuidv4 } from 'uuid';
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename(req, file, cb) {
+    cb(null, uuidv4() + path.extname(file.originalname));
+  }
+});
+const upload = multer({ storage: storage });
 
 //ruta para crear una recomendacion con foto
 router.post(
@@ -37,7 +48,7 @@ router.post(
 
 //ruta para borrar la foto y la recomendacion
 router.delete(
-  "/entries",
+  "/entries/:id",
    upload.single(""),
   authUserController,
   deleteEntryController,

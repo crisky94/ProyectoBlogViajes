@@ -9,7 +9,7 @@ const deleteEntryController = async (req, res, next) => {
 
     try {
 
-        const { id } = req.body;
+        const { id } = req.params;
        
         const pool = await getPool();
         
