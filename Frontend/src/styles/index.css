@@ -9,12 +9,3 @@
     font-family: "Montserrat", sans-serif;
 }
 
-ul {
-    list-style: none;
-}
-
-li {
-    border: solid;
-    border-radius: 10px;
-    border-width: 2px;
-}
