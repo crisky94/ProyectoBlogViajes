@@ -46,7 +46,7 @@ const main = async () => {
         // Creamos la tabla de fotos.
         await pool.query(`
             CREATE TABLE IF NOT EXISTS entryPhotos (
-                id CHAR(36) PRIMARY KEY NOT NULL,
+                id INT PRIMARY KEY AUTO_INCREMENT,
                 name VARCHAR(100) NOT NULL,
                 entryId CHAR(36) NOT NULL,
                 FOREIGN KEY (entryId) REFERENCES entries(id),

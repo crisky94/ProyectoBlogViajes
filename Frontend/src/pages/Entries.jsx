@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import deleteEntryService from "../services/deleteEntryService";
+import "../styles/entries.css"
+function Entries({ removeTweet }) {
+    const [data, setData] = useState({});
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
-function Entries() {
-    const [data, setData] = useState([]);
-
-    console.log(data);
-
+   
     useEffect(() => {
         async function fetchData() {
             try {
@@ -27,29 +30,68 @@ function Entries() {
 
         fetchData();
     }, []);
+    const deleteTweet = async (id) => {
+
+        try {
+            await deleteEntryService(id);
+
+            if (removeTweet) {
+                removeTweet(id);
+            } else {
+                navigate("/");
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     return (
         <main>
             <h1>Las recomendaciones de nuestros viajeros 👇🏽</h1>
             <ul>
                 {Object.values(data).map(
-                    ({ title, sortDescription, createdAt, username }, id) => (
+                    ({ title, sortDescription, photos, createdAt, username }, id) => (
+
                         <li key={id}>
                             <h2>{title}</h2>
-                            <img
-                                // src={`http://localhost:8000/entries/uploads/${entrie.photos[1].name}`}
-                                alt="Imágen del viaje"
-                            />
+                            
+                            {
+                                photos? <img src={
+
+                                    `${import.meta.env.VITE_API_URL}/uploads/${photos[id].name}`
+                                } alt="" /> : 'La entrada no contiene imagenes todavía'
+                            }
+                            
+
                             <p>
+
                                 {username}
                                 {" | "}
                                 {sortDescription}
                             </p>
-                            <p>Creado el {Date(createdAt)}</p>
+                            <p>Creado el {(createdAt)}</p>
+
+                            <button
+                                onClick={() => {
+
+                                    if (window.confirm("Are you sure?")) deleteTweet({ id });
+
+                                }}
+                            >
+                               
+                                Borrar Publicacion
+                            </button>
+
                         </li>
+
                     )
+
                 )}
             </ul>
+            {
+                error ? <p>{error}</p> : ''
+            }
+
         </main>
     );
 }

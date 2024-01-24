@@ -3,7 +3,10 @@ const app = express();
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 dotenv.config();
+import cors from "cors";
 import routes from './src/routes/index.js';
+import path from 'path';
+import fileUpload from 'express-fileupload';
 
 app.use(express.json());
 app.use(morgan('dev'));
@@ -14,6 +17,13 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
+
+app.use(cors())
+const staticDir = path.join(process.cwd(), './src/uploads');
+
+app.use('/uploads', express.static(staticDir));
+
+app.use(fileUpload());
 
 // Middleware que indica a express dónde están las rutas.
 app.use(routes);

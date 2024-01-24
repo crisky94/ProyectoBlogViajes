@@ -5,7 +5,7 @@ const getAllEntries = async (req, res, next) => {
     const pool = await getPool();
 
     const [entries] = await pool.query(
-      `SELECT * FROM entries 
+      `SELECT * FROM entries
       LEFT JOIN entryVotes ON entryVotes.entryId = entries.id 
       INNER JOIN users ON users.id = entries.userId 
       ORDER BY entries.createdAt DESC`
@@ -14,11 +14,13 @@ const getAllEntries = async (req, res, next) => {
     for (const entry of entries) {
       const [photos] = await pool.query(
         `
-                SELECT id, name FROM entryPhotos WHERE entryId=?
+        SELECT * FROM entries
+        LEFT JOIN entryPhotos ON entryPhotos.entryId = entries.id 
+        
             `,
         [entry.id]
       );
-
+       
       //creo una nueva clave al objeto dentro del array
       entry.photos = photos;
     }
@@ -28,6 +30,8 @@ const getAllEntries = async (req, res, next) => {
       err.httpStatus = 404;
       throw err;
     }
+    
+  
 
     res.send({
       status: "ok",
