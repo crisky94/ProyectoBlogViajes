@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import deleteEntryService from "../services/deleteEntryService";
 import "../styles/entries.css";
 import { Link } from "react-router-dom";
+import DeleteEntry from "../components/deleteEntry";
 
-function Entries({ removeTweet }) {
+function Entries() {
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
-    const navigate = useNavigate();
+    
 
     useEffect(() => {
         async function fetchData() {
@@ -34,19 +33,7 @@ function Entries({ removeTweet }) {
         fetchData();
     }, []);
 
-    const deleteTweet = async (id) => {
-        try {
-            await deleteEntryService(id);
-
-            if (removeTweet) {
-                removeTweet(id);
-            } else {
-                navigate("/");
-            }
-        } catch (error) {
-            setError(error.message);
-        }
-    };
+   
 
     return (
         <main>
@@ -87,16 +74,7 @@ function Entries({ removeTweet }) {
                             </span>
                         </Link>
                         <p>{entry.voteCount} Me gusta</p>
-                        <button
-                            onClick={() => {
-                                if (window.confirm("Are you sure?"))
-                                    deleteTweet(entry.id);
-                            }}
-                        >
-                            <span className="material-symbols-outlined">
-                                delete
-                            </span>
-                        </button>
+                        <DeleteEntry id={ entry.id} />
                     </li>
                 ))}
             </ul>

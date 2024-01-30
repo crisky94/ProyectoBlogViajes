@@ -1,6 +1,6 @@
 
 const deleteEntryService = async ({id}) => {
-    const url = `${import.meta.env.VITE_API_URL}/entries/${id}`;
+    const url = `${import.meta.env.VITE_API_URL}entries/${id}`;
    
     const response = await fetch(url, {
         method: 'DELETE',
