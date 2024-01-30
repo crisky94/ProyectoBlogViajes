@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import DeleteEntry from "./deleteEntry";
 
 const getEntryByIdService = async (entryId) => {
-    const url = `${import.meta.env.VITE_API_URL}entries/${entryId}`;
+    const url = `${import.meta.env.VITE_API_URL}/entries/${entryId}`;
 
     const response = await fetch(url);
 
@@ -50,7 +50,7 @@ const EntryDetail = () => {
                             <img
                                 src={`${
                                     import.meta.env.VITE_API_URL
-                                }uploads/${photoName}`}
+                                }/uploads/${photoName}`}
                                 alt="Imágen del viaje"
                             />
                         </div>
@@ -71,7 +71,7 @@ const EntryDetail = () => {
                 </Link>
 
                 <p>{entry.post.voteCount} Me gusta</p>
-                <DeleteEntry id={entry.post.id}/>
+                <DeleteEntry id={entry.post.id} />
 
                 {error ? <p>{error}</p> : ""}
             </article>
