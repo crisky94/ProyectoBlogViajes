@@ -7,26 +7,27 @@ const getEntriesById = async (req, res, next) => {
     const { id } = req.params;
 
     const [entries] = await pool.query(
-      `SELECT * FROM entries 
-        LEFT JOIN entryVotes ON entryVotes.entryId = entries.id 
-        INNER JOIN users ON users.id = entries.userId
-        WHERE entries.id = ? `,
+      `SELECT
+        entries.id,
+        entries.title,
+        entries.category,
+        entries.place,
+        entries.sortDescription,
+        entries.text,
+        entries.userId,
+        entries.createdAt,
+        GROUP_CONCAT(DISTINCT entryPhotos.name) AS photos,
+        users.username,
+        COUNT(DISTINCT entryVotes.value) AS voteCount
+      FROM entries
+      LEFT JOIN entryVotes ON entryVotes.entryId = entries.id
+      INNER JOIN users ON users.id = entries.userId
+      LEFT JOIN entryPhotos ON entryPhotos.entryId = entries.id
+      WHERE entries.id = ?
+      GROUP BY entries.id
+      ORDER BY entries.createdAt DESC;`,
       [id]
     );
-
-    for (const entry of entries) {
-      const [photos] = await pool.query(
-        `
-        SELECT * FROM entries
-        LEFT JOIN entryPhotos ON entryPhotos.entryId = entries.id 
-        
-            `,
-        [entry.id]
-      );
-
-      //creo una nueva clave al objeto dentro del array
-      entry.photos = photos;
-    }
 
     if (entries.length < 1) {
       const err = new Error(

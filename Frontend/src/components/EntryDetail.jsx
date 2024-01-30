@@ -38,16 +38,23 @@ const EntryDetail = () => {
     const { entry, error } = useEntry(entryId);
     console.log(entryId);
 
-    const { VITE_API_URL } = import.meta.env;
-
     return entry ? (
         <div>
             <article key={entry.post.id}>
                 <h2> {entry.post.title}</h2>
-                <img
-                    src={`${VITE_API_URL}entries/uploads/${entry.photos}`}
-                    alt="Imágen del viaje"
-                />
+
+                {entry.post.photos &&
+                    entry.post.photos.split(",").map((photoName, index) => (
+                        <div key={index}>
+                            <img
+                                src={`${
+                                    import.meta.env.VITE_API_URL
+                                }uploads/${photoName}`}
+                                alt="Imágen del viaje"
+                            />
+                        </div>
+                    ))}
+
                 <p>
                     {entry.post.username}
                     {" | "}
@@ -62,7 +69,7 @@ const EntryDetail = () => {
                     <span className="material-symbols-outlined">favorite</span>
                 </Link>
 
-                <p>{entry.post.value} Me gusta</p>
+                <p>{entry.post.voteCount} Me gusta</p>
 
                 {error ? <p>{error}</p> : ""}
             </article>
