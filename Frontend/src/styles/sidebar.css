@@ -1,0 +1,48 @@
+.menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.buscar-lugar,
+.buscar-categoria {
+    padding: 8px;
+    text-align: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 8px;
+    background-color: #333;
+}
+
+.menu a:hover {
+    background-color: #555;
+}
+
+.menu input {
+    appearance: none;
+    border: none;
+    outline: none;
+    border-bottom: 0.2em solid #0b7dda;
+    background: rgba(#0b7dda, 0.2);
+    border-radius: 0.2em 0.2em 0 0;
+    padding: 0.4em;
+    color: #0b7dda;
+}
+
+.button-sidebar {
+    appearance: none;
+    margin-top: 10px;
+    border: 0.2em solid #0b7dda;
+    background: hsl(0 0 0/0);
+    padding: 0.85em 1.5em;
+    color: #0b7dda;
+    border-radius: 2em;
+    transition: 0.5s;
+}
+.button-sidebar:hover {
+    background: #0b7dda;
+    color: #fff;
+}

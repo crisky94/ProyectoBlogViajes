@@ -1,5 +1,5 @@
 const registerUserService = async ({ username, email, password }) => {
-    const url = `${import.meta.env.VITE_API_URL}users/register`;
+    const url = `${import.meta.env.VITE_API_URL}/users/register`;
 
     try {
         const res = await fetch(url, {
