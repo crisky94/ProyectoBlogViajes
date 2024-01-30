@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import DeleteEntry from "./deleteEntry";
+import DeleteEntry from "./DeleteEntry";
 
 const getEntryByIdService = async (entryId) => {
     const url = `${import.meta.env.VITE_API_URL}/entries/${entryId}`;
