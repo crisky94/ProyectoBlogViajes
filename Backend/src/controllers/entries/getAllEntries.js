@@ -5,33 +5,31 @@ const getAllEntries = async (req, res, next) => {
     const pool = await getPool();
 
     const [entries] = await pool.query(
-      `SELECT * FROM entries
-      LEFT JOIN entryVotes ON entryVotes.entryId = entries.id 
-      INNER JOIN users ON users.id = entries.userId 
-      ORDER BY entries.createdAt DESC`
+      `SELECT
+        entries.id,
+        entries.title,
+        entries.category,
+        entries.place,
+        entries.sortDescription,
+        entries.text,
+        entries.userId,
+        entries.createdAt,
+        GROUP_CONCAT(DISTINCT entryPhotos.name) AS photos,
+        users.username,
+        COUNT(DISTINCT entryVotes.value) AS voteCount
+      FROM entries
+      LEFT JOIN entryVotes ON entryVotes.entryId = entries.id
+      INNER JOIN users ON users.id = entries.userId
+      LEFT JOIN entryPhotos ON entryPhotos.entryId = entries.id
+      GROUP BY entries.id
+      ORDER BY entries.createdAt DESC;`
     );
-
-    for (const entry of entries) {
-      const [photos] = await pool.query(
-        `
-        SELECT * FROM entries
-        LEFT JOIN entryPhotos ON entryPhotos.entryId = entries.id 
-        
-            `,
-        [entry.id]
-      );
-       
-      //creo una nueva clave al objeto dentro del array
-      entry.photos = photos;
-    }
 
     if (entries.length < 1) {
       const err = new Error("No se ha encontrado ninguna recomendación");
       err.httpStatus = 404;
       throw err;
     }
-    
-  
 
     res.send({
       status: "ok",
