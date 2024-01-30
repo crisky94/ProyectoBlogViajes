@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/entries.css";
 import { Link } from "react-router-dom";
-import DeleteEntry from "../components/deleteEntry";
+import DeleteEntry from "../components/DeleteEntry";
 
 function Entries() {
     const [data, setData] = useState([]);
