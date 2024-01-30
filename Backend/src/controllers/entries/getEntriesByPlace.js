@@ -1,13 +1,12 @@
-import getPool from "../../db/getPool.js";
+import getPool from '../../db/getPool.js';
 
 const getEntriesByPlace = async (req, res, next) => {
   try {
     const pool = await getPool();
-
     const { entriesPlace } = req.params;
 
     const [entries] = await pool.query(
-      "SELECT * FROM entries WHERE place = ?",
+      'SELECT entries.*, entryPhotos.name AS photoName FROM entries LEFT JOIN entryPhotos ON entries.id = entryPhotos.entryId WHERE entries.place = ?',
       [entriesPlace]
     );
 
@@ -19,11 +18,31 @@ const getEntriesByPlace = async (req, res, next) => {
       throw err;
     }
 
+    const formattedEntries = entries.map((entry) => {
+      const photos = entries
+        .filter((photo) => photo.id === entry.id)
+        .map((photo) => ({
+          id: photo.photoId,
+          name: photo.photoName,
+        }));
+
+      return {
+        id: entry.id,
+        title: entry.title,
+        category: entry.category,
+        place: entry.place,
+        sortDescription: entry.sortDescription,
+        text: entry.text,
+        userId: entry.userId,
+        createdAt: entry.createdAt,
+        photos: photos,
+      };
+    });
+
     res.send({
-      status: "ok",
+      status: 'ok',
       data: {
-        // Si el entrie que buscamos existe, estará en la posición 0 del array de entries.
-        post: entries,
+        post: formattedEntries,
       },
     });
   } catch (err) {
