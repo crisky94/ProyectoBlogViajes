@@ -1,6 +1,7 @@
 import { Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 import Entries from "./pages/Entries";
 import NewEntry from "./pages/NewEntry";
 import Header from "./components/Header";
@@ -9,6 +10,7 @@ import EntryDetail from "./components/EntryDetail";
 import EntriesByPlace from "./pages/EntriesByPlace";
 import EntriesByCategory from "./pages/EntriesByCategory";
 import Home from "./pages/Home";
+import OrderByVotes from "./components/OrderByvotes";
 
 function App() {
     return (
@@ -20,6 +22,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="*" element={<Entries />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
                     <Route
                         path="/entries/place/:entriesPlace"
                         element={<EntriesByPlace />}
@@ -29,6 +32,7 @@ function App() {
                         element={<EntriesByCategory />}
                     />
                     <Route path="/entries/:entryId" element={<EntryDetail />} />
+                    <Route path="/OrderByvotes" element={<OrderByVotes />} />
                 </Routes>
             </header>
             <Footer />
