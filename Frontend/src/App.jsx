@@ -6,8 +6,6 @@ import NewEntry from "./pages/NewEntry";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import EntryDetail from "./components/EntryDetail";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import EntriesByPlace from "./pages/EntriesByPlace";
 import EntriesByCategory from "./pages/EntriesByCategory";
 import Home from "./pages/Home";

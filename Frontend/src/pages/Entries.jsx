@@ -6,13 +6,12 @@ import DeleteEntry from "../components/deleteEntry";
 function Entries() {
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
-    
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const response = await fetch(
-                    `${import.meta.env.VITE_API_URL}entries`
+                    `${import.meta.env.VITE_API_URL}/entries`
                 );
 
                 if (!response.ok) {
@@ -33,8 +32,6 @@ function Entries() {
         fetchData();
     }, []);
 
-   
-
     return (
         <main>
             <h1>Las recomendaciones de nuestros viajeros 👇🏽</h1>
@@ -51,7 +48,7 @@ function Entries() {
                                     <img
                                         src={`${
                                             import.meta.env.VITE_API_URL
-                                        }uploads/${photoName}`}
+                                        }/uploads/${photoName}`}
                                         alt=""
                                     />
                                 </div>
@@ -65,7 +62,7 @@ function Entries() {
                             {new Date(entry.createdAt).toLocaleDateString()}
                         </p>
                         <Link
-                            to={`${import.meta.env.VITE_API_URL}entries/${
+                            to={`${import.meta.env.VITE_API_URL}/entries/${
                                 entry.id
                             }/votes`}
                         >
@@ -74,7 +71,7 @@ function Entries() {
                             </span>
                         </Link>
                         <p>{entry.voteCount} Me gusta</p>
-                        <DeleteEntry id={ entry.id} />
+                        <DeleteEntry id={entry.id} />
                     </li>
                 ))}
             </ul>
