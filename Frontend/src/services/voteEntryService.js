@@ -1,9 +1,8 @@
-
-const newEntryService = async ({data}) => {
-    const url = `${import.meta.env.VITE_API_URL}entries`;
+const voteEntryService = async ({data}) => {
+    const url = `${import.meta.env.VITE_API_URL}entries/:entryId/votes`;
 
     const response = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         body: data,
         // headers:{
         //     authorization: token
@@ -17,4 +16,4 @@ const newEntryService = async ({data}) => {
     return json.data;
 }
 
-export default newEntryService;
+export default voteEntryService;

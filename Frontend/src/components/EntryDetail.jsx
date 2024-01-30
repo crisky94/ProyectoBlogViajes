@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import DeleteEntry from "./deleteEntry";
 
 const getEntryByIdService = async (entryId) => {
     const url = `${import.meta.env.VITE_API_URL}entries/${entryId}`;
@@ -70,6 +71,7 @@ const EntryDetail = () => {
                 </Link>
 
                 <p>{entry.post.voteCount} Me gusta</p>
+                <DeleteEntry id={entry.post.id}/>
 
                 {error ? <p>{error}</p> : ""}
             </article>
