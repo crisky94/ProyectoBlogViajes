@@ -1,4 +1,4 @@
-import getPool from "../../db/getPool.js";
+import getPool from '../../db/getPool.js';
 
 const getAllEntries = async (req, res, next) => {
   try {
@@ -16,7 +16,7 @@ const getAllEntries = async (req, res, next) => {
         entries.createdAt,
         GROUP_CONCAT(DISTINCT entryPhotos.name) AS photos,
         users.username,
-        COUNT(DISTINCT entryVotes.value) AS voteCount
+        COUNT(DISTINCT entryVotes.id) AS voteCount
       FROM entries
       LEFT JOIN entryVotes ON entryVotes.entryId = entries.id
       INNER JOIN users ON users.id = entries.userId
@@ -26,13 +26,13 @@ const getAllEntries = async (req, res, next) => {
     );
 
     if (entries.length < 1) {
-      const err = new Error("No se ha encontrado ninguna recomendación");
+      const err = new Error('No se ha encontrado ninguna recomendación');
       err.httpStatus = 404;
       throw err;
     }
 
     res.send({
-      status: "ok",
+      status: 'ok',
       data: {
         entries,
       },
