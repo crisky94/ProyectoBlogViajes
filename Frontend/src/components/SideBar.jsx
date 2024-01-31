@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "../styles/sidebar.css";
 
 const Sidebar = () => {
@@ -23,11 +23,14 @@ const Sidebar = () => {
         navigate(`/entries/category/${entriesCategory}`);
     };
 
+    const handleOrderByVotes = () => {
+        navigate("/OrderByVotes");
+    };
+
     return (
         <ul className="menu">
             <li className="buscar-lugar">
                 <h2>Buscar por lugar</h2>
-
                 <input
                     type="text"
                     placeholder="Enter place..."
@@ -51,6 +54,12 @@ const Sidebar = () => {
                     onClick={handleSearchCategory}
                 >
                     Search
+                </button>
+            </li>
+            <li className="ordenar-por-votos">
+                <h2>Ordenar por votos</h2>
+                <button className="button-sidebar" onClick={handleOrderByVotes}>
+                    Order by Votes
                 </button>
             </li>
         </ul>
