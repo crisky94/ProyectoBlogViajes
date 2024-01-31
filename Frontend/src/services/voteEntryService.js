@@ -1,12 +1,11 @@
-const voteEntryService = async ({data}) => {
-    const url = `${import.meta.env.VITE_API_URL}entries/:entryId/votes`;
+const voteEntryService = async ({ token, id}) => {
+    const url = `${import.meta.env.VITE_API_URL}/entries/${id}/votes`;
 
     const response = await fetch(url, {
         method: "POST",
-        body: data,
-        // headers:{
-        //     authorization: token
-        // }
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
     });
 
     const json = await response.json();
