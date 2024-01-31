@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles/entries.css";
 import { Link } from "react-router-dom";
 import DeleteEntry from "../components/DeleteEntry";
+import VoteEntry from "../components/VoteEntry";
 
 function Entries() {
     const [data, setData] = useState([]);
@@ -32,6 +33,8 @@ function Entries() {
         fetchData();
     }, []);
 
+    
+
     return (
         <main>
             <h1>Las recomendaciones de nuestros viajeros 👇🏽</h1>
@@ -61,16 +64,9 @@ function Entries() {
                             Creado el{" "}
                             {new Date(entry.createdAt).toLocaleDateString()}
                         </p>
-                        <Link
-                            to={`${import.meta.env.VITE_API_URL}/entries/${
-                                entry.id
-                            }/votes`}
-                        >
-                            <span className="material-symbols-outlined">
-                                favorite
-                            </span>
-                        </Link>
-                        <p>{entry.voteCount} Me gusta</p>
+                                 
+                       <VoteEntry  id={entry.id} />
+                       <p>{entry.voteCount} Me gusta</p>
                         <DeleteEntry id={entry.id} />
                     </li>
                 ))}

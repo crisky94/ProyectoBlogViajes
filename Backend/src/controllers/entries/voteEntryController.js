@@ -8,9 +8,9 @@ import { cannotVoteOwnEntryError } from '../../services/errorService.js';
 const voteEntryController = async (req, res, next) => {
   try {
     const { entryId } = req.params;
-    const { value } = req.body;
+    const { value = 1 } = req.body;
 
-    await validateSchemaUtil(voteEntrySchema, req.body);
+    await validateSchemaUtil(voteEntrySchema, {value});
 
     const entry = await selectEntryByIdModel(entryId);
 
