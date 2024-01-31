@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Login = ({ onLogin }) => {
+const FormLogin = ({ onLogin }) => {
+    const navigate = useNavigate();
     const url = `${import.meta.env.VITE_API_URL}/users/login`;
 
     const [email, setEmail] = useState("");
@@ -24,7 +25,12 @@ const Login = ({ onLogin }) => {
             }
 
             const { usuario, token } = await response.json();
+
+            localStorage.setItem("token", token);
+
             onLogin({ usuario, token });
+
+            navigate("/");
         } catch (error) {
             console.error("Error al iniciar sesión:", error.message);
         }
@@ -54,11 +60,11 @@ const Login = ({ onLogin }) => {
                     <button type="submit">Iniciar Sesión</button>
                 </div>
                 <Link to={"/user/recover-password"}>
-                    <p>Recupar contraseña</p>
+                    <p>Recuperar contraseña</p>
                 </Link>
             </form>
         </>
     );
 };
 
-export default Login;
+export default FormLogin;
