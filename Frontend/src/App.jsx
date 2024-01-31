@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -24,6 +24,15 @@ const App = () => {
         localStorage.removeItem("token");
         setLoggedInUser(null);
     };
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            setLoggedInUser({
+                token: token,
+            });
+        }
+    }, []);
 
     return (
         <>
