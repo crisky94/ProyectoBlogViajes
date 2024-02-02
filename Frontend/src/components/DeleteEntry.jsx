@@ -37,8 +37,11 @@ const DeleteEntry = ({ id }) => {
 
     return (
         <div>
-            <button onClick={() => setShowPopup(true)}>
-                Borrar Publicación
+            <button
+                className="delete-button"
+                onClick={() => setShowPopup(true)}
+            >
+                <span className="material-symbols-outlined">delete</span>
             </button>
             <DeletePopup
                 show={showPopup}

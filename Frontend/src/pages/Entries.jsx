@@ -33,41 +33,39 @@ function Entries() {
         fetchData();
     }, []);
 
-    
-
     return (
-        <main>
+        <main className="cards-container">
             <h1>Las recomendaciones de nuestros viajeros 👇🏽</h1>
-            <ul>
+            <ul className="entries-list">
                 {data.map((entry) => (
-                    <li key={entry.id}>
-                        <Link to={`entries/${entry.id}`}>
-                            <h2>{entry.title}</h2>
-                        </Link>
-
+                    <li key={entry.id} className="card-container">
                         {entry.photos &&
                             entry.photos.split(",").map((photoName, index) => (
                                 <div key={index}>
                                     <img
+                                        className="picture"
                                         src={`${
                                             import.meta.env.VITE_API_URL
                                         }/uploads/${photoName}`}
-                                        alt=""
+                                        alt="Imágen del viaje"
                                     />
                                 </div>
                             ))}
-
-                        <p>
+                        <Link to={`entries/${entry.id}`}>
+                            <h2 className="entry-title">{entry.title}</h2>
+                        </Link>
+                        <p className="user-description">
                             {entry.username} | {entry.sortDescription}
                         </p>
-                        <p>
-                            Creado el{" "}
+                        <p className="created-at">
+                            Publicado el{" "}
                             {new Date(entry.createdAt).toLocaleDateString()}
                         </p>
-                                 
-                       <VoteEntry  id={entry.id} />
-                       <p>{entry.voteCount} Me gusta</p>
-                        <DeleteEntry id={entry.id} />
+                        <div className="card-footer">
+                            <VoteEntry id={entry.id} />
+                            <p className="votes">{entry.voteCount} Me gusta</p>
+                            <DeleteEntry id={entry.id} />
+                        </div>
                     </li>
                 ))}
             </ul>
