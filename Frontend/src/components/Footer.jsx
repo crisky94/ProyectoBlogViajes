@@ -1,8 +1,10 @@
-
+import "../styles/footer.css"
 
 const Footer = () => {
   return (
-    <footer>(C) 2024 - (Cris, Moha, Jairo y German) Grupo C </footer>
+    <div className="divFooter">
+       <footer className="footer">(C) 2024 - (Cris, Moha, Jairo y German) Grupo C </footer>
+    </div>
   )
 }
 export default Footer;

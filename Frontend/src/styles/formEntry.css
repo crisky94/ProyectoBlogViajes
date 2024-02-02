@@ -1,119 +1,136 @@
+:root {
+	--background-color: #343d4b;
+}
 
 body {
-	margin:0;
-	padding:0;
-	font-family: sans-serif;
-	
-  }
-  
-  .login-box {
-	position: absolute;
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+}
+
+.entry-box {
+	position: relative;
 	top: 450px;
 	left: 50%;
-	width: 400px;
+	width: 500px;
 	height: auto;
 	padding: 40px;
 	transform: translate(-50%, -50%);
 	box-sizing: border-box;
-	box-shadow: 0 15px 25px rgba(0,0,0,.6);
-  }
-  
-  h1 {
-	margin: 0 0 30px;
+	border-radius: 10px;
+	box-shadow: 0 15px 25px rgb(1, 21, 38);
+	background-color: var(--background-color);
+}
+
+.formEntry {
+	background-color: var(--background-color);
+}
+
+.h1 {
+	margin: 50px 0 0 30px;
 	padding: 0;
-	color: #fff;
+	color: #211616;
 	text-align: center;
-  }
-  footer{
-	position: relative;
-	margin: 800px 100px 100px;
-	padding: 20px;
-	color: #fff;
-	text-align: center;
-  }
-  .login-box img {
+}
+
+.entry-box img {
 	width: 200px;
 	height: 200px;
- }
- 
+	overflow: hidden;
+}
 
-  .login-box .user-box {
+
+.entry-box .box {
 	position: relative;
-  }
-  
-  .login-box .user-box input,
-  .login-box .user-box textarea {
+}
+
+.entry-box .box input,
+.entry-box .box textarea {
 	width: 100%;
 	padding: 15px 0;
-	font-size: 16px;
-	color: #fff;
 	margin-bottom: 20px;
 	border: none;
-	border-bottom: 1px solid #fff;
-	outline:#fff;
-	
-  }
-  .login-box .user-box label {
+	border-bottom: 1px solid #211616;
+	outline: #211616;
+	background-color: var(--background-color);
+}
+
+.entry-box .box label {
 	position: absolute;
-	top:0;
+	top: 0;
 	left: 0;
 	padding: 10px 0;
-	font-size: 16px;
-	color: #fff;
 	pointer-events: none;
 	transition: .5s;
 	background: transparent;
-  }
-  
-  
-  .login-box .user-box input:focus ~ label,
-  .login-box .user-box input:valid ~ label,
-  .login-box .user-box textarea:focus ~ label,
-  .login-box .user-box textarea:valid ~ label{
-	top: -20px;
+}
+
+
+.entry-box .box input:focus~label,
+.entry-box .box input:valid~label,
+.entry-box .box textarea:focus~label,
+.entry-box .box textarea:valid~label {
+	top: -10px;
 	left: 0;
-	color: #03e9f4;
+	/* color: #03e9f4; */
 	font-size: 14px;
-  }
-  input[type='file']{
-	color: #fff;
-  }
-  
-  .login-box form button {
-	position: relative;
-	display: inline-block;
+}
+
+.labelFile {
+	background-color: var(--background-color);
 	padding: 10px 20px;
-	color: #fff;
-	font-size: 16px;
+	border-radius: 5px;
+}
+
+.input-file {
+	background-color: var(--background-color);
+	width: calc(100% - 20px);
+	padding: 10px 10px;
+	border: 1px solid #211616;
+	color: #211616;
+}
+
+
+
+select {
+	border-color: #211616;
+	outline: #211616;
+	width: calc(100% - 20px);
+	padding: 10px 10px;
+	cursor: pointer;
+    padding: 10px 10px;
+	margin: 20px 20px;
+	letter-spacing: 4px;
+	background-color: var(--background-color);
+}
+
+textarea {
+	resize: none;
+}
+
+.entry-box form button {
+	position: relative;
+	display: flex;
+	padding: 10px 20px;
 	text-decoration: none;
 	text-transform: uppercase;
 	overflow: hidden;
 	transition: .5s;
+	margin-left: 130px;
 	margin-top: 40px;
-	letter-spacing: 4px
-  }
-  select{
-	padding: 10px 20px;
-	color: #fff;
-	font-size: 16px;
-	letter-spacing: 4px
-  }
-  textarea{
-	resize: none;
-  }
-  
-  .login-box button:hover {
-	background: #082929;
-	color: #fff;
-	border-radius: 5px;
-	box-shadow: 0 0 5px #fff,
-				0 0 25px #fff,
-				0 0 50px #fff,
-				0 0 100px #fff;
-  }
-  
-  .login-box button span {
-	position: absolute;
-	display: block;
-  }
-  
+	background-color: var(--background-color);
+}
+
+.entry-box button:hover {
+	/* background: rgba(255, 255, 255, 0.682); */
+	text-shadow: 5px 2px 14px rgb(241, 242, 243);
+	font-weight: bold;
+	/* color:#082929; */
+	border-radius: 2px;
+	cursor: pointer;
+	/* box-shadow: 0 0 5px #03e9f4,
+				0 0 25px #0f1010,
+				0 0 50px #03e9f4,
+				0 0 100px #03e9f4; */
+	background-color: var(--background-color);
+}
