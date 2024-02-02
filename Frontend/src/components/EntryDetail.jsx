@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import DeleteEntry from "./DeleteEntry";
+import "../styles/entries.css";
 
 const getEntryByIdService = async (entryId) => {
     const url = `${import.meta.env.VITE_API_URL}/entries/${entryId}`;
@@ -40,10 +41,9 @@ const EntryDetail = () => {
     console.log(entryId);
 
     return entry ? (
-        <div>
-            <article key={entry.post.id}>
-                <h2> {entry.post.title}</h2>
-
+        <div className="cards-container">
+            <h1>La recomendación de nuestros viajeros 👇🏽</h1>
+            <article key={entry.post.id} className="card-container">
                 {entry.post.photos &&
                     entry.post.photos.split(",").map((photoName, index) => (
                         <div key={index}>
@@ -52,27 +52,31 @@ const EntryDetail = () => {
                                     import.meta.env.VITE_API_URL
                                 }/uploads/${photoName}`}
                                 alt="Imágen del viaje"
+                                className="picture"
                             />
                         </div>
                     ))}
-
-                <p>
+                <h2 className="entry-title"> {entry.post.title}</h2>
+                <p className="user-description">
                     {entry.post.username}
                     {" | "}
                     {entry.post.sortDescription}
                 </p>
-                <p>{entry.post.text}</p>
-                <p>
-                    Creado el{" "}
+                <p className="entry-detail">{entry.post.text}</p>
+                <p className="created-at">
+                    Publicado el{" "}
                     {new Date(entry.post.createdAt).toLocaleDateString()}
                 </p>
-                <Link to={`entries/${entryId}/votes`}>
-                    <span className="material-symbols-outlined">favorite</span>
-                </Link>
+                <div className="card-footer">
+                    <Link to={`entries/${entryId}/votes`}>
+                        <span className="material-symbols-outlined">
+                            favorite
+                        </span>
+                    </Link>
 
-                <p>{entry.post.voteCount} Me gusta</p>
-                <DeleteEntry id={entry.post.id} />
-
+                    <p className="votes">{entry.post.voteCount} Me gusta</p>
+                    <DeleteEntry id={entry.post.id} />
+                </div>
                 {error ? <p>{error}</p> : ""}
             </article>
         </div>
