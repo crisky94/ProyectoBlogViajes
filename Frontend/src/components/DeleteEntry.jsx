@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import deleteEntryService from "../services/deleteEntryService";
 
 const DeleteEntry = ({ id }) => {
     const [showPopup, setShowPopup] = useState(false);
     const [error, setError] = useState("");
-
+   
     const DeletePopup = ({ show, onDelete, onCancel }) => {
         if (!show) return null;
 
