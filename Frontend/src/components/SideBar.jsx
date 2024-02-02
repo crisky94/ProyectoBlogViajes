@@ -65,6 +65,7 @@ const Sidebar = () => {
                     <li className="buscar-categoria">
                         <h2>Categoría</h2>
                         <select
+                            className="select-sidebar-ctg"
                             value={entriesCategory}
                             onChange={handleInputChangeCategory}
                         >

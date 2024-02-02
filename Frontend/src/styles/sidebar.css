@@ -43,8 +43,16 @@
 .menu a:hover {
     background-color: #555;
 }
+.select-sidebar-ctg {
+    margin: 15px 0px 0px 0px;
+}
+
+.menu li {
+    margin: 15px 0px 15px 15px;
+}
 
 .menu input {
+    margin: 15px 0px 15px 15px;
     appearance: none;
     border: none;
     outline: none;
@@ -76,6 +84,7 @@
 
 .toggle-button {
     display: none;
+    background-color: transparent;
     border: none;
     cursor: pointer;
 }

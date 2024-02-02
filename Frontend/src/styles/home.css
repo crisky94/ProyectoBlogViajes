@@ -11,7 +11,7 @@
     height: 100%;
     width: 80%;
     top: 0;
-    left: 0;
+    margin: 30px;
     background-color: #343d4b;
     padding-top: 0px;
 }
