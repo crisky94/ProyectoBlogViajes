@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/LoginStyles.css";
 
-const Login = ({ onLogin }) => {
+const FormLogin = ({ onLogin }) => {
+    const navigate = useNavigate();
     const url = `${import.meta.env.VITE_API_URL}/users/login`;
 
     const [email, setEmail] = useState("");
@@ -24,7 +26,12 @@ const Login = ({ onLogin }) => {
             }
 
             const { usuario, token } = await response.json();
+
+            localStorage.setItem("token", token);
+
             onLogin({ usuario, token });
+
+            navigate("/");
         } catch (error) {
             console.error("Error al iniciar sesión:", error.message);
         }
@@ -32,33 +39,44 @@ const Login = ({ onLogin }) => {
 
     return (
         <>
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Email:
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Contraseña:
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
-                <div>
-                    <button type="submit">Iniciar Sesión</button>
-                </div>
-                <Link to={"/user/recover-password"}>
-                    <p>Recupar contraseña</p>
-                </Link>
-            </form>
+            {" "}
+            <div className="card">
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>
+                            Email:
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="input-field"
+                            />
+                        </label>
+                    </div>
+                    <label>
+                        <div className="form-group">
+                            Contraseña:
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="input-field"
+                            />
+                        </div>
+                    </label>
+                    <div>
+                        <button type="submit" className="btn-login">
+                            Iniciar Sesión
+                        </button>
+                    </div>
+                    <Link to={"/user/recover-password"}>
+                        <p>Recuperar contraseña</p>
+                    </Link>
+                </form>
+            </div>
         </>
     );
 };
 
-export default Login;
+export default FormLogin;

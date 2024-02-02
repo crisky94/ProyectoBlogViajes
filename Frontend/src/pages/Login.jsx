@@ -1,7 +1,8 @@
 import FormLogin from "../components/FormLogin";
 import { useState } from "react";
+import "../styles/LoginStyles.css";
 
-const App = () => {
+const Login = () => {
     const [loggedInUser, setLoggedInUser] = useState(null);
 
     const handleLogin = ({ usuario, token }) => {
@@ -9,7 +10,7 @@ const App = () => {
     };
 
     return (
-        <div>
+        <div className="card">
             <h1>Logeado!</h1>
             {loggedInUser ? (
                 <p>Bienvenido</p>
@@ -20,4 +21,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default Login;
