@@ -1,6 +1,26 @@
+:root {
+    --primary-color: #1ab188;
+    --primary-color-dark: #184e40;
+}
+
+.menu-btn-col {
+    width: 20px;
+    transition: 0.5s;
+    transform: rotate(90deg);
+}
+
+.menu-btn-col1 {
+    width: 20px;
+    transition: 0.5s;
+}
+
 .menu {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .buscar-lugar,
@@ -9,6 +29,9 @@
     text-align: center;
 }
 
+.menu-filtar {
+    text-align: center;
+}
 .menu a {
     text-decoration: none;
     color: white;
@@ -25,24 +48,49 @@
     appearance: none;
     border: none;
     outline: none;
-    border-bottom: 0.2em solid #0b7dda;
-    background: rgba(#0b7dda, 0.2);
+    border-bottom: 0.2em solid var(--primary-color);
+    background: rgba(var(--primary-color), 0.2);
     border-radius: 0.2em 0.2em 0 0;
     padding: 0.4em;
-    color: #0b7dda;
+    color: var(--primary-color);
+}
+
+.ordenar-por-votos {
+    text-align: center;
 }
 
 .button-sidebar {
     appearance: none;
     margin-top: 10px;
-    border: 0.2em solid #0b7dda;
+    border: 0.2em solid var(--primary-color);
     background: hsl(0 0 0/0);
     padding: 0.85em 1.5em;
-    color: #0b7dda;
+    color: var(--primary-color);
     border-radius: 2em;
     transition: 0.5s;
 }
 .button-sidebar:hover {
-    background: #0b7dda;
+    background: var(--primary-color);
     color: #fff;
+}
+
+.toggle-button {
+    display: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1250px) {
+    .menu {
+        display: none;
+        align-items: center;
+    }
+
+    .toggle-button {
+        display: block;
+    }
+
+    .sidebar.collapsed .menu {
+        display: flex;
+    }
 }
