@@ -1,6 +1,7 @@
 import { useState } from "react";
 import registerUserService from "../services/userRegisterSevice";
 import { Link } from "react-router-dom";
+import "../styles/register.css";
 
 const RegisterForm = () => {
     const [username, setUsername] = useState("");
@@ -24,67 +25,91 @@ const RegisterForm = () => {
             const r = await registerUserService({ username, email, password });
             setRta(r);
         } catch (error) {
-            setError(error.message);
+            setError(error);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Nombre de Usuario:</label>
-                <input
-                    type="text"
-                    name="username"
-                    value={username}
-                    required
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    required
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Confirm Password</label>
-                <input
-                    type="password"
-                    name="confirmPassword"
-                    value={confirmPassword}
-                    required
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-            </div>
-            <div>
-                <input type="submit" value="Enviar" />
-            </div>
-            {rta.status == "ok" ? (
-                <>
-                    <p>{rta.message}</p>
-                    <Link to={"/login"}>
-                        <button>Login</button>
-                    </Link>
-                </>
-            ) : (
-                ""
-            )}
-            {error && <p>{error}</p>}
-        </form>
+        <div className="register-ctn">
+            <form onSubmit={handleSubmit}>
+                <h2 className="title-rgs">Registarse</h2>
+                <div className="contenedor-input">
+                    <label>
+                        Nombre de Usuario <span className="required">*</span>
+                    </label>
+                    <input
+                        className="input-register"
+                        type="text"
+                        name="username"
+                        value={username}
+                        required
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </div>
+                <div className="contenedor-input">
+                    <label>
+                        Email<span className="required">*</span>
+                    </label>
+
+                    <input
+                        className="input-register"
+                        type="email"
+                        name="email"
+                        value={email}
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+                <div className="contenedor-input">
+                    <label>
+                        Password<span className="required">*</span>
+                    </label>
+
+                    <input
+                        className="input-register"
+                        type="password"
+                        name="password"
+                        value={password}
+                        required
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <div className="contenedor-input">
+                    <label>
+                        Confirm Password<span className="required">*</span>
+                    </label>
+                    <input
+                        className="input-register"
+                        type="password"
+                        name="confirmPassword"
+                        value={confirmPassword}
+                        required
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <input
+                        type="submit"
+                        className="rg-btn"
+                        value="Registrarse"
+                    />
+                </div>
+                {rta.status === "ok" ? (
+                    <>
+                        <p>{rta.message}</p>
+                        <Link to={"/login"}>
+                            <button className="rg-btn1">Login</button>
+                        </Link>
+                        <Link to={"/"}>
+                            <button className="rg-btn1">Home</button>
+                        </Link>
+                    </>
+                ) : (
+                    ""
+                )}
+                {error && <p>{error}</p>}
+            </form>
+        </div>
     );
 };
 

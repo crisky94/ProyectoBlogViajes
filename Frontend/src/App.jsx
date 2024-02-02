@@ -11,6 +11,8 @@ import EntriesByCategory from "./pages/EntriesByCategory";
 import EntryDetail from "./components/EntryDetail";
 import OrderByVotes from "./components/OrderByvotes";
 import FormLogin from "./components/FormLogin";
+import GetEntriesByPlaceAndCategory from "./components/GetEntriesByPlaceAndCategory";
+import OrderByDate from "./components/OrderByDate";
 
 const App = () => {
     const [loggedInUser, setLoggedInUser] = useState(null);
@@ -46,6 +48,10 @@ const App = () => {
                     element={<FormLogin onLogin={handleLogin} />}
                 />
                 <Route
+                    path="/entries/place/:place/category/:category" // Nueva ruta para lugar y categoría
+                    element={<GetEntriesByPlaceAndCategory />}
+                />
+                <Route
                     path="/entries/place/:entriesPlace"
                     element={<EntriesByPlace />}
                 />
@@ -55,6 +61,7 @@ const App = () => {
                 />
                 <Route path="/entries/:entryId" element={<EntryDetail />} />
                 <Route path="/OrderByvotes" element={<OrderByVotes />} />
+                <Route path="/OrderByDate" element={<OrderByDate />} />
             </Routes>
             <Footer />
         </>
