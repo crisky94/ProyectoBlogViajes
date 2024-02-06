@@ -38,8 +38,22 @@ const EntryDetail = () => {
     const { entryId } = useParams();
 
     const { entry, error } = useEntry(entryId);
-    console.log(entryId);
 
+    const getCurrentUserId = () => {
+
+        const token = localStorage.getItem('token');
+
+        if (token) {
+
+          const payload = JSON.parse(atob(token.split('.')[1]));
+           
+          return payload.id;
+        }
+        return null;
+      };
+      
+     const currentUser = getCurrentUserId();
+    
     return entry ? (
         <div className="cards-container">
             <h1>La recomendación de nuestros viajeros 👇🏽</h1>
@@ -75,7 +89,14 @@ const EntryDetail = () => {
                     </Link>
 
                     <p className="votes">{entry.post.voteCount} Me gusta</p>
-                    <DeleteEntry id={entry.post.id} />
+                    {
+                        currentUser === entry.post.userId ? 
+                        (<DeleteEntry id={entry.post.id} />)
+                        :
+                        null
+                    }
+                    
+                    
                 </div>
                 {error ? <p>{error}</p> : ""}
             </article>
