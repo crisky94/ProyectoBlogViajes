@@ -14,8 +14,8 @@ const Header = ({ isLoggedIn, onLogout }) => {
                 {isLoggedIn ? (
                     <>
                         <NavLink className={"navLink"}  to={"/newEntry"}>Nuevo post</NavLink>
-                       
-                        <button className="sessionClose" onClick={onLogout}>Cerrar Sesión</button>
+                        
+                        <button className={"sessionClose"} onClick={onLogout}>Cerrar Sesión</button>
                     </>
                 ) : (
                     <>

@@ -7,7 +7,7 @@ import joiErrorMessages from '../joiErrorMessages.js';
 export const newEntrySchema = joi.object({
     title: joi
         .string()
-        .min(5)
+        .min(3)
         .max(50)
         .required()
         .messages(joiErrorMessages),

@@ -24,6 +24,7 @@ function Entries() {
                 const body = await response.json();
 
                 setData(body.data.entries);
+                
             } catch (error) {
                 console.error("Error:", error);
                 setError(error.message);
@@ -33,6 +34,20 @@ function Entries() {
         fetchData();
     }, []);
 
+    const getCurrentUserId = () => {
+
+        const token = localStorage.getItem('token');
+
+        if (token) {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+           
+          return payload.id;
+        }
+        return null;
+      };
+      
+     const currentUser = getCurrentUserId();
+     
     return (
         <main className="cards-container">
             <h1>Las recomendaciones de nuestros viajeros 👇🏽</h1>
@@ -64,7 +79,12 @@ function Entries() {
                         <div className="card-footer">
                             <VoteEntry id={entry.id} />
                             <p className="votes">{entry.voteCount} Me gusta</p>
-                            <DeleteEntry id={entry.id} />
+                            {
+                                currentUser === entry.userId ? (
+                                    <DeleteEntry id={entry.id} />)
+                                    : null
+                            }
+                           
                         </div>
                     </li>
                 ))}
