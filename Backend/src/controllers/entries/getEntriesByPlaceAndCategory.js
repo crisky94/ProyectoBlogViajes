@@ -1,16 +1,25 @@
-// Importa tu pool o configuración de base de datos
 import getPool from '../../db/getPool.js';
 
 const getEntriesByCategoryAndPlace = async (req, res, next) => {
   try {
     const pool = await getPool();
 
-    // Obtén los parámetros de la URL
     const { entriesPlace, entriesCategory } = req.params;
 
-    // Realiza la consulta a la base de datos para obtener las recomendaciones
     const [entries] = await pool.query(
-      'SELECT entries.*, entryPhotos.name AS photoName FROM entries LEFT JOIN entryPhotos ON entries.id = entryPhotos.entryId WHERE entries.place = ? AND entries.category = ?',
+      `SELECT entries.*, 
+              users.username,
+              (SELECT entryPhotos.name 
+               FROM entryPhotos 
+               WHERE entries.id = entryPhotos.entryId 
+               LIMIT 1) AS photoName,
+              (SELECT COUNT(DISTINCT entryVotes.id) 
+               FROM entryVotes 
+               WHERE entryVotes.entryId = entries.id) AS voteCount
+       FROM entries 
+       LEFT JOIN entryPhotos ON entries.id = entryPhotos.entryId 
+       LEFT JOIN users ON entries.userId = users.id
+       WHERE entries.place = ? AND entries.category = ?`,
       [entriesPlace, entriesCategory]
     );
 
@@ -22,29 +31,25 @@ const getEntriesByCategoryAndPlace = async (req, res, next) => {
       throw err;
     }
 
-    // Formatea los resultados según tus necesidades
-    const formattedEntries = entries.map((entry) => {
-      const photos = entries
-        .filter((photo) => photo.id === entry.id)
-        .map((photo) => ({
-          id: photo.photoId,
-          name: photo.photoName,
-        }));
+    const formattedEntries = entries.map((entry) => ({
+      id: entry.id,
+      title: entry.title,
+      category: entry.category,
+      place: entry.place,
+      sortDescription: entry.sortDescription,
+      text: entry.text,
+      userId: entry.userId,
+      username: entry.username,
+      createdAt: entry.createdAt,
+      photos: [
+        {
+          id: entry.photoId,
+          name: entry.photoName,
+        },
+      ],
+      voteCount: entry.voteCount,
+    }));
 
-      return {
-        id: entry.id,
-        title: entry.title,
-        category: entry.category,
-        place: entry.place,
-        sortDescription: entry.sortDescription,
-        text: entry.text,
-        userId: entry.userId,
-        createdAt: entry.createdAt,
-        photos: photos,
-      };
-    });
-
-    // Envía la respuesta con los datos formateados
     res.send({
       status: 'ok',
       data: {

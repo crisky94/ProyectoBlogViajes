@@ -30,86 +30,86 @@ const RegisterForm = () => {
     };
 
     return (
-        <div className="register-ctn">
-            <form onSubmit={handleSubmit}>
-                <h2 className="title-rgs">Registarse</h2>
-                <div className="contenedor-input">
-                    <label>
-                        Nombre de Usuario <span className="required">*</span>
-                    </label>
-                    <input
-                        className="input-register"
-                        type="text"
-                        name="username"
-                        value={username}
-                        required
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </div>
-                <div className="contenedor-input">
-                    <label>
-                        Email<span className="required">*</span>
-                    </label>
+        <>
+            <h2 className="title-rgs">Registarse</h2>
+            <div className="register-ctn">
+                <form onSubmit={handleSubmit}>
+                    <div className="contenedor-input">
+                        <label>
+                            Nombre de Usuario{" "}
+                            <span className="required">*</span>
+                        </label>
+                        <input
+                            className="input-register"
+                            type="text"
+                            name="username"
+                            value={username}
+                            required
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
+                    <div className="contenedor-input">
+                        <label>
+                            Email<span className="required">*</span>
+                        </label>
 
-                    <input
-                        className="input-register"
-                        type="email"
-                        name="email"
-                        value={email}
-                        required
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div className="contenedor-input">
-                    <label>
-                        Password<span className="required">*</span>
-                    </label>
+                        <input
+                            className="input-register"
+                            type="email"
+                            name="email"
+                            value={email}
+                            required
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="contenedor-input">
+                        <label>
+                            Password<span className="required">*</span>
+                        </label>
 
-                    <input
-                        className="input-register"
-                        type="password"
-                        name="password"
-                        value={password}
-                        required
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <div className="contenedor-input">
-                    <label>
-                        Confirm Password<span className="required">*</span>
-                    </label>
-                    <input
-                        className="input-register"
-                        type="password"
-                        name="confirmPassword"
-                        value={confirmPassword}
-                        required
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <input
-                        type="submit"
-                        className="rg-btn"
-                        value="Registrarse"
-                    />
-                </div>
-                {rta.status === "ok" ? (
-                    <>
-                        <p>{rta.message}</p>
-                        <Link to={"/login"}>
-                            <button className="rg-btn1">Login</button>
-                        </Link>
-                        <Link to={"/"}>
-                            <button className="rg-btn1">Home</button>
-                        </Link>
-                    </>
-                ) : (
-                    ""
-                )}
-                {error && <p>{error}</p>}
-            </form>
-        </div>
+                        <input
+                            className="input-register"
+                            type="password"
+                            name="password"
+                            value={password}
+                            required
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="contenedor-input">
+                        <label>
+                            Confirm Password<span className="required">*</span>
+                        </label>
+                        <input
+                            className="input-register"
+                            type="password"
+                            name="confirmPassword"
+                            value={confirmPassword}
+                            required
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="submit"
+                            className="rg-btn"
+                            value="Registrarse"
+                        />
+                    </div>
+                    {rta.status === "ok" ? (
+                        <>
+                            <p>{rta.message}</p>
+                            <Link to={"/login"}>
+                                <button className="rg-btn1">Login</button>
+                            </Link>
+                        </>
+                    ) : (
+                        ""
+                    )}
+                    {error && <p>{error}</p>}
+                </form>
+            </div>
+        </>
     );
 };
 

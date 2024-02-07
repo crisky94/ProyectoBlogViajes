@@ -5,7 +5,7 @@ const getEntriesOrderedByDateController = async (req, res, next) => {
     const pool = await getPool();
 
     const [entries] = await pool.query(
-      'SELECT entries.*, entryPhotos.name AS photoName FROM entries LEFT JOIN entryPhotos ON entries.id = entryPhotos.entryId ORDER BY createdAt DESC'
+      'SELECT entries.*, entryPhotos.name AS photoName FROM entries LEFT JOIN entryPhotos ON entries.id = entryPhotos.entryId ORDER BY createdAt ASC'
     );
 
     if (entries.length < 1) {

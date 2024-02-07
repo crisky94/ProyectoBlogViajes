@@ -6,7 +6,19 @@ const getEntriesByPlace = async (req, res, next) => {
     const { entriesPlace } = req.params;
 
     const [entries] = await pool.query(
-      'SELECT entries.*, entryPhotos.name AS photoName FROM entries LEFT JOIN entryPhotos ON entries.id = entryPhotos.entryId WHERE entries.place = ?',
+      `SELECT entries.*, 
+       users.username,
+       (SELECT entryPhotos.name 
+        FROM entryPhotos 
+        WHERE entries.id = entryPhotos.entryId 
+        LIMIT 1) AS photoName, 
+       COUNT(DISTINCT entryVotes.id) AS voteCount 
+FROM entries 
+LEFT JOIN entryVotes ON entryVotes.entryId = entries.id 
+LEFT JOIN users ON entries.userId = users.id
+WHERE entries.place = ? 
+GROUP BY entries.id
+`,
       [entriesPlace]
     );
 
@@ -18,26 +30,24 @@ const getEntriesByPlace = async (req, res, next) => {
       throw err;
     }
 
-    const formattedEntries = entries.map((entry) => {
-      const photos = entries
-        .filter((photo) => photo.id === entry.id)
-        .map((photo) => ({
-          id: photo.photoId,
-          name: photo.photoName,
-        }));
-
-      return {
-        id: entry.id,
-        title: entry.title,
-        category: entry.category,
-        place: entry.place,
-        sortDescription: entry.sortDescription,
-        text: entry.text,
-        userId: entry.userId,
-        createdAt: entry.createdAt,
-        photos: photos,
-      };
-    });
+    const formattedEntries = entries.map((entry) => ({
+      id: entry.id,
+      username: entry.username,
+      title: entry.title,
+      category: entry.category,
+      place: entry.place,
+      sortDescription: entry.sortDescription,
+      text: entry.text,
+      userId: entry.userId,
+      createdAt: entry.createdAt,
+      photos: [
+        {
+          id: entry.photoId,
+          name: entry.photoName,
+        },
+      ],
+      voteCount: entry.voteCount,
+    }));
 
     res.send({
       status: 'ok',

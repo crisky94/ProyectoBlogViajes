@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "../styles/entries.css";
+import DeleteEntry from "./DeleteEntry";
+import VoteEntry from "./VoteEntry";
 
 const GetEntriesByPlace = ({ entriesPlace }) => {
     const [data, setData] = useState([]);
@@ -32,8 +35,21 @@ const GetEntriesByPlace = ({ entriesPlace }) => {
         fetchEntries();
     }, [entriesPlace]);
 
+    const getCurrentUserId = () => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            const payload = JSON.parse(atob(token.split(".")[1]));
+
+            return payload.id;
+        }
+        return null;
+    };
+
+    const currentUser = getCurrentUserId();
+
     return (
-        <div>
+        <main className="cards-container">
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -41,11 +57,12 @@ const GetEntriesByPlace = ({ entriesPlace }) => {
                     <div className="title">
                         <h2>Recomendaciones en: {entriesPlace}</h2>
                     </div>
+
                     {data.length === 0 ? (
                         <>
                             <p>
-                                Todavía no existen recomendaciones en este país.
-                                ¿Quieres subir una?
+                                Todavía no existen recomendaciones en esta
+                                categoria. ¿Quieres subir una?
                             </p>
                             <Link to={"/newEntry"}>
                                 <button className="boton-ne">
@@ -54,62 +71,52 @@ const GetEntriesByPlace = ({ entriesPlace }) => {
                             </Link>
                         </>
                     ) : (
-                        <div className="ep-main-container">
-                            <ul className="main">
-                                {data.map((entry) => (
-                                    <li className="li" key={entry.id}>
-                                        <section className="entry-info">
-                                            <h3 className="entry-title">
-                                                <Link
-                                                    to={`/entries/${entry.id}`}
-                                                >
-                                                    <h2>{entry.title}</h2>
-                                                </Link>
-                                            </h3>
-                                            <p className="entry-text">
-                                                {entry.text}
-                                            </p>
-                                        </section>
-
-                                        {entry.photos.map(
-                                            (photoName, index) => (
-                                                <div key={index}>
-                                                    <img
-                                                        src={`${
-                                                            import.meta.env
-                                                                .VITE_API_URL
-                                                        }/uploads/${
-                                                            photoName.name
-                                                        }`}
-                                                        alt=""
-                                                    />
-                                                </div>
-                                            )
-                                        )}
-
-                                        <ul className="extras">
-                                            <li className="extras-li">
-                                                <strong>
-                                                    País en el que se encuentra:
-                                                </strong>{" "}
-                                                {entry.place}
-                                            </li>
-                                            <li className="extras-li">
-                                                <strong>
-                                                    Categoría en la que se
-                                                    encuentra:
-                                                </strong>{" "}
-                                                {entry.category}
-                                            </li>
-                                        </ul>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <ul className="entries-list">
+                            {data.map((entry) => (
+                                <li key={entry.id} className="card-container">
+                                    {entry.photos.map((photoName, index) => (
+                                        <div key={index}>
+                                            <img
+                                                className="picture"
+                                                src={`${
+                                                    import.meta.env.VITE_API_URL
+                                                }/uploads/${photoName.name}`}
+                                                alt=""
+                                            />
+                                        </div>
+                                    ))}
+                                    <Link to={`entries/${entry.id}`}>
+                                        <h2 className="entry-title">
+                                            {entry.title}
+                                        </h2>
+                                    </Link>
+                                    <p className="user-description">
+                                        {entry.username} |{" "}
+                                        {entry.sortDescription}
+                                    </p>
+                                    <p className="created-at">
+                                        Publicado el{" "}
+                                        {new Date(
+                                            entry.createdAt
+                                        ).toLocaleDateString()}
+                                    </p>
+                                    <div className="card-footer">
+                                        <VoteEntry id={entry.id} />
+                                        <p className="votes">
+                                            {entry.voteCount} Me gusta
+                                            {console.log("votos: ", entry)}
+                                        </p>
+                                        {currentUser === entry.userId ? (
+                                            <DeleteEntry id={entry.id} />
+                                        ) : null}
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
                     )}
                 </div>
             )}
-        </div>
+        </main>
     );
 };
 
