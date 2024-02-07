@@ -19,7 +19,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
                 isOpen={isSidebarOpen}
             />
             <NavLink className={"navLink"} to={"/"}>
-                Home
+              <img className={"logo"} src="./logo.svg"/>
             </NavLink>
 
             {isLoggedIn ? (
@@ -29,7 +29,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
                     </NavLink>
 
                     <button className={"sessionClose"} onClick={onLogout}>
-                        <img className={"logo"} src="./logo.svg"/>
+                        Cerrar Sesión
                     </button>
                 </>
             ) : (
