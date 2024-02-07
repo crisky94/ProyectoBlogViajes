@@ -28,8 +28,8 @@ const Header = ({ isLoggedIn, onLogout }) => {
                         Nuevo post
                     </NavLink>
 
-                    <button className="sessionClose" onClick={onLogout}>
-                        Cerrar Sesión
+                    <button className={"sessionClose"} onClick={onLogout}>
+                        <img className={"logo"} src="./logo.svg"/>
                     </button>
                 </>
             ) : (
