@@ -1,13 +1,18 @@
+:root {
+    --primary-color: #1ab188;
+    --primary-color-dark: #184e40;
+}
+
 .home-container {
     display: grid;
-    grid-template-columns: (5, 1fr);
+    grid-template-columns: (8, 1fr);
     grid-gap: 10px;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: (4, 1fr);
 }
 
 .sidebar-container {
     grid-column: 1 / 2;
-    grid-row: 1 / 10;
+    grid-row: 1 / 4;
     height: 100%;
     width: 80%;
     top: 0;
@@ -30,6 +35,140 @@
 }
 
 .main-container {
-    grid-column: 2 / 6;
+    grid-column: 2 / 8;
     grid-row: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.vuelo,
+.vuelo2,
+.vuelo3,
+.vuelo4 {
+    position: fixed;
+    z-index: 0;
+    color: white;
+    font-size: 50px;
+}
+.vuelo {
+    bottom: 1rem;
+    left: 15rem;
+    transform: rotate(45deg);
+    animation: volar 5s ease-in 2s infinite;
+}
+.vuelo2 {
+    bottom: 1rem;
+    right: 1rem;
+    transform: rotate(-15deg);
+    animation: volar2 3s ease-in infinite;
+}
+.vuelo3 {
+    bottom: 45rem;
+    left: 1rem;
+    transform: rotate(100deg);
+    animation: volar3 6s ease-in 1s infinite;
+}
+.vuelo4 {
+    bottom: 55rem;
+    right: 1rem;
+    transform: rotate(250deg);
+    animation: volar4 5s ease-in 3s infinite;
+}
+
+@keyframes volar {
+    0% {
+        color: var(--primary-color-dark);
+    }
+    30% {
+        color: var(--primary-color);
+    }
+    70% {
+        color: var(--primary-color);
+    }
+    100% {
+        color: var(--primary-color-dark);
+        transform: translate(40vw, -40vw) rotate(45deg);
+    }
+}
+@keyframes volar2 {
+    0% {
+        color: var(--primary-color-dark);
+    }
+    30% {
+        color: var(--primary-color);
+    }
+    70% {
+        color: var(--primary-color);
+    }
+    100% {
+        color: var(--primary-color-dark);
+        transform: translate(-20vw, -80vw) rotate(-15deg);
+    }
+}
+@keyframes volar3 {
+    0% {
+        color: var(--primary-color-dark);
+    }
+    30% {
+        color: var(--primary-color);
+    }
+    70% {
+        color: var(--primary-color);
+    }
+    100% {
+        color: var(--primary-color-dark);
+        transform: translate(50vw, 10vw) rotate(100deg);
+    }
+}
+@keyframes volar4 {
+    0% {
+        color: var(--primary-color-dark);
+    }
+    30% {
+        color: var(--primary-color);
+    }
+    70% {
+        color: var(--primary-color);
+    }
+    100% {
+        color: var(--primary-color-dark);
+        transform: translate(-80vw, 20vw) rotate(250deg);
+    }
+}
+
+@media (min-width: 768px) {
+    .vuelo {
+        animation-duration: 10s;
+        animation-delay: 4s;
+    }
+    .vuelo2 {
+        animation-duration: 12s;
+    }
+    .vuelo3 {
+        animation-duration: 12s;
+        animation-delay: 6s;
+    }
+    .vuelo4 {
+        animation-duration: 10s;
+        animation-delay: 2s;
+    }
+}
+
+@media (max-width: 768px) {
+    .vuelo {
+        animation-duration: 15s;
+        animation-delay: 6s;
+    }
+    .vuelo2 {
+        animation-duration: 18s;
+    }
+    .vuelo3 {
+        animation-duration: 18s;
+        animation-delay: 9s;
+    }
+    .vuelo4 {
+        animation-duration: 15s;
+        animation-delay: 3s;
+    }
 }

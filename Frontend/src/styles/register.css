@@ -4,11 +4,22 @@
 }
 
 .register-ctn {
+    position: relative;
+    top: 450px;
+    left: 50%;
+    width: 500px;
+    height: auto;
     padding: 40px;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgb(1, 21, 38);
+    background-color: var(--background-color);
+    /* padding: 40px;
     max-width: 600px;
     margin: 40px auto;
     border-radius: 4px;
-    box-shadow: 0 4px 10px 4px rgba(#13232f, 0.3);
+    box-shadow: 0 4px 10px 4px rgba(#13232f, 0.3); */
 }
 
 .title-rgs {
@@ -65,11 +76,12 @@
     background: var(--primary-color-dark);
 }
 .rg-btn1 {
-    width: 46%;
+    width: 100%;
     border: 0;
     outline: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
     padding: 15px 0;
     font-size: 2rem;
     background: var(--primary-color);
@@ -79,4 +91,44 @@
 
 .rg-btn1:hover {
     background: var(--primary-color-dark);
+}
+
+@media (max-width: 720px) {
+    .register-ctn {
+        max-width: 80%;
+        font-size: medium;
+    }
+
+    .title-rgs {
+        font-size: 30px;
+        margin: 50px 10px -120px 10px;
+    }
+
+    .rg-btn {
+        font-size: 20px;
+    }
+
+    .rg-btn1 {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 720px) {
+    .register-ctn {
+        max-width: 100%;
+        font-size: large;
+    }
+
+    .title-rgs {
+        font-size: 40px;
+        margin: 50px 10px -120px 10px;
+    }
+
+    .rg-btn {
+        font-size: 30px;
+    }
+
+    .rg-btn1 {
+        font-size: 30px;
+    }
 }

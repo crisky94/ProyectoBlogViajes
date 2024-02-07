@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "../styles/sidebar.css";
+import "../styles/sidebarHeader.css";
 
-const Sidebar = () => {
+const SidebarHeader = () => {
     const [entriesPlace, setEntriesPlace] = useState("");
     const [entriesCategory, setEntriesCategory] = useState("");
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -28,6 +28,7 @@ const Sidebar = () => {
             } else {
                 navigate(`/entries/category/${entriesCategory}`);
             }
+            toggleSidebar();
         } else {
             setErrorMessage(
                 "Por favor, ingresa al menos un criterio de búsqueda."
@@ -37,10 +38,12 @@ const Sidebar = () => {
 
     const handleOrderByVotes = () => {
         navigate("/OrderByVotes");
+        toggleSidebar();
     };
 
     const handleOrderByDate = () => {
         navigate("/OrderByDate");
+        toggleSidebar();
     };
 
     const toggleSidebar = () => {
@@ -52,7 +55,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
+        <div className={`sidebar-header ${isCollapsed ? "collapsed" : ""}`}>
             <button className="toggle-button" onClick={toggleSidebar}>
                 {isCollapsed ? (
                     <img
@@ -68,9 +71,9 @@ const Sidebar = () => {
                     />
                 )}
             </button>
-            <ul className="menu">
+            <ul className="menu-header">
                 <section className="menu-filtar">
-                    <h2>Buscar por:</h2>
+                    <h2 className="h2-hed-sdb">Buscar por:</h2>
                     <li className="buscar-lugar">
                         <h2>Lugar</h2>
                         <input
@@ -134,4 +137,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default SidebarHeader;
