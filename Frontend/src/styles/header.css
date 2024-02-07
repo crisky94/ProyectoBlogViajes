@@ -1,42 +1,67 @@
 :root {
-    --background-color: #025159;
-    --text-shadow: #94bbe9;
+    --text-shadow: #20171796;
+    --letter-color: #fff;
+    --box-shadow: #011526;
 }
 
 .navHeader {
     width: 100%;
     height: 100px;
+    padding: 1rem 2rem 1rem 2rem;
     display: flex;
-    justify-content: end;
     align-items: center;
     font-size: 18px;
     border-bottom-style: 1px solid;
-    box-shadow: 0px 20px 40px -26px rgba(0, 0, 0, .6);
+    box-shadow: 0px 20px 40px -26px var(--box-shadow);
     border-radius: 8px;
+    z-index: 5;
+    transition: opacity 0.2s linear;
 }
 
 nav .navLink {
-    justify-self: space-around;
+    color: var(--letter-color);
+    display: flex;
+    justify-content: end;
+    width: 230vw;
     margin-top: 20px;
-    margin-right: 90px;
+    margin-right: 20px;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 5px 20px;
 }
 
-nav .navLink:hover {
-    text-shadow: 5px 2px 14px var(--text-shadow);
+nav .logo {
+    width: 100px;
+    height: 100px;
+    justify-content: left;
+
 }
 
 .sessionClose {
-    margin-top: 18px;
-    margin-right: 90px;
+    margin-top: 20px;
     border: none;
     background-color: transparent;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
+    color: var(--letter-color);
 }
 
-.sessionClose:hover {
-    text-shadow: 5px 2px 14px var(--text-shadow);
+@media (min-width: 768px) {
+
+    .navHeader {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+    }
+
+    nav .logo {
+        width: 200px;
+        height: 150px;
+    }
+
+    .sessionClose {
+        margin-top: 20px;
+        border: none;
+        background-color: transparent;
+        color: var(--letter-color);
+        border-radius: 25px;
+        cursor: pointer;
+    }
 }

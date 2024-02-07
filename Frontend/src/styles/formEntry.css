@@ -1,42 +1,51 @@
 :root {
-    --background-color: #343d4b;
+    --background-color: #4c586c;
+    --letter-color: #6F2300;
+    --line-box: #0e1317;
+    --text-shadow: #9e3150;
+    --box-shadow: #564E49;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 1rem;
 }
 
 .entry-box {
     position: relative;
-    top: 450px;
+    top: 350px;
     left: 50%;
-    width: 500px;
+    width: 300px;
     height: auto;
-    padding: 40px;
+    padding: 20px;
+    outline: auto;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 0 15px 25px rgb(1, 21, 38);
+    box-shadow: 0 15px 25px var(--box-shadow);
     background-color: var(--background-color);
 }
 
 .formEntry {
-    background-color: var(--background-color);
+    background-color: transparent;
 }
 
 .h1 {
-    margin: 50px 0 0 30px;
+    margin-top: 50px;
     padding: 0;
-    color: #211616;
+    color: var(--letter-color);
     text-align: center;
 }
 
 .entry-box img {
-    width: 200px;
-    height: 200px;
+    display: flex;
+    margin: auto;
+    padding: auto;
+    width: 150px;
+    height: 150px;
     overflow: hidden;
+    outline: var(--letter-color);
 }
 
 .entry-box .box {
@@ -47,61 +56,55 @@ body {
 .entry-box .box textarea {
     width: 100%;
     padding: 15px 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: none;
-    border-bottom: 1px solid #211616;
-    outline: #211616;
-    background-color: var(--background-color);
+    border-bottom: 0.5px solid var(--line-box);
+    outline: var(--letter-color);
+    background-color: transparent;
 }
 
 .entry-box .box label {
     position: absolute;
-    top: 0;
+    top: -10px;
+    bottom: 10px;
     left: 0;
     padding: 10px 0;
-    pointer-events: none;
-    transition: 0.5s;
     background: transparent;
 }
 
-.entry-box .box input:focus ~ label,
-.entry-box .box input:valid ~ label,
-.entry-box .box textarea:focus ~ label,
-.entry-box .box textarea:valid ~ label {
-    top: -10px;
-    left: 0;
-    /* color: #03e9f4; */
-    font-size: 14px;
-}
 
 .labelFile {
-    background-color: var(--background-color);
-    padding: 10px 20px;
+    background-color: transparent;
     border-radius: 5px;
 }
 
 .input-file {
-    background-color: var(--background-color);
     width: calc(100% - 20px);
     padding: 10px 10px;
-    border: 1px solid #211616;
-    color: #211616;
+    border: 1px solid;
+    color: #fff;
+    background-color: transparent;
 }
 
 select {
-    border-color: #211616;
-    outline: #211616;
-    width: calc(100% - 20px);
-    padding: 10px 10px;
-    cursor: pointer;
-    padding: 10px 10px;
+    border-color: var(--line-box);
+    outline: var(--line-box);
+    color: #fff;
+    width: calc(100% - 30px);
+    padding: 2px 2px;
+    top: -15px;
+    padding: 4px 4px;
     margin: 20px 20px;
     letter-spacing: 4px;
-    background-color: var(--background-color);
+    background-color: transparent;
 }
 
 textarea {
     resize: none;
+}
+
+.preview-image {
+    margin-left: 100px;
 }
 
 .entry-box form button {
@@ -110,23 +113,98 @@ textarea {
     padding: 10px 20px;
     text-decoration: none;
     text-transform: uppercase;
+    outline: #fff solid 1px;
     overflow: hidden;
     transition: 0.5s;
-    margin-left: 130px;
-    margin-top: 40px;
-    background-color: var(--background-color);
+    margin-left: 55px;
+    margin-top: 20px;
+    color: #fff;
+    background-color: transparent;
 }
 
-.entry-box button:hover {
-    /* background: rgba(255, 255, 255, 0.682); */
-    text-shadow: 5px 2px 14px rgb(241, 242, 243);
-    font-weight: bold;
-    /* color:#082929; */
-    border-radius: 2px;
-    cursor: pointer;
-    /* box-shadow: 0 0 5px #03e9f4,
-				0 0 25px #0f1010,
-				0 0 50px #03e9f4,
-				0 0 100px #03e9f4; */
-    background-color: var(--background-color);
+
+
+@media (min-width: 768px) {
+
+    .entry-box {
+        position: relative;
+        top: 350px;
+        left: 50%;
+        width: 800px;
+        height: auto;
+        padding: 50px;
+        outline: auto;
+    }
+
+    .entry-box .box input:focus~label,
+    .entry-box .box input:valid~label,
+    .entry-box .box textarea:focus~label,
+    .entry-box .box textarea:valid~label {
+        top: -10px;
+        left: 0;
+        font-size: 14px;
+    }
+
+    .entry-box button:hover {
+        text-shadow: 5px 2px 14px var(--text-shadow);
+        font-weight: bold;
+        border-radius: 2px;
+        cursor: pointer;
+        background-color: transparent;
+    }
+
+    .entry-box .box input,
+    .entry-box .box textarea {
+        display: flex;
+        width: 700px;
+        padding: 15px 0;
+        margin: auto;
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 1px solid var(--line-box);
+        background-color: transparent;
+    }
+
+    .entry-box .box input:focus~label,
+    .entry-box .box input:valid~label,
+    .entry-box .box textarea:focus~label,
+    .entry-box .box textarea:valid~label {
+        top: -10px;
+        left: 0;
+        font-size: 14px;
+    }
+
+    .entry-box form button {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 10px 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.5s;
+        margin-left: 300px;
+        margin-top: 20px;
+    }
+
+    .entry-box button:hover {
+        text-shadow: 5px 2px 14px var(--text-shadow);
+        font-weight: bold;
+        border-radius: 2px;
+        cursor: pointer;
+        background-color: transparent;
+    }
+
+    select {
+        border-color: var(--line-box);
+        outline: var(--line-box);
+        color: #fff;
+        width: 300px;
+        padding: 2px 2px;
+        top: -15px;
+        padding: 4px 4px;
+        margin: 20px 20px;
+        letter-spacing: 4px;
+        background-color: transparent;
+    }
 }

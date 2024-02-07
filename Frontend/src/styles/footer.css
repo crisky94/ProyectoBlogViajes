@@ -1,12 +1,12 @@
-.divFooter{
-    display: flex;
-    justify-content: center;
-
-}
-
-.footer{
+.divFooter {
+	display: flex;
+	justify-content: center;
+  
+  }
+  
+  .footer {
 	margin: 200px 100px 100px;
 	padding: 20px;
-	color: #211616;
+	color: #791d37;
 	text-align: center;
   }
