@@ -35,6 +35,19 @@ const GetEntriesByPlace = ({ entriesPlace }) => {
         fetchEntries();
     }, [entriesPlace]);
 
+    const getCurrentUserId = () => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            const payload = JSON.parse(atob(token.split(".")[1]));
+
+            return payload.id;
+        }
+        return null;
+    };
+
+    const currentUser = getCurrentUserId();
+
     return (
         <main className="cards-container">
             {loading ? (
@@ -91,8 +104,11 @@ const GetEntriesByPlace = ({ entriesPlace }) => {
                                         <VoteEntry id={entry.id} />
                                         <p className="votes">
                                             {entry.voteCount} Me gusta
+                                            {console.log("votos: ", entry)}
                                         </p>
-                                        <DeleteEntry id={entry.id} />
+                                        {currentUser === entry.userId ? (
+                                            <DeleteEntry id={entry.id} />
+                                        ) : null}
                                     </div>
                                 </li>
                             ))}

@@ -7,7 +7,19 @@ const getEntriesByCategory = async (req, res, next) => {
     const { entriesCategory } = req.params;
 
     const [entries] = await pool.query(
-      'SELECT entries.*, entryPhotos.name AS photoName FROM entries LEFT JOIN entryPhotos ON entries.id = entryPhotos.entryId WHERE entries.category = ?',
+      `SELECT entries.*, 
+              users.username,
+              (SELECT entryPhotos.name 
+               FROM entryPhotos 
+               WHERE entries.id = entryPhotos.entryId 
+               LIMIT 1) AS photoName,
+              (SELECT COUNT(DISTINCT entryVotes.id) 
+               FROM entryVotes 
+               WHERE entryVotes.entryId = entries.id) AS voteCount
+       FROM entries 
+       LEFT JOIN entryPhotos ON entries.id = entryPhotos.entryId 
+       LEFT JOIN users ON entries.userId = users.id
+       WHERE entries.category = ?`,
       [entriesCategory]
     );
 
@@ -19,26 +31,24 @@ const getEntriesByCategory = async (req, res, next) => {
       throw err;
     }
 
-    const formattedEntries = entries.map((entry) => {
-      const photos = entries
-        .filter((photo) => photo.id === entry.id)
-        .map((photo) => ({
-          id: photo.photoId,
-          name: photo.photoName,
-        }));
-
-      return {
-        id: entry.id,
-        title: entry.title,
-        category: entry.category,
-        place: entry.place,
-        sortDescription: entry.sortDescription,
-        text: entry.text,
-        userId: entry.userId,
-        createdAt: entry.createdAt,
-        photos: photos,
-      };
-    });
+    const formattedEntries = entries.map((entry) => ({
+      id: entry.id,
+      title: entry.title,
+      category: entry.category,
+      place: entry.place,
+      sortDescription: entry.sortDescription,
+      text: entry.text,
+      userId: entry.userId,
+      username: entry.username,
+      createdAt: entry.createdAt,
+      photos: [
+        {
+          id: entry.photoId,
+          name: entry.photoName,
+        },
+      ],
+      voteCount: entry.voteCount,
+    }));
 
     res.send({
       status: 'ok',
