@@ -15,7 +15,7 @@ const VoteEntry = ({ id }) => {
     return (
         <div>
             <button className="like-button" onClick={handleVote}>
-                <img src="./heart.svg" height={"30px"} width={"30px"} />
+                <span className="material-symbols-outlined">favorite</span>
             </button>
         </div>
     );
