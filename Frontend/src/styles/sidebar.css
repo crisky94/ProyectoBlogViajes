@@ -99,6 +99,7 @@
 }
 
 .button-sidebar {
+    cursor: pointer;
     background: #343a40;
     color: #ffffff;
     border: 2px solid var(--primary-color-dark);
@@ -129,7 +130,7 @@
 }
 .button-sidebar:hover::after {
     transition: all 0.3s ease-out;
-    transform: skewX(-45deg) scale(1.5, 1.5);
+    transform: skewX(-45deg) scale(2, 2);
 }
 
 .button-sidebar2 {

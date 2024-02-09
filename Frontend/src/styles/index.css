@@ -68,20 +68,21 @@ a {
     }
 
     .menu input {
-        border-bottom: 0.2em solid var(--color-light-mode);
+        border-bottom: 0.2em solid var(--background-color-dark-mode-light);
         color: black;
+        background-color: rgba(255, 255, 255, 0);
     }
 
     .button-sidebar {
-        background: var(--color-light-mode);
+        background: var(--background-color-light-mode-dark);
         color: white;
-        border: 2px solid var(--color-light-mode);
+        border: 2px solid var(--background-color-light-mode);
     }
     .button-sidebar:hover {
-        color: white;
+        color: black;
     }
     .button-sidebar::after {
-        background: var(--color-light-mode-dark);
+        background: grey;
     }
 
     .menu-header {
@@ -89,12 +90,14 @@ a {
         color: black;
 
         input {
-            border-bottom: 0.2em solid var(--color-light-mode);
+            border-bottom: 0.2em solid var(--background-color-dark-mode-light);
+            background-color: rgba(255, 255, 255, 0);
             color: black;
         }
     }
 
     .select-sidebar-ctg {
+        background-color: rgba(255, 255, 255, 0);
         option {
             color: black;
         }
@@ -136,10 +139,10 @@ a {
     }
 
     .register-ctn {
-        background-color: var(--background-color-light-mode-dark);
+        background-color: var(--background-color-light-mode);
 
         .required {
-            color: var(--color-light-mode);
+            color: var(--background-color-dark-mode-light);
         }
 
         label {
@@ -147,25 +150,41 @@ a {
         }
 
         .input-register {
-            color: var(--color-light-mode);
-            border-bottom: 1px solid var(--color-light-mode);
+            color: var(--background-color-dark-mode-light);
+            border-bottom: 1px solid var(--background-color-dark-mode-light);
         }
 
         .rg-btn {
-            background-color: var(--color-light-mode);
+            background-color: var(--background-color-dark-mode-light);
         }
 
         .rg-btn:hover {
-            background: var(--color-light-mode-dark);
+            background: grey;
         }
 
         .rg-btn1 {
-            background: var(--color-light-mode);
+            background: var(--background-color-dark-mode-light);
         }
 
         .rg-btn1:hover {
-            background: var(--color-light-mode-dark);
+            background: grey;
         }
+    }
+
+    .linkLogin {
+        color: var(--background-color-dark-mode);
+    }
+
+    .linkRegister {
+        color: var(--background-color-dark-mode);
+    }
+
+    .linkEntry {
+        color: var(--background-color-dark-mode);
+    }
+
+    .sessionClose {
+        color: var(--background-color-dark-mode);
     }
 }
 
@@ -181,6 +200,7 @@ a {
     .navHeader {
         border-radius: 0;
         background-color: var(--background-color-dark-mode-light);
+        box-shadow: 0px 20px 40px -26px var(--background-color-dark-mode);
     }
 
     .entry-title {
@@ -192,6 +212,12 @@ a {
         color: #ffffff;
     }
 
+    .cards-container {
+        h1 {
+            color: white;
+        }
+    }
+
     .card-container {
         background: var(--background-color-dark-mode-light);
         color: white;
@@ -200,10 +226,20 @@ a {
 
     .like-button {
         background-color: var(--background-color-dark-mode-light);
+        color: white;
+    }
+
+    .material-symbols-outlined {
+        color: white;
     }
 
     .menu input {
         border-bottom: 0.2em solid var(--color-dark-mode);
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    .select-sidebar-ctg {
+        background-color: rgba(255, 255, 255, 0);
     }
 
     .button-sidebar {
@@ -224,6 +260,7 @@ a {
 
         input {
             border-bottom: 0.2em solid var(--color-dark-mode);
+            background-color: rgba(255, 255, 255, 0);
         }
     }
 
@@ -292,6 +329,10 @@ a {
         .rg-btn1:hover {
             background: var(--color-dark-mode);
         }
+    }
+
+    .sessionClose {
+        color: white;
     }
 }
 

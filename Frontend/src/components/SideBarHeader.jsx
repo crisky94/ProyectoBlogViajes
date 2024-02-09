@@ -61,7 +61,7 @@ const SidebarHeader = ({ theme }) => {
                     theme === "light" ? (
                         <img
                             className="menu-btn-col"
-                            src="/image (3).png"
+                            src="/image (4).png"
                             alt="Menu collapsed"
                         />
                     ) : (
@@ -74,7 +74,7 @@ const SidebarHeader = ({ theme }) => {
                 ) : theme === "light" ? (
                     <img
                         className="menu-btn-col1"
-                        src="/image (3).png"
+                        src="/image (4).png"
                         alt="Menu expanded"
                     />
                 ) : (

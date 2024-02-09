@@ -9,6 +9,9 @@
 
     --color-light-mode: #791d37;
     --color-light-mode-dark: #8b2c47;
+
+    --vuelo-background-color-light-mode-dark: #343a40;
+    --vuelo-color-light-mode-dark: #333333;
 }
 /* 
 .body.light {
@@ -102,25 +105,25 @@
 
 @keyframes volar {
     100% {
-        color: var(--volar-color-end);
+        color: var(--vuelo-color-light-mode-dark);
         transform: translate(40vw, -40vw) rotate(45deg);
     }
 }
 @keyframes volar2 {
     100% {
-        color: var(--volar-color-end);
+        color: var(--vuelo-color-light-mode-dark);
         transform: translate(-20vw, -80vw) rotate(-15deg);
     }
 }
 @keyframes volar3 {
     100% {
-        color: var(--volar-color-end);
+        color: var(--vuelo-color-light-mode-dark);
         transform: translate(50vw, 10vw) rotate(100deg);
     }
 }
 @keyframes volar4 {
     100% {
-        color: var(--volar-color-end);
+        color: var(--vuelo-color-light-mode-dark);
         transform: translate(-80vw, 20vw) rotate(250deg);
     }
 }

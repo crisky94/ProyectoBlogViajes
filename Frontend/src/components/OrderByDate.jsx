@@ -48,7 +48,7 @@ const OrderByDate = () => {
                 <div className="container">
                     <div>
                         <h2 className="title">
-                            Recomendaciones ordenadas por fecha
+                            Recomendaciones ordenadas por antigüedad
                         </h2>
                     </div>
 
