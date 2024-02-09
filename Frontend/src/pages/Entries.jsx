@@ -80,7 +80,6 @@ function Entries() {
                             {currentUser === entry.userId ? (
                                 <DeleteEntry id={entry.id} />
                             ) : null}
-                            {console.log(entry)}
                         </div>
                     </li>
                 ))}

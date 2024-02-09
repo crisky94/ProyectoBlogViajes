@@ -1,30 +1,48 @@
 :root {
     --background-color: #4c586c;
     --letter-color: #6F2300;
+    --letter-box: #fff;
     --line-box: #0e1317;
     --text-shadow: #9e3150;
     --box-shadow: #564E49;
+    --border-width: 2px;
+    --border-color: #f0e8e8;
+    --border-color-animation: #40f8bb;
+    --body-bg: #0e1217;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-size: 1rem;
 }
 
 .entry-box {
+    font-size: 18px;
     position: relative;
-    top: 350px;
+    top: 450px;
     left: 50%;
-    width: 300px;
+    width: 400px;
     height: auto;
-    padding: 20px;
+    padding: 25px;
     outline: auto;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0 15px 25px var(--box-shadow);
     background-color: var(--background-color);
+    overflow-x: hidden;
+    transition: 500ms ease;
+}
+
+
+.box {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.category {
+    position: relative;
+    margin-bottom: 15px;
 }
 
 .formEntry {
@@ -45,7 +63,7 @@ body {
     width: 150px;
     height: 150px;
     overflow: hidden;
-    outline: var(--letter-color);
+    outline: var(--letter-color) auto;
 }
 
 .entry-box .box {
@@ -56,16 +74,21 @@ body {
 .entry-box .box textarea {
     width: 100%;
     padding: 15px 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    top: 15px;
     border: none;
     border-bottom: 0.5px solid var(--line-box);
-    outline: var(--letter-color);
     background-color: transparent;
+    outline: none;
 }
 
+
+
 .entry-box .box label {
+    display: flex;
+    flex-wrap: nowrap;
     position: absolute;
-    top: -10px;
+    top: -12px;
     bottom: 10px;
     left: 0;
     padding: 10px 0;
@@ -82,20 +105,23 @@ body {
     width: calc(100% - 20px);
     padding: 10px 10px;
     border: 1px solid;
-    color: #fff;
+    border-radius: 8px;
+    color: var(--letter-box);
     background-color: transparent;
 }
 
-select {
+.select {
+    display: flex;
+    text-align: center;
+    font-size: 13px;
     border-color: var(--line-box);
+    border-radius: 8px;
     outline: var(--line-box);
-    color: #fff;
+    color: var(--letter-box);
     width: calc(100% - 30px);
-    padding: 2px 2px;
+    bottom: 5px;
     top: -15px;
-    padding: 4px 4px;
-    margin: 20px 20px;
-    letter-spacing: 4px;
+    padding: 8px 10px;
     background-color: transparent;
 }
 
@@ -110,101 +136,121 @@ textarea {
 .entry-box form button {
     position: relative;
     display: flex;
+    justify-self: center;
     padding: 10px 20px;
     text-decoration: none;
     text-transform: uppercase;
-    outline: #fff solid 1px;
-    overflow: hidden;
     transition: 0.5s;
-    margin-left: 55px;
+    margin-left: 90px;
     margin-top: 20px;
-    color: #fff;
+    color: var(--letter-box);
+    border: 2px solid var(--letter-box);
+    border-radius: 8px;
     background-color: transparent;
 }
 
 
 
-@media (min-width: 768px) {
+@media (min-width: 820px) {
 
     .entry-box {
-        position: relative;
-        top: 350px;
-        left: 50%;
+        display: flex;
         width: 800px;
-        height: auto;
         padding: 50px;
-        outline: auto;
     }
 
-    .entry-box .box input:focus~label,
-    .entry-box .box input:valid~label,
-    .entry-box .box textarea:focus~label,
-    .entry-box .box textarea:valid~label {
-        top: -10px;
-        left: 0;
-        font-size: 14px;
+    .box {
+        position: relative;
+        margin-bottom: 40px;
     }
 
-    .entry-box button:hover {
-        text-shadow: 5px 2px 14px var(--text-shadow);
-        font-weight: bold;
-        border-radius: 2px;
-        cursor: pointer;
-        background-color: transparent;
+    .category {
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+    select {
+        width: 300px;
+        padding: 4px 4px;
+        margin: 20px 20px;
+        letter-spacing: 8px;
+    }
+
+    .select {
+        font-size: 18px;
     }
 
     .entry-box .box input,
     .entry-box .box textarea {
-        display: flex;
         width: 700px;
-        padding: 15px 0;
         margin: auto;
-        margin-bottom: 10px;
-        border: none;
-        border-bottom: 1px solid var(--line-box);
-        background-color: transparent;
+        transition: border-color 0.3s;
+        border-bottom: 2px solid #ccc;
     }
 
-    .entry-box .box input:focus~label,
-    .entry-box .box input:valid~label,
-    .entry-box .box textarea:focus~label,
-    .entry-box .box textarea:valid~label {
-        top: -10px;
-        left: 0;
-        font-size: 14px;
+    .entry-box .box input:focus,
+    .entry-box .box textarea:focus {
+        border-color: var(--border-color-animation);
+
     }
 
     .entry-box form button {
-        position: relative;
         display: flex;
-        justify-content: center;
+        justify-self: center;
+        border-radius: 8px;
         padding: 10px 20px;
-        text-decoration: none;
-        text-transform: uppercase;
-        overflow: hidden;
-        transition: 0.5s;
-        margin-left: 300px;
-        margin-top: 20px;
+        margin-left: 260px;
     }
 
-    .entry-box button:hover {
-        text-shadow: 5px 2px 14px var(--text-shadow);
-        font-weight: bold;
-        border-radius: 2px;
-        cursor: pointer;
-        background-color: transparent;
+    .border {
+        box-shadow: inset 0 0 0 var(--border-width) var(--border-color);
+        color: var(--border-color);
+        transition: color 0.2s 0.1s;
+        position: relative;
     }
 
-    select {
-        border-color: var(--line-box);
-        outline: var(--line-box);
-        color: #fff;
-        width: 300px;
-        padding: 2px 2px;
-        top: -15px;
-        padding: 4px 4px;
-        margin: 20px 20px;
-        letter-spacing: 4px;
-        background-color: transparent;
+    .border::before,
+    .border::after {
+        border: 0 solid transparent;
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
     }
+
+    .border::before {
+        top: 0;
+        right: 0;
+        border-bottom-width: var(--border-width);
+        border-right-width: var(--border-width);
+    }
+
+    .border::after {
+        left: 0;
+        bottom: 0;
+        border-top-width: var(--border-width);
+        border-left-width: var(--border-width);
+    }
+
+    .border:hover {
+        color: var(--border-color-animation);
+    }
+
+    .border:hover::before,
+    .border:hover::after {
+        border-color: var(--border-color-animation);
+        transition: border-color 0s, height 0.2s, width 0.2s;
+        width: 100%;
+        height: 100%;
+    }
+
+    .border:hover::before {
+        transition-delay: 0s, 0s, 0.2s;
+    }
+
+    .border:hover::after {
+        transition-delay: 0.5s, 0.5s, 0.7s;
+    }
+
 }

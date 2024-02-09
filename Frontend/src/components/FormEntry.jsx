@@ -27,45 +27,45 @@ const FormEntry = () => {
         <div className="entry-box">
             <form className="formEntry" onSubmit={handleSubmit}>
                 <div className="box">
-                    <input type="text" name="title" minLength={"3"} maxLength={"50"} placeholder="Min. 3..." required />
-                    <label>Título: </label>
+                    <input id="title" type="text" name="title" minLength={"3"} maxLength={"50"} placeholder="Min. 3..." required />
+                    <label htmlFor="title">Título:<span className="required">*</span> </label>
                 </div>
 
                 <div className="box">
-                    <input type="text" name="place" minLength={"3"} maxLength={"50"} placeholder="Min. 3..." required />
-                    <label>Lugar: </label>
+                    <input id="place" type="text" name="place" minLength={"3"} maxLength={"50"} placeholder="Min. 3..." required />
+                    <label htmlFor="place">Lugar:<span className="required">*</span> </label>
                 </div>
-                <div>
+                <div className="category">
                     {""}
-                    <label>Categoría: </label>
-                    <select name="category" required>
-                        <option value="">Selecciona categoría</option>
-                        <option value="Aventura">Aventura</option>
-                        <option value="Single">Single</option>
-                        <option value="Parejas">Parejas</option>
-                        <option value="Familia">Familia</option>
-                        <option value="Cultura">Cultura</option>
-                        <option value="Gastronomía">Gastronomía</option>
-                        <option value="Playa">Playa</option>
-                        <option value="Montaña">Montaña</option>
-                        <option value="Naturaleza">Naturaleza</option>
+                    <label>Categoría:<span className="required">*</span> </label>
+                    <select className="select" name="category" required>
+                        <option value="">SELECCIONA CATEGORÍA</option>
+                        <option value="Aventura">AVENTURA</option>
+                        <option value="Single">SINGLE</option>
+                        <option value="Parejas">PAREJA</option>
+                        <option value="Familia">FAMILIA</option>
+                        <option value="Cultura">CULTURA</option>
+                        <option value="Gastronomía">GASTRONOMÍA</option>
+                        <option value="Playa">PLAYA</option>
+                        <option value="Montaña">MONTAÑA</option>
+                        <option value="Naturaleza">NATURALEZA</option>
                     </select>
                 </div>
 
                 <div className="box">
-                    <textarea name="sortDescription" minLength={"10"} maxLength={"200"}  placeholder="Min. 10..." required></textarea>
-                    <label>Breve descripción: </label>
+                    <textarea id="sortDescription" className={"sortDescription"} name="sortDescription" minLength={"10"} maxLength={"200"}  placeholder="Min. 10..." required></textarea>
+                    <label htmlFor="sortDescription">Breve descripción:<span className="required">*</span> </label>
                 </div>
 
                 <div className="box">
-                    <textarea className="description" minLength={"30"} maxLength={"800"}  placeholder="Min. 30..." name="text" required></textarea>
-                    <label>Descripción: </label>
+                    <textarea id="description" minLength={"30"} maxLength={"800"}  placeholder="Min. 30..." name="text" required></textarea>
+                    <label htmlFor="description">Descripción:<span className="required">*</span> </label>
                 </div>
 
                 {previewImage ? (
                     <img className={"preview-image"} src={URL.createObjectURL(previewImage)} alt="Imagen del viaje" />
                 ) : null}
-                 <label className="labelFile">Selecciona imagen:</label>
+                 <label className="labelFile">Selecciona imagen:<span className="required">*</span></label>
                 
                     <input
                         className="input-file"
@@ -79,7 +79,7 @@ const FormEntry = () => {
                 
                 {error ? <p>{error}</p> : null}
 
-                <button type="submit">
+                <button type="submit" className="button border">
                     Subir Post
                 </button>
             </form>

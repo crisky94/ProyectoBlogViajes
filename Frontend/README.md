@@ -44,7 +44,7 @@ Puedes encontrar más detalles sobre la API y los endpoints en la carpeta de Bac
 ## 📝 Contribución
 
 -   [Germán Robles](https://github.com/GermanRoobles)
--   [Cris Labrador](https://github.com/crisky94)
+-   [Cris Labrador](https://www.linkedin.com/in/cristina-labrador-ordoñez/)
 -   [Mohamed Bensliman](https://github.com/mohabensliman)
 -   [Jairo](https://github.com/jairoweb)
 
