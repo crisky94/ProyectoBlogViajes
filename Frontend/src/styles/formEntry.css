@@ -1,7 +1,7 @@
 :root {
-    --background-color: #4c586c;
-    --letter-color: #6F2300;
-    --letter-box: #fff;
+    --background-color: #343a40;
+    --letter-color:  #333333 ;
+    --letter-box: #ffffff ;
     --line-box: #0e1317;
     --text-shadow: #9e3150;
     --box-shadow: #564E49;
@@ -173,7 +173,6 @@ textarea {
         width: 300px;
         padding: 4px 4px;
         margin: 20px 20px;
-        letter-spacing: 8px;
     }
 
     .select {

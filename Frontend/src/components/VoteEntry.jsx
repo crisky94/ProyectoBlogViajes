@@ -8,6 +8,7 @@ const VoteEntry = ({ id }) => {
             const token = localStorage.getItem("token");
             await voteEntryService({ token, id });
             console.log("Publicación votada!");
+            window.location.reload();
         } catch (error) {
             setError(error.message);
         }
