@@ -1,12 +1,11 @@
 .divFooter {
-	display: flex;
-	justify-content: center;
-  
-  }
-  
-  .footer {
-	margin: 200px 100px 100px;
-	padding: 20px;
-	color: #791d37;
-	text-align: center;
-  }
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    margin: 200px 100px 100px;
+    padding: 20px;
+    color: #333333;
+    text-align: center;
+}

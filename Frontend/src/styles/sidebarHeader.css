@@ -40,7 +40,7 @@
     color: white;
     display: block;
     padding: 8px;
-    background-color: #333;
+    background-color: #343a40;
 }
 
 .menu-header a:hover {
@@ -64,7 +64,7 @@
     border: none;
     outline: none;
     border-bottom: 0.2em solid var(--primary-color);
-    background: rgba(var(--primary-color), 0.2);
+    background: #343a40, 0.2;
     border-radius: 0.2em 0.2em 0 0;
     padding: 0.4em;
     color: var(--primary-color);
