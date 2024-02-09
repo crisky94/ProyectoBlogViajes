@@ -40,7 +40,6 @@ Puedes encontrar más detalles sobre la API y los endpoints en la carpeta de Bac
 
 ![Imagen de vista movil](./src/imagenes/movil.png)
 ![Imagen de vista](./src/imagenes/desktop.png)
-![Imagen modo oscuro](./src/imagenes/oscuro.png)
 
 ## 📝 Contribución
 

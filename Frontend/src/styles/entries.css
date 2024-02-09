@@ -10,12 +10,16 @@
 }
 
 .cards-container h1 {
-    margin: 25px 10px 15px;
+    display: flex;
+    justify-content: center;
+    margin: 20px 10px 10px;
+    padding: 20px;
+    color: #333333;
 }
 
 .card-container {
     width: 60%;
-    background: #4c586c;
+    background: #ffffff;
     overflow: hidden;
     margin: 0 auto;
     margin-bottom: 2rem;
@@ -33,7 +37,7 @@
 
 .entry-title {
     padding: 10px;
-    color: white;
+    color: #333333;
     text-decoration: none;
 }
 
@@ -63,10 +67,10 @@
     margin-bottom: 10px;
     /* text-align: justify; */
     padding: 10px;
-    background-color: #4c586c;
+    background-color: #ffffff;
     border: none;
     text-decoration: none;
-    color: white;
+    color: #333333;
 }
 
 .votes {
@@ -80,7 +84,7 @@
     margin-bottom: 10px;
     /* text-align: justify; */
     /* padding: 10px; */
-    background-color: #4c586c;
+    background-color: #ffffff;
     border: none;
 }
 
@@ -89,7 +93,7 @@
 }
 
 .material-symbols-outlined {
-    color: white;
+    color: #333333;
     padding: 10px;
 }
 

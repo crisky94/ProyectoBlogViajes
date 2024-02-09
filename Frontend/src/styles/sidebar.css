@@ -37,7 +37,7 @@
     color: white;
     display: block;
     padding: 8px;
-    background-color: #333;
+    background-color: #343a40;
 }
 
 .menu a:hover {
@@ -61,10 +61,10 @@
     border: none;
     outline: none;
     border-bottom: 0.2em solid var(--primary-color);
-    background: rgba(var(--primary-color), 0.2);
+    background: #343a40, 0.2;
     border-radius: 0.2em 0.2em 0 0;
     padding: 0.4em;
-    color: var(--primary-color);
+    color: #ffffff;
 }
 
 .ordenar-por-votos {
@@ -88,18 +88,18 @@
     border: 0.2em solid var(--primary-color);
     background: hsl(0 0 0/0);
     padding: 0.85em 1.5em;
-    color: var(--primary-color);
+    color: #ffffff;
     border-radius: 2em;
     transition: 0.5s;
 }
 .button-sidebar1:hover {
-    background: var(--primary-color);
+    background: #343a40;
     color: #fff;
 }
 
 .button-sidebar {
-    background: var(--primary-color);
-    color: var(--primary-color-dark);
+    background: #343a40;
+    color: #ffffff;
     border: 2px solid var(--primary-color-dark);
     padding: 16px 20px;
     border-radius: 3px;

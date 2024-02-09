@@ -1,6 +1,6 @@
 :root {
     --text-shadow: #20171796;
-    --letter-color: #fff;
+    --letter-color: #ffffff;
     --box-shadow: #011526;
 }
 
@@ -33,7 +33,6 @@ nav .logo {
     width: 100px;
     height: 100px;
     justify-content: left;
-
 }
 
 .sessionClose {
@@ -44,7 +43,6 @@ nav .logo {
 }
 
 @media (min-width: 768px) {
-
     .navHeader {
         width: 100%;
         display: flex;
