@@ -1,65 +1,121 @@
 :root {
     --text-shadow: #20171796;
-    --letter-color: #ffffff;
+    --letter-color: #fff;
     --box-shadow: #011526;
 }
 
 .navHeader {
-    width: 100%;
-    height: 100px;
-    padding: 1rem 2rem 1rem 2rem;
-    display: flex;
-    align-items: center;
     font-size: 18px;
+    width:100vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    grid-template-rows: auto;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
     border-bottom-style: 1px solid;
     box-shadow: 0px 20px 40px -26px var(--box-shadow);
     border-radius: 8px;
-    z-index: 5;
-    transition: opacity 0.2s linear;
+    background-color: inherit ;
 }
 
 nav .navLink {
+    display: grid;
+    justify-content: space-between;
     color: var(--letter-color);
-    display: flex;
-    justify-content: end;
-    width: 230vw;
-    margin-top: 20px;
-    margin-right: 20px;
     text-decoration: none;
-    padding: 5px 20px;
 }
 
-nav .logo {
-    width: 100px;
-    height: 100px;
-    justify-content: left;
+
+.linkEntry {
+    display: grid;
+    justify-self: end;
+    text-decoration: none;
+    color: var(--letter-color);
+}
+
+.linkLogin {
+    display: grid;
+    justify-self: center;
+    text-decoration: none;
+    color: var(--letter-color);
+}
+
+.linkRegister {
+    display: grid;
+    justify-self: start;
+    text-decoration: none;
+    color: var(--letter-color);
+}
+div .logo {
+    display: grid;
+    justify-self: start;
+    width: 140px;
+    height: 140px;
+    object-fit: contain; 
+}
+
+img .logo{
+    border-radius: 50%;
 }
 
 .sessionClose {
-    margin-top: 20px;
+    margin-right: 100px;
+    display: grid;
+    justify-self: center;
     border: none;
     background-color: transparent;
     color: var(--letter-color);
 }
 
-@media (min-width: 768px) {
+
+@media  screen and (min-width: 720px) {
+
     .navHeader {
         width: 100%;
-        display: flex;
-        justify-content: end;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(3, 1fr) auto;
+    }
+    
+
+    nav .navLink {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .linkEntry {
+        display: grid;
+        justify-self: end;
+    }
+    
+    .linkLogin {
+        display: grid;
+        justify-self: end;
+    }
+    
+    .linkRegister {
+        display: grid;
+        justify-self: center;
+        text-decoration: none;
+    }
+    
+    .sessionClose {
+        display: grid;
+        justify-self: center;
+        cursor: pointer;
     }
 
     nav .logo {
-        width: 200px;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        margin: 0;
+        width: 150px;
         height: 150px;
     }
 
-    .sessionClose {
-        margin-top: 20px;
-        border: none;
-        background-color: transparent;
-        color: var(--letter-color);
-        border-radius: 25px;
-        cursor: pointer;
-    }
 }
+

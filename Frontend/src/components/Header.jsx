@@ -13,19 +13,23 @@ const Header = ({ isLoggedIn, onLogout }) => {
         console.log("Estado de autenticación cambiado:", isLoggedIn);
     }, [isLoggedIn]);
     return (
-        <nav className="navHeader">
+        <header> 
+            <nav className="navHeader">
             <SidebarHeader
                 onToggleSidebar={toggleSidebar}
                 isOpen={isSidebarOpen}
             />
-            <NavLink className={"navLink"} to={"/"}>
-              <img className={"logo"} src="./logo.svg"/>
-            </NavLink>
+            <div>
+                <NavLink className={"navLink"} to={"/"}>
+                    <img className={"logo"} src="./logo.svg" />
+                </NavLink>
+            </div>
+
 
             {isLoggedIn ? (
                 <>
-                    <NavLink className={"navLink"} to={"/newEntry"}>
-                        Nuevo post
+                    <NavLink className={"linkEntry"} to={"/newEntry"}>
+                        Nuevo Post
                     </NavLink>
 
                     <button className={"sessionClose"} onClick={onLogout}>
@@ -34,16 +38,18 @@ const Header = ({ isLoggedIn, onLogout }) => {
                 </>
             ) : (
                 <>
-                    <NavLink className={"navLink"} to={"/login"}>
+                    <NavLink className={"linkLogin"} to={"/login"}>
                         Login
                     </NavLink>
 
-                    <NavLink className={"navLink"} to={"/register"}>
+                    <NavLink className={"linkRegister"} to={"/register"}>
                         Register
                     </NavLink>
                 </>
             )}
         </nav>
+        </header>
+       
     );
 };
 
