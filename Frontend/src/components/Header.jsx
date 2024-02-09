@@ -34,7 +34,11 @@ const Header = ({ isLoggedIn, onLogout, theme, toggleTheme }) => {
             </button>
 
             <NavLink className={"navLink"} to={"/"}>
-                <img className={"logo"} src="/logo.svg" />
+                {theme === "light" ? (
+                    <img className={"logo"} src="/logo.svg" />
+                ) : (
+                    <img className="logo" src="/logo-dark.png" />
+                )}
             </NavLink>
 
             {isLoggedIn ? (

@@ -4,6 +4,10 @@
     --background-color-m: #e6cc9d;
 }
 
+.sidebar-header {
+    margin-left: 20px;
+}
+
 .menu-btn-col {
     width: 20px;
     transition: 0.5s;
