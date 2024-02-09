@@ -54,8 +54,10 @@ const GetEntriesByPlace = ({ entriesPlace }) => {
                 <p>Loading...</p>
             ) : (
                 <div className="container">
-                    <div className="title">
-                        <h2>Recomendaciones en: {entriesPlace}</h2>
+                    <div>
+                        <h2 className="title">
+                            Recomendaciones en: {entriesPlace}
+                        </h2>
                     </div>
 
                     {data.length === 0 ? (
@@ -104,7 +106,6 @@ const GetEntriesByPlace = ({ entriesPlace }) => {
                                         <VoteEntry id={entry.id} />
                                         <p className="votes">
                                             {entry.voteCount} Me gusta
-                                            {console.log("votos: ", entry)}
                                         </p>
                                         {currentUser === entry.userId ? (
                                             <DeleteEntry id={entry.id} />

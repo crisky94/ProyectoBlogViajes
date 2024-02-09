@@ -1,7 +1,27 @@
 :root {
     --primary-color: #1ab188;
     --primary-color-dark: #184e40;
+    --background-color-m: #e6cc9d;
+    --background-color-dark-mode: #121212;
+    --background-color-dark-mode-light: #3f3f3f;
+    --color-dark-mode: #7ddfee;
+    --color-dark-mode-dark: #00c8e0;
+
+    --color-light-mode: #791d37;
+    --color-light-mode-dark: #8b2c47;
 }
+/* 
+.body.light {
+    --volar-color-start: var(--color-light-mode);
+    --volar-color-middle: var(--color-light-mode-dark);
+    --volar-color-end: var(--color-light-mode);
+}
+
+.body.dark {
+    --volar-color-start: var(--color-dark-mode);
+    --volar-color-middle: var(--color-dark-mode-dark);
+    --volar-color-end: var(--color-dark-mode);
+} */
 
 .home-container {
     display: grid;
@@ -11,18 +31,22 @@
 }
 
 .sidebar-container {
+    z-index: 0;
     grid-column: 1 / 2;
     grid-row: 1 / 4;
     height: 100%;
-    width: 80%;
+    width: 100%;
     top: 0;
-    margin: 30px;
-    background-color: #f8f9fa;
+    margin: 30px 30px 30px 0px;
     padding-top: 0px;
+
+    .toggle-button {
+        margin-left: 30px;
+    }
 }
 
 .sidebar-container h2 {
-    color: white;
+    /* color: white; */
     text-align: center;
 }
 
@@ -77,62 +101,26 @@
 }
 
 @keyframes volar {
-    0% {
-        color: var(--primary-color-dark);
-    }
-    30% {
-        color: var(--primary-color);
-    }
-    70% {
-        color: var(--primary-color);
-    }
     100% {
-        color: var(--primary-color-dark);
+        color: var(--volar-color-end);
         transform: translate(40vw, -40vw) rotate(45deg);
     }
 }
 @keyframes volar2 {
-    0% {
-        color: var(--primary-color-dark);
-    }
-    30% {
-        color: var(--primary-color);
-    }
-    70% {
-        color: var(--primary-color);
-    }
     100% {
-        color: var(--primary-color-dark);
+        color: var(--volar-color-end);
         transform: translate(-20vw, -80vw) rotate(-15deg);
     }
 }
 @keyframes volar3 {
-    0% {
-        color: var(--primary-color-dark);
-    }
-    30% {
-        color: var(--primary-color);
-    }
-    70% {
-        color: var(--primary-color);
-    }
     100% {
-        color: var(--primary-color-dark);
+        color: var(--volar-color-end);
         transform: translate(50vw, 10vw) rotate(100deg);
     }
 }
 @keyframes volar4 {
-    0% {
-        color: var(--primary-color-dark);
-    }
-    30% {
-        color: var(--primary-color);
-    }
-    70% {
-        color: var(--primary-color);
-    }
     100% {
-        color: var(--primary-color-dark);
+        color: var(--volar-color-end);
         transform: translate(-80vw, 20vw) rotate(250deg);
     }
 }

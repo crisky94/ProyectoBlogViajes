@@ -52,8 +52,8 @@ const GetEntriesByCategory = ({ match }) => {
                 <p>Loading...</p>
             ) : (
                 <div className="container">
-                    <div className="title">
-                        <h2>
+                    <div>
+                        <h2 className="title">
                             Recomendaciones en la categoria:{" "}
                             {match.params.entriesCategory}
                         </h2>
@@ -105,7 +105,6 @@ const GetEntriesByCategory = ({ match }) => {
                                         <VoteEntry id={entry.id} />
                                         <p className="votes">
                                             {entry.voteCount} Me gusta
-                                            {console.log("votos: ", entry)}
                                         </p>
                                         {currentUser === entry.userId ? (
                                             <DeleteEntry id={entry.id} />

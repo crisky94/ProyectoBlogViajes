@@ -5,7 +5,6 @@ import DeleteEntry from "./DeleteEntry";
 import VoteEntry from "./VoteEntry";
 
 const GetEntriesByPlaceAndCategory = () => {
-    // const navigate = useNavigate();
     const [entries, setEntries] = useState([]);
     const [loading, setLoading] = useState(true);
     const { place, category } = useParams();
@@ -47,6 +46,7 @@ const GetEntriesByPlaceAndCategory = () => {
     };
 
     const currentUser = getCurrentUserId();
+
     return (
         <main className="cards-container">
             {loading ? (
@@ -55,8 +55,8 @@ const GetEntriesByPlaceAndCategory = () => {
                 <div className="container">
                     <div className="title">
                         <h2>
-                            Recomendaciones en la categoría: {entries.category}{" "}
-                            y lugar: {entries.place}
+                            Recomendaciones en la categoría: {category} y lugar:{" "}
+                            {place}
                         </h2>
                     </div>
 
@@ -64,7 +64,7 @@ const GetEntriesByPlaceAndCategory = () => {
                         <>
                             <p>
                                 Todavía no existen recomendaciones en esta
-                                categoria. ¿Quieres subir una?
+                                categoría. ¿Quieres subir una?
                             </p>
                             <Link to={"/newEntry"}>
                                 <button className="boton-ne">
@@ -106,7 +106,6 @@ const GetEntriesByPlaceAndCategory = () => {
                                         <VoteEntry id={entry.id} />
                                         <p className="votes">
                                             {entry.voteCount} Me gusta
-                                            {console.log("votos: ", entry)}
                                         </p>
                                         {currentUser === entry.userId ? (
                                             <DeleteEntry id={entry.id} />

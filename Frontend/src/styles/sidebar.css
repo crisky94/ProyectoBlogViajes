@@ -1,6 +1,7 @@
 :root {
     --primary-color: #1ab188;
     --primary-color-dark: #184e40;
+    --background-color: #e6cc9d;
 }
 
 .menu-btn-col {
@@ -64,7 +65,7 @@
     background: #343a40, 0.2;
     border-radius: 0.2em 0.2em 0 0;
     padding: 0.4em;
-    color: #ffffff;
+    color: white;
 }
 
 .ordenar-por-votos {
@@ -102,6 +103,7 @@
     color: #ffffff;
     border: 2px solid var(--primary-color-dark);
     padding: 16px 20px;
+    margin: 10px;
     border-radius: 3px;
     position: relative;
     z-index: 1;

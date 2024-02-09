@@ -15,7 +15,9 @@ const getEntriesByCategoryAndPlace = async (req, res, next) => {
                LIMIT 1) AS photoName,
               (SELECT COUNT(DISTINCT entryVotes.id) 
                FROM entryVotes 
-               WHERE entryVotes.entryId = entries.id) AS voteCount
+               WHERE entryVotes.entryId = entries.id) AS voteCount,
+              entries.category AS category, 
+              entries.place AS place
        FROM entries 
        LEFT JOIN entryPhotos ON entries.id = entryPhotos.entryId 
        LEFT JOIN users ON entries.userId = users.id
@@ -48,6 +50,9 @@ const getEntriesByCategoryAndPlace = async (req, res, next) => {
         },
       ],
       voteCount: entry.voteCount,
+      // Agregamos category y place al objeto devuelto
+      category: entry.category,
+      place: entry.place,
     }));
 
     res.send({

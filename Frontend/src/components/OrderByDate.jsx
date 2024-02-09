@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import DeleteEntry from "./DeleteEntry";
+import VoteEntry from "./VoteEntry";
 
 const OrderByDate = () => {
     const [entries, setEntries] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchEntries = async () => {
@@ -16,53 +19,101 @@ const OrderByDate = () => {
                 setEntries(data.data.entries);
             } catch (error) {
                 console.error("Error fetching entries:", error);
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchEntries();
     }, []);
 
-    return (
-        <div>
-            <h2>Entradas ordenadas por fecha</h2>
-            <ul>
-                {entries.map((entry) => (
-                    <li className="li" key={entry.id}>
-                        <section className="entry-info">
-                            <h3 className="entry-title">
-                                <Link to={`/entries/${entry.id}`}>
-                                    <h2>{entry.title}</h2>
-                                </Link>
-                            </h3>
-                            <p className="entry-text">{entry.text}</p>
-                        </section>
-                        {entry.photos.map((photoName, index) => (
-                            <div key={index}>
-                                <img
-                                    src={`${
-                                        import.meta.env.VITE_API_URL
-                                    }/uploads/${photoName.name}`}
-                                    alt=""
-                                />
-                            </div>
-                        ))}
+    const getCurrentUserId = () => {
+        const token = localStorage.getItem("token");
 
-                        <ul className="extras">
-                            <li className="extras-li">
-                                <strong>País en el que se encuentra:</strong>{" "}
-                                {entry.place}
-                            </li>
-                            <li className="extras-li">
-                                <strong>
-                                    Categoría en la que se encuentra:
-                                </strong>{" "}
-                                {entry.category}
-                            </li>
+        if (token) {
+            const payload = JSON.parse(atob(token.split(".")[1]));
+
+            return payload.id;
+        }
+        return null;
+    };
+
+    const currentUser = getCurrentUserId();
+
+    return (
+        <main className="cards-container">
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                <div className="container">
+                    <div>
+                        <h2 className="title">
+                            Recomendaciones ordenadas por fecha
+                        </h2>
+                    </div>
+
+                    {entries.length === 0 ? (
+                        <>
+                            <p>
+                                Todavía no existen recomendaciones en esta
+                                categoria. ¿Quieres subir una?
+                            </p>
+                            <Link to={"/newEntry"}>
+                                <button className="boton-ne">
+                                    Nueva Entrada
+                                </button>
+                            </Link>
+                        </>
+                    ) : (
+                        <ul className="entries-list">
+                            {entries.map((entry) => (
+                                <li key={entry.id} className="card-container">
+                                    {entry.photos &&
+                                        entry.photos
+                                            .split(",")
+                                            .map((photoName, index) => (
+                                                <div key={index}>
+                                                    <img
+                                                        className="picture"
+                                                        src={`${
+                                                            import.meta.env
+                                                                .VITE_API_URL
+                                                        }/uploads/${photoName}`}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            ))}
+                                    <Link to={`/entries/${entry.id}`}>
+                                        <h2 className="entry-title">
+                                            {entry.title}
+                                        </h2>
+                                    </Link>
+                                    <p className="user-description">
+                                        {entry.username} |{" "}
+                                        {entry.sortDescription}
+                                    </p>
+                                    <p className="created-at">
+                                        Publicado el{" "}
+                                        {new Date(
+                                            entry.createdAt
+                                        ).toLocaleDateString()}
+                                    </p>
+                                    <div className="card-footer">
+                                        <VoteEntry id={entry.id} />
+                                        <p className="votes">
+                                            {entry.voteCount} Me gusta
+                                        </p>
+                                        {currentUser === entry.userId ? (
+                                            <DeleteEntry id={entry.id} />
+                                        ) : null}
+                                    </div>
+                                </li>
+                            ))}
                         </ul>
-                    </li>
-                ))}
-            </ul>
-        </div>
+                    )}
+                </div>
+            )}
+        </main>
     );
 };
 
