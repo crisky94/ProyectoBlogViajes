@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../styles/sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ theme }) => {
     const [entriesPlace, setEntriesPlace] = useState("");
     const [entriesCategory, setEntriesCategory] = useState("");
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -55,19 +55,34 @@ const Sidebar = () => {
         <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
             <button className="toggle-button" onClick={toggleSidebar}>
                 {isCollapsed ? (
+                    theme === "light" ? (
+                        <img
+                            className="menu-btn-col"
+                            src="/image (3).png"
+                            alt="Menu collapsed"
+                        />
+                    ) : (
+                        <img
+                            className="menu-btn-col"
+                            src="/image (2).png"
+                            alt="Menu collapsed dark"
+                        />
+                    )
+                ) : theme === "light" ? (
                     <img
-                        className="menu-btn-col"
-                        src="/menu.png"
-                        alt="Menu collapsed"
+                        className="menu-btn-col1"
+                        src="/image (3).png"
+                        alt="Menu expanded"
                     />
                 ) : (
                     <img
                         className="menu-btn-col1"
-                        src="/menu.png"
-                        alt="Menu expanded"
+                        src="/image (2).png"
+                        alt="Menu expanded dark"
                     />
                 )}
             </button>
+
             <ul className="menu">
                 <section className="menu-filtar">
                     <h2>Buscar por:</h2>
@@ -87,11 +102,16 @@ const Sidebar = () => {
                             value={entriesCategory}
                             onChange={handleInputChangeCategory}
                         >
-                            <option value=""></option>
+                            <option value="">Selecciona categoría</option>
                             <option value="Aventura">Aventura</option>
-                            <option value="Gastronomia">Gastronomía</option>
+                            <option value="Single">Single</option>
+                            <option value="Parejas">Parejas</option>
+                            <option value="Familia">Familia</option>
                             <option value="Cultura">Cultura</option>
-                            <option value="Turismo">Turismo</option>
+                            <option value="Gastronomía">Gastronomía</option>
+                            <option value="Playa">Playa</option>
+                            <option value="Montaña">Montaña</option>
+                            <option value="Naturaleza">Naturaleza</option>
                         </select>
                     </li>
                     <li>
@@ -117,13 +137,13 @@ const Sidebar = () => {
                 <li className="ordenar-por-votos">
                     <h2>Ordenar por:</h2>
                     <button
-                        className="button-sidebar1"
+                        className="button-sidebar"
                         onClick={handleOrderByVotes}
                     >
                         Votos
                     </button>
                     <button
-                        className="button-sidebar2"
+                        className="button-sidebar"
                         onClick={handleOrderByDate}
                     >
                         Más antiguos

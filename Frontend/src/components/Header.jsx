@@ -3,8 +3,12 @@ import { NavLink } from "react-router-dom";
 import "../styles/header.css";
 import SidebarHeader from "./SideBarHeader";
 
-const Header = ({ isLoggedIn, onLogout }) => {
+import dom from "../logo/dom.png";
+import luna from "../logo/luna-creciente.png";
+
+const Header = ({ isLoggedIn, onLogout, theme, toggleTheme }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
@@ -12,19 +16,26 @@ const Header = ({ isLoggedIn, onLogout }) => {
     useEffect(() => {
         console.log("Estado de autenticación cambiado:", isLoggedIn);
     }, [isLoggedIn]);
+
     return (
-        <header> 
-            <nav className="navHeader">
+        <nav className="navHeader">
             <SidebarHeader
+                theme={theme}
                 onToggleSidebar={toggleSidebar}
                 isOpen={isSidebarOpen}
             />
-            <div>
-                <NavLink className={"navLink"} to={"/"}>
-                    <img className={"logo"} src="./logo.svg" />
-                </NavLink>
-            </div>
 
+            <button className="theme-toggle-button" onClick={toggleTheme}>
+                {theme === "light" ? (
+                    <img className="logo-hed" src={dom} />
+                ) : (
+                    <img className="logo-hed" src={luna} />
+                )}
+            </button>
+
+            <NavLink className={"navLink"} to={"/"}>
+                <img className={"logo"} src="/logo.svg" />
+            </NavLink>
 
             {isLoggedIn ? (
                 <>
@@ -48,8 +59,6 @@ const Header = ({ isLoggedIn, onLogout }) => {
                 </>
             )}
         </nav>
-        </header>
-       
     );
 };
 

@@ -15,10 +15,15 @@ import GetEntriesByPlaceAndCategory from "./components/GetEntriesByPlaceAndCateg
 import OrderByDate from "./components/OrderByDate";
 
 const App = () => {
+    const [theme, setTheme] = useState("light");
+
+    const toggleTheme = () => {
+        const newTheme = theme === "light" ? "dark" : "light";
+        setTheme(newTheme);
+    };
     const [loggedInUser, setLoggedInUser] = useState(null);
 
     const handleLogin = ({ usuario, token }) => {
-        console.log("Usuario y token:", usuario, token);
         setLoggedInUser({ usuario, token });
     };
 
@@ -38,32 +43,44 @@ const App = () => {
 
     return (
         <>
-            <Header isLoggedIn={!!loggedInUser} onLogout={handleLogout} />
-            <Routes>
-                <Route path="/newEntry" element={<NewEntry />} />
-                <Route path="/" element={<Home />} />
-                <Route path="/register" element={<Register />} />
-                <Route
-                    path="/login"
-                    element={<FormLogin onLogin={handleLogin} />}
+            <div className={`body ${theme}`}>
+                <Header
+                    theme={theme}
+                    toggleTheme={toggleTheme}
+                    isLoggedIn={!!loggedInUser}
+                    onLogout={handleLogout}
                 />
-                <Route
-                    path="/entries/place/:place/category/:category" // Nueva ruta para lugar y categoría
-                    element={<GetEntriesByPlaceAndCategory />}
-                />
-                <Route
-                    path="/entries/place/:entriesPlace"
-                    element={<EntriesByPlace />}
-                />
-                <Route
-                    path="/entries/category/:entriesCategory"
-                    element={<EntriesByCategory />}
-                />
-                <Route path="/entries/:entryId" element={<EntryDetail />} />
-                <Route path="/OrderByvotes" element={<OrderByVotes />} />
-                <Route path="/OrderByDate" element={<OrderByDate />} />
-            </Routes>
-            <Footer />
+                <Routes>
+                    <Route path="/newEntry" element={<NewEntry />} />
+                    <Route
+                        path="/"
+                        element={
+                            <Home theme={theme} toggleTheme={toggleTheme} />
+                        }
+                    />
+                    <Route path="/register" element={<Register />} />
+                    <Route
+                        path="/login"
+                        element={<FormLogin onLogin={handleLogin} />}
+                    />
+                    <Route
+                        path="/entries/place/:place/category/:category" // Nueva ruta para lugar y categoría
+                        element={<GetEntriesByPlaceAndCategory />}
+                    />
+                    <Route
+                        path="/entries/place/:entriesPlace"
+                        element={<EntriesByPlace />}
+                    />
+                    <Route
+                        path="/entries/category/:entriesCategory"
+                        element={<EntriesByCategory />}
+                    />
+                    <Route path="/entries/:entryId" element={<EntryDetail />} />
+                    <Route path="/OrderByvotes" element={<OrderByVotes />} />
+                    <Route path="/OrderByDate" element={<OrderByDate />} />
+                </Routes>
+                <Footer />
+            </div>
         </>
     );
 };

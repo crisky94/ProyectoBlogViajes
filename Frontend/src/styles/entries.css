@@ -5,8 +5,23 @@
 
 .cards-container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    /* max-width: 1200px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+        margin: 20px;
+        text-align: center;
+    }
+    .container {
+        margin: 20px;
+    }
+
+    .boton-ne {
+        margin-top: 10px;
+    }
 }
 
 .cards-container h1 {
@@ -99,7 +114,7 @@
 
 @media only screen and (max-width: 678px) {
     .card-container {
-        width: 96%;
-        margin: 2%;
+        /* width: 96%;
+        margin: 2%; */
     }
 }

@@ -1,14 +1,302 @@
 @import "./normalize.css";
 
+:root {
+    --background-color-dark-mode: #121212;
+    --background-color-dark-mode-light: #3f3f3f;
+    --color-dark-mode: #7ddfee;
+    --color-dark-mode-dark: #00c8e0;
+
+    --background-color-light-mode: #f8f9fa;
+    --background-color-light-mode-dark: #343a40;
+    --color-light-mode: #ffffff;
+    --color-light-mode-dark: #333333;
+}
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-body {
-    background-color: #f8f9fa;
-    /* color: #425f7c; */
+a {
+    text-decoration: none;
+}
+
+.body {
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
+
+    min-height: 100vh;
+    min-width: 100vw;
+
+    .card-container {
+        margin-top: 30px;
+    }
+
+    .select-sidebar-ctg {
+        option {
+            color: black;
+        }
+        color: white;
+    }
+}
+
+/* Estilos para el modo claro */
+.body.light {
+    background-color: var(--background-color-light-mode);
+    color: #222222;
+
+    .sidebar-container {
+        background-color: var(--background-color-light-mode);
+        color: #222222;
+    }
+
+    .navHeader {
+        background-color: var(--background-color-light-mode);
+    }
+
+    .card-container {
+        background-color: var(--background-color-light-mode);
+        /* width: 80%; */
+    }
+
+    .like-button {
+        background-color: var(--background-color-light-mode-light);
+    }
+
+    .entry-title {
+        color: var(--background-color-light-mode-dark);
+    }
+
+    .menu input {
+        border-bottom: 0.2em solid var(--color-light-mode);
+        color: black;
+    }
+
+    .button-sidebar {
+        background: var(--color-light-mode);
+        color: white;
+        border: 2px solid var(--color-light-mode);
+    }
+    .button-sidebar:hover {
+        color: white;
+    }
+    .button-sidebar::after {
+        background: var(--color-light-mode-dark);
+    }
+
+    .menu-header {
+        background-color: var(--background-color-light-mode);
+        color: black;
+
+        input {
+            border-bottom: 0.2em solid var(--color-light-mode);
+            color: black;
+        }
+    }
+
+    .select-sidebar-ctg {
+        option {
+            color: black;
+        }
+        color: black;
+    }
+
+    .boton-ne {
+        background: var(--color-light-mode);
+        color: white;
+        border: 2px solid var(--color-light-mode-dark);
+        padding: 16px 20px;
+        border-radius: 3px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .boton-ne:hover {
+        color: white;
+    }
+    .boton-ne::after {
+        content: "";
+        background: var(--color-light-mode-dark);
+        position: absolute;
+        z-index: -1;
+        padding: 16px 20px;
+        display: block;
+        left: -20%;
+        right: -20%;
+        top: 0;
+        bottom: 0;
+        transform: skewX(-45deg) scale(0, 1);
+        transition: all 0.3s ease;
+    }
+    .boton-ne:hover::after {
+        transition: all 0.3s ease-out;
+        transform: skewX(-45deg) scale(1.5, 1.5);
+    }
+
+    .register-ctn {
+        background-color: var(--background-color-light-mode-dark);
+
+        .required {
+            color: var(--color-light-mode);
+        }
+
+        label {
+            color: black;
+        }
+
+        .input-register {
+            color: var(--color-light-mode);
+            border-bottom: 1px solid var(--color-light-mode);
+        }
+
+        .rg-btn {
+            background-color: var(--color-light-mode);
+        }
+
+        .rg-btn:hover {
+            background: var(--color-light-mode-dark);
+        }
+
+        .rg-btn1 {
+            background: var(--color-light-mode);
+        }
+
+        .rg-btn1:hover {
+            background: var(--color-light-mode-dark);
+        }
+    }
+}
+
+/* Estilos para el modo oscuro */
+.body.dark {
+    background-color: var(--background-color-dark-mode-light);
+    color: #ffffff;
+
+    a {
+        color: white;
+    }
+
+    .navHeader {
+        border-radius: 0;
+        background-color: var(--background-color-dark-mode-light);
+    }
+
+    .entry-title {
+        color: var(--color-dark-mode);
+    }
+
+    .sidebar-container {
+        background-color: var(--background-color-dark-mode-light);
+        color: #ffffff;
+    }
+
+    .card-container {
+        background: var(--background-color-dark-mode-light);
+        color: white;
+        /* width: 80%; */
+    }
+
+    .like-button {
+        background-color: var(--background-color-dark-mode-light);
+    }
+
+    .menu input {
+        border-bottom: 0.2em solid var(--color-dark-mode);
+    }
+
+    .button-sidebar {
+        background: var(--color-dark-mode-dark);
+        color: white;
+        border: 2px solid var(--color-dark-mode);
+    }
+    .button-sidebar:hover {
+        color: var(--background-color-dark-mode-light);
+    }
+    .button-sidebar::after {
+        background: var(--color-dark-mode);
+    }
+
+    .menu-header {
+        background-color: var(--background-color-dark-mode-light);
+        color: #ffffff;
+
+        input {
+            border-bottom: 0.2em solid var(--color-dark-mode);
+        }
+    }
+
+    .footer {
+        color: white;
+    }
+
+    .boton-ne {
+        background: var(--color-dark-mode-dark);
+        color: white;
+        border: 2px solid var(--color-dark-mode);
+        padding: 16px 20px;
+        border-radius: 3px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .boton-ne:hover {
+        color: white;
+    }
+    .boton-ne::after {
+        content: "";
+        background: var(--color-dark-mode);
+        position: absolute;
+        z-index: -1;
+        padding: 16px 20px;
+        display: block;
+        left: -20%;
+        right: -20%;
+        top: 0;
+        bottom: 0;
+        transform: skewX(-45deg) scale(0, 1);
+        transition: all 0.3s ease;
+    }
+    .boton-ne:hover::after {
+        transition: all 0.3s ease-out;
+        transform: skewX(-45deg) scale(1.5, 1.5);
+    }
+
+    .register-ctn {
+        background-color: var(--background-color-dark-mode-light);
+
+        .required {
+            color: var(--color-dark-mode);
+        }
+
+        .input-register {
+            color: var(--color-dark-mode);
+            border-bottom: 1px solid var(--color-dark-mode);
+        }
+
+        .rg-btn {
+            background-color: var(--color-dark-mode-dark);
+        }
+
+        .rg-btn:hover {
+            background: var(--color-dark-mode);
+        }
+
+        .rg-btn1 {
+            background: var(--color-dark-mode-dark);
+        }
+
+        .rg-btn1:hover {
+            background: var(--color-dark-mode);
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    .card-container {
+        width: 80%;
+    }
 }
