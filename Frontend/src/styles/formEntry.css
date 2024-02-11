@@ -1,10 +1,10 @@
 :root {
     --background-color: #343a40;
-    --letter-color:  #333333 ;
-    --letter-box: #ffffff ;
+    --letter-color: #333333;
+    --letter-box: #ffffff;
     --line-box: #0e1317;
     --text-shadow: #9e3150;
-    --box-shadow: #564E49;
+    --box-shadow: #564e49;
 }
 
 body {
@@ -24,11 +24,10 @@ body {
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0 15px 25px rgb(1, 21, 38);
-    background-color: var(--background-color); 
+    background-color: var(--background-color);
     overflow-x: hidden;
     transition: 500ms ease;
 }
-
 
 .box {
     position: relative;
@@ -76,13 +75,11 @@ body {
     outline: none;
 }
 
-.entry-box .box textarea label{
+.entry-box .box textarea label {
     bottom: 15px;
 }
 
-
-
-.entry-box .box input  label {
+.entry-box .box input label {
     display: flex;
     flex-wrap: nowrap;
     position: absolute;
@@ -92,7 +89,6 @@ body {
     padding: 10px 0;
     background: transparent;
 }
-
 
 .labelFile {
     background-color: transparent;
@@ -115,12 +111,16 @@ body {
     border-color: var(--line-box);
     border-radius: 8px;
     outline: var(--line-box);
-    color: black;
+    color: white;
     width: 100%;
     bottom: 5px;
     top: -15px;
     padding: 8px 10px;
     background-color: transparent;
+
+    option {
+        color: black;
+    }
 }
 
 textarea {
@@ -147,10 +147,7 @@ textarea {
     background-color: transparent;
 }
 
-
-
 @media (min-width: 820px) {
-
     .entry-box {
         display: flex;
         width: 800px;
@@ -187,7 +184,6 @@ textarea {
     .entry-box .box input:focus,
     .entry-box .box textarea:focus {
         border-color: var(--border-color-animation);
-
     }
 
     .entry-box form button {
@@ -204,11 +200,7 @@ textarea {
         position: relative;
     }
 
-
     .border:hover {
         cursor: pointer;
     }
-
-    
-
 }
