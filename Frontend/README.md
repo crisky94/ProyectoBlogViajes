@@ -34,7 +34,7 @@ Wanderlust es una red social pensada y diseñada para que entusiastas de la expl
 
 ## 🔗 API y Endpoints
 
-Puedes encontrar más detalles sobre la API y los endpoints en la carpeta de Backend.
+Puedes encontrar más detalles sobre la API y los endpoints en la carpeta de Api.
 
 ## 📸 Capturas de Pantalla
 
