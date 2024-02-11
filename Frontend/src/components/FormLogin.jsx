@@ -39,42 +39,44 @@ const FormLogin = ({ onLogin }) => {
 
     return (
         <>
-            {" "}
-            <div className="card">
-                <h2>Login</h2>
+            {/* {" "} */}
+            {/* <div className="card"> */}
+            <h2 className="title-rgs">Login</h2>
+            <div className="login-ctn">
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
+                    <div className="contenedor-input">
                         <label>
-                            Email:
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="input-field"
-                            />
+                            Email <span className="required">*</span>
                         </label>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="input-register"
+                        />
                     </div>
-                    <label>
-                        <div className="form-group">
-                            Contraseña:
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="input-field"
-                            />
-                        </div>
-                    </label>
+                    <div className="contenedor-input">
+                        <label>
+                            Contraseña <span className="required">*</span>
+                        </label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="input-register"
+                        />
+                    </div>
                     <div>
-                        <button type="submit" className="btn-login">
+                        <button type="submit" className="rg-btn">
                             Iniciar Sesión
                         </button>
                     </div>
-                    <Link to={"/user/recover-password"}>
+                    {/* <Link to={"/user/recover-password"}>
                         <p>Recuperar contraseña</p>
-                    </Link>
+                    </Link> */}
                 </form>
             </div>
+            {/* </div> */}
         </>
     );
 };
