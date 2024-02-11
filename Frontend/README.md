@@ -44,7 +44,7 @@ Puedes encontrar más detalles sobre la API y los endpoints en la carpeta de Bac
 ## 📝 Contribución
 
 -   [Germán Robles](https://github.com/GermanRoobles)
--   [Cris Labrador](https://www.linkedin.com/in/cristina-labrador-ordoñez/)
+-   [Cris Labrador](https://github.com/crisky94/)
 -   [Mohamed Bensliman](https://github.com/mohabensliman)
 -   [Jairo](https://github.com/jairoweb)
 
@@ -53,7 +53,7 @@ Puedes encontrar más detalles sobre la API y los endpoints en la carpeta de Bac
 Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con nosotros en:
 
 -   [Germán Robles](https://www.linkedin.com/in/germanrobleslopez/)
--   [Cris Labrador](https://www.linkedin.com/in//)
+-   [Cris Labrador](https://www.linkedin.com/in/cristina-labrador-ordoñez/)
 -   [Mohamed Bensliman](https://www.linkedin.com/in/mohamedachrafbensliman/)
 -   [Jairo](https://www.linkedin.com/in/jairo-josue-delgado-hernandez/)
 

@@ -5,10 +5,6 @@
     --line-box: #0e1317;
     --text-shadow: #9e3150;
     --box-shadow: #564E49;
-    --border-width: 2px;
-    --border-color: #f0e8e8;
-    --border-color-animation: #40f8bb;
-    --body-bg: #0e1217;
 }
 
 body {
@@ -19,17 +15,16 @@ body {
 .entry-box {
     font-size: 18px;
     position: relative;
-    top: 450px;
+    top: 550px;
     left: 50%;
     width: 400px;
     height: auto;
     padding: 25px;
-    outline: auto;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 0 15px 25px var(--box-shadow);
-    background-color: var(--background-color);
+    box-shadow: 0 15px 25px rgb(1, 21, 38);
+    background-color: var(--background-color); 
     overflow-x: hidden;
     transition: 500ms ease;
 }
@@ -52,7 +47,6 @@ body {
 .h1 {
     margin-top: 50px;
     padding: 0;
-    color: var(--letter-color);
     text-align: center;
 }
 
@@ -82,9 +76,13 @@ body {
     outline: none;
 }
 
+.entry-box .box textarea label{
+    bottom: 15px;
+}
 
 
-.entry-box .box label {
+
+.entry-box .box input  label {
     display: flex;
     flex-wrap: nowrap;
     position: absolute;
@@ -113,7 +111,7 @@ body {
 .select {
     display: flex;
     text-align: center;
-    font-size: 13px;
+    font-size: 16px;
     border-color: var(--line-box);
     border-radius: 8px;
     outline: var(--line-box);
@@ -141,7 +139,7 @@ textarea {
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.5s;
-    margin-left: 90px;
+    margin-left: 100px;
     margin-top: 20px;
     color: var(--letter-box);
     border: 2px solid var(--letter-box);
@@ -183,7 +181,6 @@ textarea {
     .entry-box .box textarea {
         width: 700px;
         margin: auto;
-        transition: border-color 0.3s;
         border-bottom: 2px solid #ccc;
     }
 
@@ -208,48 +205,11 @@ textarea {
         position: relative;
     }
 
-    .border::before,
-    .border::after {
-        border: 0 solid transparent;
-        content: "";
-        pointer-events: none;
-        position: absolute;
-        width: 0;
-        height: 0;
-    }
-
-    .border::before {
-        top: 0;
-        right: 0;
-        border-bottom-width: var(--border-width);
-        border-right-width: var(--border-width);
-    }
-
-    .border::after {
-        left: 0;
-        bottom: 0;
-        border-top-width: var(--border-width);
-        border-left-width: var(--border-width);
-    }
 
     .border:hover {
-        color: var(--border-color-animation);
+        cursor: pointer;
     }
 
-    .border:hover::before,
-    .border:hover::after {
-        border-color: var(--border-color-animation);
-        transition: border-color 0s, height 0.2s, width 0.2s;
-        width: 100%;
-        height: 100%;
-    }
-
-    .border:hover::before {
-        transition-delay: 0s, 0s, 0.2s;
-    }
-
-    .border:hover::after {
-        transition-delay: 0.5s, 0.5s, 0.7s;
-    }
+    
 
 }

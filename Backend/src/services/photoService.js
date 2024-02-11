@@ -39,21 +39,3 @@ export const savePhotoService = async (img, width) => {
        saveFileError();
     }
 }
-
-export const deletePhotoService = async (imgName) => {
-    try {
-
-        const imgPath = path.join(process.cwd(),`./src/${UPLOADS_DIR}`,imgName);
-
-        try {
-            await fs.access(imgPath);
-        } catch {
-            return;
-        }
-
-        await fs.unlink(imgPath);
-
-    } catch (error) {
-        deleteFileError();
-    }
-}

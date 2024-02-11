@@ -2,8 +2,11 @@ import { useState } from "react";
 import deleteEntryService from "../services/deleteEntryService";
 import "../styles/entries.css";
 
-const DeleteEntry = ({ id }) => {
 
+
+const DeleteEntry = ({ id }) => {
+    
+    
     const [showPopup, setShowPopup] = useState(false);
     const [error, setError] = useState("");
 
@@ -15,8 +18,8 @@ const DeleteEntry = ({ id }) => {
                     <h3>
                         ¿Estás segurx de que quieres borrar esta publicación?
                     </h3>
-                    <button onClick={onDelete}>Sí, borrar</button>
-                    <button onClick={onCancel}>Cancelar</button>
+                    <button className="borrar" onClick={onDelete}>Borrar</button>
+                    <button className="borrar" onClick={onCancel}>Cancelar</button>
                 </div>
             </div>
         );
@@ -26,6 +29,7 @@ const DeleteEntry = ({ id }) => {
         try {
             const token = localStorage.getItem("token");
             await deleteEntryService({ id, token });
+            
             console.log("Publicacion borrada con exito!");
             setShowPopup(false);
             window.location.reload();
