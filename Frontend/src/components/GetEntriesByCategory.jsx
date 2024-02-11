@@ -86,7 +86,7 @@ const GetEntriesByCategory = ({ match }) => {
                                             />
                                         </div>
                                     ))}
-                                    <Link to={`entries/${entry.id}`}>
+                                    <Link to={`/entries/${entry.id}`}>
                                         <h2 className="entry-title">
                                             {entry.title}
                                         </h2>
