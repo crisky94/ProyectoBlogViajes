@@ -28,6 +28,12 @@ a {
     min-height: 100vh;
     min-width: 100vw;
 
+    h1,
+    h2 {
+        position: relative;
+        z-index: 1;
+    }
+
     .card-container {
         margin-top: 30px;
     }
@@ -113,9 +119,9 @@ a {
     }
 
     .boton-ne {
-        background: var(--color-light-mode);
+        background: var(--color-light-mode-dark);
         color: white;
-        border: 2px solid var(--color-light-mode-dark);
+        /* border: 2px solid var(--color-light-mode-dark); */
         padding: 16px 20px;
         border-radius: 3px;
         position: relative;
@@ -125,11 +131,11 @@ a {
     }
 
     .boton-ne:hover {
-        color: white;
+        color: black;
     }
     .boton-ne::after {
         content: "";
-        background: var(--color-light-mode-dark);
+        background: grey;
         position: absolute;
         z-index: -1;
         padding: 16px 20px;
@@ -357,7 +363,7 @@ a {
     }
 
     .boton-ne:hover {
-        color: white;
+        color: black;
     }
     .boton-ne::after {
         content: "";
@@ -375,7 +381,7 @@ a {
     }
     .boton-ne:hover::after {
         transition: all 0.3s ease-out;
-        transform: skewX(-45deg) scale(1.5, 1.5);
+        transform: skewX(-45deg) scale(2, 2);
     }
 
     .register-ctn {
