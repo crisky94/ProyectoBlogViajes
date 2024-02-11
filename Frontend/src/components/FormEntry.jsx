@@ -73,7 +73,6 @@ const FormEntry = () => {
                         name="photo"
                         accept="image/*"
                         onChange={(e) => setPreviewImage(e.target.files[0])}
-                        multiple="multiple"
                         required
                     /> 
                 
