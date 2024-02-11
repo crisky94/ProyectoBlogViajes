@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/LoginStyles.css";
 
 const FormLogin = ({ onLogin }) => {
@@ -41,7 +41,7 @@ const FormLogin = ({ onLogin }) => {
         <>
             {/* {" "} */}
             {/* <div className="card"> */}
-            <h2 className="title-rgs">Login</h2>
+            <h2 className="title-rgs">Iniciar Sesión</h2>
             <div className="login-ctn">
                 <form onSubmit={handleSubmit}>
                     <div className="contenedor-input">
