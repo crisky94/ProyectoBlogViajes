@@ -29,8 +29,8 @@ Wanderlust es una red social pensada y diseñada para que entusiastas de la expl
 ## 🚀 Cómo Empezar
 
 1. Clona este repositorio: `git clone https://github.com/crisky94/ProyectoBlogViajes.git`
-2. Instala las dependencias en la carpeta Backend: `npm install`
-3. Ejecuta el servidor en la carpeta Backend: `npm run dev`
+2. Instala las dependencias en la carpeta api: `npm install`
+3. Ejecuta el servidor en la carpeta api: `npm run dev`
 4. Instala las dependencias en la carpeta Frontend: `npm install`
 5. Ejecuta el servidor en la carpeta Frontend: `npm run dev`
 
