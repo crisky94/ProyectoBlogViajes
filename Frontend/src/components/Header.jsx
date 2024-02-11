@@ -27,19 +27,21 @@ const Header = ({ isLoggedIn, onLogout, theme, toggleTheme }) => {
 
             <button className="theme-toggle-button" onClick={toggleTheme}>
                 {theme === "light" ? (
-                    <img className="logo-hed" src={dom} />
-                ) : (
                     <img className="logo-hed" src={luna} />
+                ) : (
+                    <img className="logo-hed" src={dom} />
                 )}
             </button>
 
-            <NavLink className={"navLink"} to={"/"}>
-                {theme === "light" ? (
-                    <img className={"logo"} src="/logo.svg" />
-                ) : (
-                    <img className="logo" src="/logo-dark.png" />
-                )}
-            </NavLink>
+            <section className="logo1">
+                <NavLink className={"navLink"} to={"/"}>
+                    {theme === "light" ? (
+                        <img className={"logo"} src="/logo.svg" />
+                    ) : (
+                        <img className="logo" src="/logo-dark.png" />
+                    )}
+                </NavLink>
+            </section>
 
             {isLoggedIn ? (
                 <>

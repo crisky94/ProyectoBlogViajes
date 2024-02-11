@@ -152,6 +152,7 @@ img .logo {
     nav .navLink {
         grid-area: 1 / 2 / 2 / 2;
     }
+
     .linkLogin {
         grid-area: 1 / 5 / 2 / 6;
         margin-right: 10px;
@@ -175,5 +176,20 @@ img .logo {
 
     .sessionClose {
         margin-right: 10px;
+    }
+}
+
+@media (max-width: 520px) {
+    .navHeader {
+        font-size: 15px;
+    }
+    nav .navLink img {
+        width: 110px;
+    }
+    .toggle-button img {
+        width: 15px;
+    }
+    .theme-toggle-button img {
+        width: 30px;
     }
 }
