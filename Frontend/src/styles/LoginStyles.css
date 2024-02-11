@@ -1,45 +1,95 @@
-.card {
-    width: 300px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(240, 212, 212, 0.1);
-    background-color: rgba(48, 57, 79, 0.005);
+:root {
+    --primary-color: #1ab188;
+    --primary-color-dark: #184e40;
 }
-
-.card h2 {
-    text-align: center;
-    color: rgb(151, 141, 141);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: rgb(221, 221, 221);
-}
-
-.input-field {
-    width: 100%;
-    padding: 10px;
+.login-ctn {
+    position: relative;
+    top: 330px;
+    left: 50%;
+    width: 500px;
+    padding: 50px;
     box-sizing: border-box;
-    border: 1px solid rgb(221, 221, 221);
-    border-radius: 4px;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgb(1, 21, 38);
+    background-color: var(--background-color);
+    transform: translate(-50%, -50%);
+}
+
+.title-login {
+    text-align: center;
+    padding-top: 2rem;
+
+    color: #fff; /* Cambia el color del texto si es necesario */
+}
+
+.input-email-password {
+    font-size: 22px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    background: none;
+    /* border: 1px solid #a0b3b0; */
+    border-radius: 5px;
+    color: #fff;
+    transition: all 0.5s ease;
+}
+
+.input-email-password {
+    outline: none;
+}
+
+.conten-email-password {
+    text-align: center;
+    padding: 70px;
+    color: #b9d1d3;
 }
 
 .btn-login {
     width: 100%;
-    padding: 10px;
-    background-color: rgb(52, 152, 219);
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 4px;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
     cursor: pointer;
+    padding: 15px 0;
+    font-size: 2rem;
+    background: var(--primary-color);
+    color: #fff;
+    transition: all 0.5s ease;
 }
 
 .btn-login:hover {
-    background-color: rgb(41, 128, 185);
+    background: var(--primary-color-dark);
+}
+
+@media (max-width: 720px) {
+    .login-ctn {
+        max-width: 80%;
+        font-size: medium;
+    }
+
+    .title-login {
+        font-size: 30px;
+        padding: 80px 10px -120px 10px;
+    }
+
+    .btn-login {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 720px) {
+    .input-email-password {
+        max-width: 100%;
+        /* font-size: large; */
+    }
+
+    .title-login {
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+
+    .btn-login {
+        font-size: 30px;
+    }
 }
