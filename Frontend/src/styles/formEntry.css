@@ -17,7 +17,7 @@ body {
     position: relative;
     top: 550px;
     left: 50%;
-    width: 400px;
+    width: 80%;
     height: auto;
     padding: 25px;
     transform: translate(-50%, -50%);
@@ -111,12 +111,12 @@ body {
 .select {
     display: flex;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     border-color: var(--line-box);
     border-radius: 8px;
     outline: var(--line-box);
-    color: var(--letter-box);
-    width: calc(100% - 30px);
+    color: black;
+    width: 100%;
     bottom: 5px;
     top: -15px;
     padding: 8px 10px;
@@ -139,7 +139,7 @@ textarea {
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.5s;
-    margin-left: 100px;
+    margin: auto;
     margin-top: 20px;
     color: var(--letter-box);
     border: 2px solid var(--letter-box);
@@ -168,7 +168,7 @@ textarea {
     }
 
     select {
-        width: 300px;
+        width: 320px;
         padding: 4px 4px;
         margin: 20px 20px;
     }
@@ -195,7 +195,6 @@ textarea {
         justify-self: center;
         border-radius: 8px;
         padding: 10px 20px;
-        margin-left: 260px;
     }
 
     .border {

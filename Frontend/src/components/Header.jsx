@@ -44,7 +44,7 @@ const Header = ({ isLoggedIn, onLogout, theme, toggleTheme }) => {
             {isLoggedIn ? (
                 <>
                     <NavLink className={"linkEntry"} to={"/newEntry"}>
-                        Nuevo Post
+                        Crear Publicación
                     </NavLink>
 
                     <button className={"sessionClose"} onClick={onLogout}>
