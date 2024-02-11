@@ -54,11 +54,11 @@ const Header = ({ isLoggedIn, onLogout, theme, toggleTheme }) => {
             ) : (
                 <>
                     <NavLink className={"linkLogin"} to={"/login"}>
-                        Login
+                        Iniciar Sesión
                     </NavLink>
 
                     <NavLink className={"linkRegister"} to={"/register"}>
-                        Register
+                        Registro
                     </NavLink>
                 </>
             )}
