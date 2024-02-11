@@ -161,14 +161,6 @@ a {
         .rg-btn:hover {
             background: grey;
         }
-
-        .rg-btn1 {
-            background: var(--background-color-dark-mode-light);
-        }
-
-        .rg-btn1:hover {
-            background: grey;
-        }
     }
 
     .linkLogin {
@@ -185,6 +177,30 @@ a {
 
     .sessionClose {
         color: var(--background-color-dark-mode);
+    }
+
+    .login-ctn {
+        background-color: var(--background-color-light-mode);
+
+        .required {
+            color: var(--background-color-dark-mode-light);
+        }
+
+        label {
+            color: black;
+        }
+
+        .input-register {
+            color: var(--background-color-dark-mode-light);
+            border-bottom: 1px solid var(--background-color-dark-mode-light);
+        }
+        .rg-btn {
+            background-color: var(--background-color-dark-mode-light);
+        }
+
+        .rg-btn:hover {
+            background: grey;
+        }
     }
 }
 
@@ -327,6 +343,26 @@ a {
         }
 
         .rg-btn1:hover {
+            background: var(--color-dark-mode);
+        }
+    }
+
+    .login-ctn {
+        background-color: var(--background-color-dark-mode-light);
+
+        .required {
+            color: var(--color-dark-mode);
+        }
+
+        .input-register {
+            color: var(--color-dark-mode);
+            border-bottom: 1px solid var(--color-dark-mode);
+        }
+        .rg-btn {
+            background-color: var(--color-dark-mode-dark);
+        }
+
+        .rg-btn:hover {
             background: var(--color-dark-mode);
         }
     }

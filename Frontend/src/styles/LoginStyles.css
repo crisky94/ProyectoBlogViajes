@@ -4,15 +4,33 @@
 }
 .login-ctn {
     position: relative;
-    top: 330px;
+    top: 350px;
     left: 50%;
     width: 500px;
-    padding: 50px;
+    height: auto;
+    padding: 40px;
+    transform: translate(-50%, -50%);
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0 15px 25px rgb(1, 21, 38);
     background-color: var(--background-color);
-    transform: translate(-50%, -50%);
+}
+
+.rg-btn2 {
+    width: 100%;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 15px 0;
+    font-size: 2rem;
+    background: var(--primary-color);
+    color: #fff;
+    transition: all 0.5s ease;
+}
+
+.rg-btn2:hover {
+    background: var(--primary-color-dark);
 }
 
 .title-login {

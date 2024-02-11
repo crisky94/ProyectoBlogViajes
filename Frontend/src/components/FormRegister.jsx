@@ -31,7 +31,7 @@ const RegisterForm = () => {
 
     return (
         <>
-            <h2 className="title-rgs">Registarse</h2>
+            <h2 className="title-rgs">Registrarse</h2>
             <div className="register-ctn">
                 <form onSubmit={handleSubmit}>
                     <div className="contenedor-input">
@@ -64,7 +64,7 @@ const RegisterForm = () => {
                     </div>
                     <div className="contenedor-input">
                         <label>
-                            Password<span className="required">*</span>
+                            Contraseña<span className="required">*</span>
                         </label>
 
                         <input
@@ -78,7 +78,8 @@ const RegisterForm = () => {
                     </div>
                     <div className="contenedor-input">
                         <label>
-                            Confirm Password<span className="required">*</span>
+                            Confirmar Contraseña
+                            <span className="required">*</span>
                         </label>
                         <input
                             className="input-register"
