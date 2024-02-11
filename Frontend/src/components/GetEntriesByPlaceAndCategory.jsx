@@ -55,8 +55,7 @@ const GetEntriesByPlaceAndCategory = () => {
                 <div className="container">
                     <div className="title">
                         <h2>
-                            Recomendaciones en la categoría: {category} y lugar:{" "}
-                            {place}
+                            Recomendaciones en {place} y categoría {category}
                         </h2>
                     </div>
 
