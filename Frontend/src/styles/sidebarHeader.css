@@ -190,6 +190,7 @@
     .menu-header {
         display: none;
         align-items: center;
+        font-size: 14px;
     }
 
     .toggle-button {
