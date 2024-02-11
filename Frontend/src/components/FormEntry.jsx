@@ -27,13 +27,13 @@ const FormEntry = () => {
         <div className="entry-box">
             <form className="formEntry" onSubmit={handleSubmit}>
                 <div className="box">
-                    <input id="title" type="text" name="title" minLength={"3"} maxLength={"50"} placeholder="Min. 3..." required />
                     <label htmlFor="title">Título:<span className="required">*</span> </label>
+                    <input className="input-entry" id="title" type="text" name="title" minLength={"3"} maxLength={"50"} placeholder="Min. 3..." required />
                 </div>
 
                 <div className="box">
-                    <input id="place" type="text" name="place" minLength={"3"} maxLength={"50"} placeholder="Min. 3..." required />
                     <label htmlFor="place">Lugar:<span className="required">*</span> </label>
+                    <input className="input-entry" id="place" type="text" name="place" minLength={"3"} maxLength={"29"} placeholder="Min. 3..." required />
                 </div>
                 <div className="category">
                     {""}
@@ -53,19 +53,19 @@ const FormEntry = () => {
                 </div>
 
                 <div className="box">
-                    <textarea id="sortDescription" className={"sortDescription"} name="sortDescription" minLength={"10"} maxLength={"200"}  placeholder="Min. 10..." required></textarea>
                     <label htmlFor="sortDescription">Breve descripción:<span className="required">*</span> </label>
+                    <textarea id="sortDescription" className={"textarea"} name="sortDescription" minLength={"10"} maxLength={"190"}  placeholder="Min. 10..." required></textarea>
                 </div>
 
                 <div className="box">
-                    <textarea id="description" minLength={"30"} maxLength={"800"}  placeholder="Min. 30..." name="text" required></textarea>
                     <label htmlFor="description">Descripción:<span className="required">*</span> </label>
+                    <textarea className={"textarea"} id="description" minLength={"30"} maxLength={"798"}  placeholder="Min. 30..." name="text" required></textarea>
                 </div>
 
                 {previewImage ? (
                     <img className={"preview-image"} src={URL.createObjectURL(previewImage)} alt="Imagen del viaje" />
                 ) : null}
-                 <label className="labelFile">Selecciona imagen:<span className="required">*</span></label>
+                 <label className="label-file">Selecciona imagen:<span className="required">*</span></label>
                 
                     <input
                         className="input-file"
@@ -80,7 +80,7 @@ const FormEntry = () => {
                 {error ? <p>{error}</p> : null}
 
                 <button type="submit" className="button border">
-                    Subir Post
+                   Publicar
                 </button>
             </form>
         </div>

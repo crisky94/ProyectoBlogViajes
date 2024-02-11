@@ -18,7 +18,7 @@ const getEntriesById = async (req, res, next) => {
         entries.createdAt,
         GROUP_CONCAT(DISTINCT entryPhotos.name) AS photos,
         users.username,
-        COUNT(DISTINCT entryVotes.value) AS voteCount
+        COUNT(DISTINCT entryVotes.id) AS voteCount
       FROM entries
       LEFT JOIN entryVotes ON entryVotes.entryId = entries.id
       INNER JOIN users ON users.id = entries.userId

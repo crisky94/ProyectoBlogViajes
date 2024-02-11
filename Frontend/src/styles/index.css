@@ -63,6 +63,14 @@ a {
         background-color: var(--background-color-light-mode-light);
     }
 
+    .borrar {
+        color: white;
+        background: var(--background-color-dark-mode-light);
+    }
+    .borrar:hover {
+        background: grey;
+    }
+
     .entry-title {
         color: var(--background-color-light-mode-dark);
     }
@@ -162,6 +170,49 @@ a {
             background: grey;
         }
     }
+    .entry-box {
+        color: var(--background-color-dark-mode-light);
+        background-color: var(--background-color-light-mode);
+
+        .required {
+            color:  var(--background-color-dark-mode-light);
+        }
+
+        .h1{
+            color: black;
+        }
+        label{
+            color: black;
+        }
+
+        .input-entry {
+            background-color: var(--background-color-light-mode) ;
+            color: black;
+            border-bottom: 1px solid var(--background-color-dark-mode-light);
+        }
+        .select {
+            color: black;
+        }
+
+        .textarea {
+            color: black;
+            border-bottom: 1px solid var(--background-color-dark-mode-light);
+        }
+
+        .input-file {
+            border:  1px solid var(--background-color-dark-mode-light);
+            color: black;
+        }
+       
+        form button {
+            color: white;
+            background-color:  var(--background-color-dark-mode-light);
+        }
+
+        form button:hover {
+            background-color: grey;
+        }
+    }
 
     .linkLogin {
         color: var(--background-color-dark-mode);
@@ -243,6 +294,15 @@ a {
     .like-button {
         background-color: var(--background-color-dark-mode-light);
         color: white;
+    }
+    
+    .borrar {
+        background: var(--color-dark-mode-dark);
+        color: white;
+    }
+
+    .borrar:hover {
+        background: var(--color-dark-mode);
     }
 
     .material-symbols-outlined {
@@ -344,6 +404,46 @@ a {
 
         .rg-btn1:hover {
             background: var(--color-dark-mode);
+        }
+    }
+    
+    .entry-box {
+        background-color: var(--background-color-dark-mode-light);
+        
+        .required {
+            color: var(--color-dark-mode);
+        }
+        .h1{
+            color: white;
+        }
+
+        .select{
+            border:  1px solid var(--color-dark-mode);
+        }
+
+        .input-entry {
+            background-color: var(--background-color-dark-mode-light) ;
+            color: var(--color-dark-mode);
+            border-bottom: 1px solid var(--color-dark-mode);
+        }
+
+        .textarea {
+            color: var(--color-dark-mode);
+            border-bottom: 1px solid var(--color-dark-mode);
+        }
+
+        .input-file {
+            border:  1px solid var(--color-dark-mode);
+        }
+
+        form button {
+            background-color: var(--color-dark-mode-dark);
+            color: white;
+        }
+
+        form button:hover {
+            background-color: var(--color-dark-mode);
+            color: black;
         }
     }
 
