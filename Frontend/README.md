@@ -55,7 +55,7 @@ Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con noso
 -   [Germán Robles](https://www.linkedin.com/in/germanrobleslopez/)
 -   [Cris Labrador](https://www.linkedin.com/in//)
 -   [Mohamed Bensliman](https://www.linkedin.com/in/mohamedachrafbensliman/)
--   [Jairo](https://www.linkedin.com/in//)
+-   [Jairo](https://www.linkedin.com/in/jairo-josue-delgado-hernandez/)
 
 ¡Esperamos que os guste la aplicación y que la disfrutéis tanto como nosotros haciéndola!
 
