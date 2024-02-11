@@ -20,6 +20,7 @@ const App = () => {
     const toggleTheme = () => {
         const newTheme = theme === "light" ? "dark" : "light";
         setTheme(newTheme);
+        localStorage.setItem("theme", newTheme);
     };
     const [loggedInUser, setLoggedInUser] = useState(null);
 
@@ -38,6 +39,10 @@ const App = () => {
             setLoggedInUser({
                 token: token,
             });
+        }
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            setTheme(savedTheme);
         }
     }, []);
 
