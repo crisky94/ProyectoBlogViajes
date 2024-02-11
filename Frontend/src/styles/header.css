@@ -181,7 +181,7 @@ img .logo {
 
 @media (max-width: 520px) {
     .navHeader {
-        font-size: 15px;
+        font-size: 100%;
     }
     nav .navLink img {
         width: 110px;
