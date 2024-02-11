@@ -52,7 +52,7 @@ Puedes encontrar más detalles sobre la API y los endpoints en la carpeta de Bac
 
 Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con nosotros en:
 
--   [Germán Robles](https://www.linkedin.com/in//)
+-   [Germán Robles](https://www.linkedin.com/in/germanrobleslopez/)
 -   [Cris Labrador](https://www.linkedin.com/in//)
 -   [Mohamed Bensliman](https://www.linkedin.com/in/mohamedachrafbensliman/)
 -   [Jairo](https://www.linkedin.com/in//)
