@@ -6,7 +6,7 @@ Os presentamos Wanderlust, aquí podrás compartir tus recomendaciones y experie
 
 ## 🌍 Sobre Wanderlust
 
-Wanderlust es una red social pensada y diseñada para que entusiastas de la exploración compartan sus viajes, excursiones, experiencias, escapadas, trucos y rincones ocultos. Tanto si eres un trotamundos veterano como si estás buscando inspiración para tu siguiente escapada, plan, excursión,etc. En Wanderlust te esperan sugerencias genuinas de nuestros viajeros."
+Wanderlust es una red social pensada y diseñada para que entusiastas de la exploración compartan sus viajes, excursiones, experiencias, escapadas, trucos y rincones ocultos. Tanto si eres un trotamundos veterano como si estás buscando inspiración para tu siguiente escapada, plan, excursión, etc. En Wanderlust te esperan sugerencias genuinas de nuestros viajeros."
 
 ## 🛠️ Funciones Principales
 
@@ -38,8 +38,10 @@ Puedes encontrar más detalles sobre la API y los endpoints en la carpeta de Bac
 
 ## 📸 Capturas de Pantalla
 
-![Imagen de vista movil](./src/imagenes/movil.png)
-![Imagen de vista](./src/imagenes/desktop.png)
+![Imagen de vista movil claro](./src/screenshots/mobile-light.png)
+![Imagen de vista movil oscuro](./src/screenshots/mobile-dark.png)
+![Imagen de escritorio claro](./src/screenshots/desk-light.png)
+![Imagen de escritorio oscuro](./src/screenshots/desk-dark.png)
 
 ## 📝 Contribución
 
