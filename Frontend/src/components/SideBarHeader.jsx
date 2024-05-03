@@ -11,17 +11,19 @@ const SidebarHeader = ({ theme }) => {
 
     const handleInputChangePlace = (e) => {
         setEntriesPlace(e.target.value);
+        toggleSidebar();
     };
 
     const handleInputChangeCategory = (e) => {
         setEntriesCategory(e.target.value);
+        toggleSidebar();
     };
 
     const handleSearch = () => {
         if (entriesPlace || entriesCategory) {
             if (entriesPlace && entriesCategory) {
                 navigate(
-                    `/entries/place/${entriesPlace}/category/${entriesCategory}`
+                    `/entries/place/${entriesPlace}/category/${entriesCategory}`,
                 );
             } else if (entriesPlace) {
                 navigate(`/entries/place/${entriesPlace}`);
@@ -31,7 +33,7 @@ const SidebarHeader = ({ theme }) => {
             toggleSidebar();
         } else {
             setErrorMessage(
-                "Por favor, ingresa al menos un criterio de búsqueda."
+                "Por favor, ingresa al menos un criterio de búsqueda.",
             );
         }
     };

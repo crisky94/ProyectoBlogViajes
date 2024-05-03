@@ -6,7 +6,7 @@ const Login = () => {
     const [loggedInUser, setLoggedInUser] = useState(null);
 
     const handleLogin = ({ usuario, token }) => {
-         setLoggedInUser({ usuario, token });
+        setLoggedInUser({ usuario, token });
     };
 
     return (

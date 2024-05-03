@@ -17,6 +17,9 @@
     box-sizing: border-box;
 }
 
+.error {
+    color: red;
+}
 a {
     text-decoration: none;
 }
@@ -180,18 +183,18 @@ a {
         background-color: var(--background-color-light-mode);
 
         .required {
-            color:  var(--background-color-dark-mode-light);
+            color: var(--background-color-dark-mode-light);
         }
 
-        .h1{
+        .h1 {
             color: black;
         }
-        label{
+        label {
             color: black;
         }
 
         .input-entry {
-            background-color: var(--background-color-light-mode) ;
+            background-color: var(--background-color-light-mode);
             color: black;
             border-bottom: 1px solid var(--background-color-dark-mode-light);
         }
@@ -205,13 +208,13 @@ a {
         }
 
         .input-file {
-            border:  1px solid var(--background-color-dark-mode-light);
+            border: 1px solid var(--background-color-dark-mode-light);
             color: black;
         }
-       
+
         form button {
             color: white;
-            background-color:  var(--background-color-dark-mode-light);
+            background-color: var(--background-color-dark-mode-light);
         }
 
         form button:hover {
@@ -300,7 +303,7 @@ a {
         background-color: var(--background-color-dark-mode-light);
         color: white;
     }
-    
+
     .borrar {
         background: var(--color-dark-mode-dark);
         color: white;
@@ -411,23 +414,23 @@ a {
             background: var(--color-dark-mode);
         }
     }
-    
+
     .entry-box {
         background-color: var(--background-color-dark-mode-light);
-        
+
         .required {
             color: var(--color-dark-mode);
         }
-        .h1{
+        .h1 {
             color: white;
         }
 
-        .select{
-            border:  1px solid var(--color-dark-mode);
+        .select {
+            border: 1px solid var(--color-dark-mode);
         }
 
         .input-entry {
-            background-color: var(--background-color-dark-mode-light) ;
+            background-color: var(--background-color-dark-mode-light);
             color: var(--color-dark-mode);
             border-bottom: 1px solid var(--color-dark-mode);
         }
@@ -438,7 +441,7 @@ a {
         }
 
         .input-file {
-            border:  1px solid var(--color-dark-mode);
+            border: 1px solid var(--color-dark-mode);
         }
 
         form button {

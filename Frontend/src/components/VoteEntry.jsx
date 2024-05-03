@@ -1,4 +1,5 @@
 import voteEntryService from "../services/voteEntryService";
+import deleteEntryService from "../services/deleteEntryService";
 import { useState } from "react";
 
 const VoteEntry = ({ id }) => {
@@ -13,6 +14,19 @@ const VoteEntry = ({ id }) => {
             setError(error.message);
         }
     };
+    const handleDelete = async () => {
+        try {
+            const token = localStorage.getItem("token");
+            await deleteEntryService({ id, token });
+
+            console.log("Like borrada con exito!");
+
+            window.location.reload();
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
     return (
         <div>
             <button className="like-button" onClick={handleVote}>

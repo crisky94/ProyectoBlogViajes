@@ -7,10 +7,10 @@ import dom from "../logo/dom.png";
 import luna from "../logo/luna-creciente.png";
 
 const Header = ({ isLoggedIn, onLogout, theme, toggleTheme }) => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
+        setIsSidebarOpen(isSidebarOpen);
     };
 
     useEffect(() => {
