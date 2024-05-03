@@ -21,7 +21,7 @@ const Sidebar = ({ theme }) => {
         if (entriesPlace || entriesCategory) {
             if (entriesPlace && entriesCategory) {
                 navigate(
-                    `/entries/place/${entriesPlace}/category/${entriesCategory}`
+                    `/entries/place/${entriesPlace}/category/${entriesCategory}`,
                 );
             } else if (entriesPlace) {
                 navigate(`/entries/place/${entriesPlace}`);
@@ -30,7 +30,7 @@ const Sidebar = ({ theme }) => {
             }
         } else {
             setErrorMessage(
-                "Por favor, ingresa al menos un criterio de búsqueda."
+                "Por favor, ingresa al menos un criterio de búsqueda.",
             );
         }
     };

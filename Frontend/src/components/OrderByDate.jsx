@@ -13,7 +13,7 @@ const OrderByDate = () => {
                 const response = await fetch(
                     `${
                         import.meta.env.VITE_API_URL
-                    }/entries/order/ordered-by-date`
+                    }/entries/order/ordered-by-date`,
                 );
                 const data = await response.json();
                 setEntries(data.data.entries);
@@ -95,7 +95,7 @@ const OrderByDate = () => {
                                     <p className="created-at">
                                         Publicado el{" "}
                                         {new Date(
-                                            entry.createdAt
+                                            entry.createdAt,
                                         ).toLocaleDateString()}
                                     </p>
                                     <div className="card-footer">

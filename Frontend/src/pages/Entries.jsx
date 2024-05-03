@@ -12,12 +12,12 @@ function Entries() {
         async function fetchData() {
             try {
                 const response = await fetch(
-                    `${import.meta.env.VITE_API_URL}/entries`
+                    `${import.meta.env.VITE_API_URL}/entries`,
                 );
 
                 if (!response.ok) {
                     throw new Error(
-                        `Server response was not ok. Status: ${response.status}, ${response.statusText}`
+                        `Server response was not ok. Status: ${response.status}, ${response.statusText}`,
                     );
                 }
 
@@ -49,42 +49,62 @@ function Entries() {
     return (
         <main className="cards-container">
             <h1>Las recomendaciones de nuestros viajeros 👇🏽</h1>
-            <ul className="entries-list">
-                {data.map((entry) => (
-                    <li key={entry.id} className="card-container">
-                        {entry.photos &&
-                            entry.photos.split(",").map((photoName, index) => (
-                                <div key={index}>
-                                    <img
-                                        className="picture"
-                                        src={`${
-                                            import.meta.env.VITE_API_URL
-                                        }/uploads/${photoName}`}
-                                        alt="Imágen del viaje"
-                                    />
-                                </div>
-                            ))}
-                        <Link to={`entries/${entry.id}`}>
-                            <h2 className="entry-title">{entry.title}</h2>
-                        </Link>
-                        <p className="user-description">
-                            {entry.username} | {entry.sortDescription}
-                        </p>
-                        <p className="created-at">
-                            Publicado el{" "}
-                            {new Date(entry.createdAt).toLocaleDateString()}
-                        </p>
-                        <div className="card-footer">
-                            <VoteEntry id={entry.id} />
-                            <p className="votes">{entry.voteCount} Me gusta</p>
-                            {currentUser === entry.userId ? (
-                                <DeleteEntry id={entry.id} />
-                            ) : null}
-                        </div>
-                    </li>
-                ))}
-            </ul>
-            {error && <p>{error}</p>}
+            {data.length === 0 ? (
+                <>
+                    <p>
+                        Todavía no existen recomendaciones. ¿Quieres subir una?
+                    </p>
+                    <Link to={"/newEntry"}>
+                        <button className="boton-ne">Nueva Entrada</button>
+                    </Link>
+                </>
+            ) : (
+                <ul className="entries-list">
+                    {data.map((entry) => (
+                        <li key={entry.id} className="card-container">
+                            {entry.photos &&
+                                entry.photos
+                                    .split(",")
+                                    .map((photoName, index) => (
+                                        <div key={index}>
+                                            <img
+                                                className="picture"
+                                                src={`${
+                                                    import.meta.env.VITE_API_URL
+                                                }/uploads/${photoName}`}
+                                                alt="Imágen del viaje"
+                                            />
+                                        </div>
+                                    ))}
+
+                            <Link to={`entries/${entry.id}`}>
+                                <h2 className="entry-title">{entry.title}</h2>
+                            </Link>
+                            <p>{entry.place}</p>
+                            <p className="user-description">
+                                {entry.sortDescription}
+                            </p>
+                            <p className="created-at">
+                                Publicado el{" "}
+                                {new Date(entry.createdAt).toLocaleDateString()}{" "}
+                                por ({entry.username})
+                            </p>
+
+                            <div className="card-footer">
+                                {currentUser !== entry.userId ? (
+                                    <VoteEntry id={entry.id} />
+                                ) : null}
+                                <p className="votes">
+                                    {entry.voteCount} Me gusta
+                                </p>
+                                {currentUser === entry.userId ? (
+                                    <DeleteEntry id={entry.id} />
+                                ) : null}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </main>
     );
 }

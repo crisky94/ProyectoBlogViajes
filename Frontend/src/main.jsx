@@ -13,5 +13,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <a className="vuelo4">🧳</a>
             <App />
         </BrowserRouter>
-    </React.StrictMode>
+    </React.StrictMode>,
 );

@@ -18,7 +18,7 @@ function ImageGallery({ photos }) {
                         alt={`Image ${index}`}
                         onError={() =>
                             console.error(
-                                `Error loading image ${index} from ${imageUrl}`
+                                `Error loading image ${index} from ${imageUrl}`,
                             )
                         }
                     />

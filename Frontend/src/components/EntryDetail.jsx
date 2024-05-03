@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import VoteEntry from "./VoteEntry";
 import DeleteEntry from "./DeleteEntry";
 import "../styles/entries.css";
 
@@ -17,7 +17,6 @@ const getEntryByIdService = async (entryId) => {
 const useEntry = (entryId) => {
     const [entry, setEntry] = useState(null);
     const [error, setError] = useState("");
-
     useEffect(() => {
         const getEntryById = async () => {
             try {
@@ -40,20 +39,18 @@ const EntryDetail = () => {
     const { entry, error } = useEntry(entryId);
 
     const getCurrentUserId = () => {
-
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
 
         if (token) {
+            const payload = JSON.parse(atob(token.split(".")[1]));
 
-          const payload = JSON.parse(atob(token.split('.')[1]));
-           
-          return payload.id;
+            return payload.id;
         }
         return null;
-      };
-      
-     const currentUser = getCurrentUserId();
-    
+    };
+
+    const currentUser = getCurrentUserId();
+
     return entry ? (
         <div className="cards-container">
             <h1>La recomendación de nuestros viajeros 👇🏽</h1>
@@ -71,32 +68,23 @@ const EntryDetail = () => {
                         </div>
                     ))}
                 <h2 className="entry-title"> {entry.post.title}</h2>
-                <p className="user-description">
-                    {entry.post.username}
-                    {" | "}
-                    {entry.post.sortDescription}
-                </p>
+                <p>{entry.post.place}</p>
+                <p className="user-description">{entry.post.sortDescription}</p>
                 <p className="entry-detail">{entry.post.text}</p>
                 <p className="created-at">
                     Publicado el{" "}
-                    {new Date(entry.post.createdAt).toLocaleDateString()}
+                    {new Date(entry.post.createdAt).toLocaleDateString()} por (
+                    {entry.post.username})
                 </p>
                 <div className="card-footer">
-                    <Link to={`entries/${entryId}/votes`}>
-                        <span className="material-symbols-outlined">
-                            favorite
-                        </span>
-                    </Link>
+                    {currentUser !== entry.post.userId ? (
+                        <VoteEntry id={entry.post.id} />
+                    ) : null}
 
                     <p className="votes">{entry.post.voteCount} Me gusta</p>
-                    {
-                        currentUser === entry.post.userId ? 
-                        (<DeleteEntry id={entry.post.id} />)
-                        :
-                        null
-                    }
-                    
-                    
+                    {currentUser === entry.post.userId ? (
+                        <DeleteEntry id={entry.post.id} />
+                    ) : null}
                 </div>
                 {error ? <p>{error}</p> : ""}
             </article>

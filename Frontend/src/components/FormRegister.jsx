@@ -1,6 +1,6 @@
 import { useState } from "react";
 import registerUserService from "../services/userRegisterSevice";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/register.css";
 
 const RegisterForm = () => {
@@ -10,7 +10,7 @@ const RegisterForm = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [rta, setRta] = useState({});
-
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -64,7 +64,11 @@ const RegisterForm = () => {
                     </div>
                     <div className="contenedor-input">
                         <label>
-                            Contraseña<span className="required">*</span>
+                            Contraseña
+                            <span className="required">
+                                ( 8 mínimo...debe contener una máyuscula, un
+                                cáracter especial, un número) *
+                            </span>
                         </label>
 
                         <input
@@ -97,16 +101,7 @@ const RegisterForm = () => {
                             value="Registrarse"
                         />
                     </div>
-                    {rta.status === "ok" ? (
-                        <>
-                            <p>{rta.message}</p>
-                            <Link to={"/login"}>
-                                <button className="rg-btn1">Login</button>
-                            </Link>
-                        </>
-                    ) : (
-                        ""
-                    )}
+                    {rta.status === "ok" ? navigate("/login") : ""}
                     {error && <p>{error}</p>}
                 </form>
             </div>

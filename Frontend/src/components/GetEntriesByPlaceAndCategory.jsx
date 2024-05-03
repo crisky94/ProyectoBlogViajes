@@ -15,7 +15,7 @@ const GetEntriesByPlaceAndCategory = () => {
                 const res = await fetch(
                     `${
                         import.meta.env.VITE_API_URL
-                    }/entries/place/${place}/category/${category}`
+                    }/entries/place/${place}/category/${category}`,
                 );
 
                 if (!res.ok) {
@@ -98,7 +98,7 @@ const GetEntriesByPlaceAndCategory = () => {
                                     <p className="created-at">
                                         Publicado el{" "}
                                         {new Date(
-                                            entry.createdAt
+                                            entry.createdAt,
                                         ).toLocaleDateString()}
                                     </p>
                                     <div className="card-footer">
