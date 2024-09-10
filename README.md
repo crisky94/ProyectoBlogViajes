@@ -30,10 +30,11 @@ Wanderlust es una red social pensada y diseñada para que entusiastas de la expl
 
 1. Clona este repositorio: `git clone https://github.com/crisky94/ProyectoBlogViajes.git`
 2. Instala las dependencias en la carpeta api: `npm install`
-3. Crear tablas de la base de datos: `node ./src/db/initDB.js`
-4. Ejecuta el servidor en la carpeta api: `npm run dev`
-5. Instala las dependencias en la carpeta Frontend: `npm install`
-6. Ejecuta el servidor en la carpeta Frontend: `npm run dev`
+3. Instala el workbench: `https://www.mysql.com/products/workbench/`
+4. Crear tablas de la base de datos: `node ./src/db/initDB.js`
+5. Ejecuta el servidor en la carpeta api: `npm run dev`
+6. Instala las dependencias en la carpeta Frontend: `npm install`
+7. Ejecuta el servidor en la carpeta Frontend: `npm run dev`
 
 ## 🔗 API y Endpoints
 
