@@ -3,6 +3,7 @@ import deleteEntryController from '../controllers/entries/deleteEntryController.
 // import entryExistsController from '../middleware/entryExistsController.js';
 
 import voteEntryController from '../controllers/entries/voteEntryController.js';
+import deleteVote from '../controllers/entries/deleteVote.js';
 import authUserController from '../middleware/authUserController.js';
 import userExistsController from '../middleware/userExistsController.js';
 import entryExistsController from '../middleware/entryExistsController.js';
@@ -46,6 +47,34 @@ router.post(
   entryExistsController,
   voteEntryController
 );
+
+router.get(
+  '/entries/:entryId/votes',
+  authUserController,
+  entryExistsController,
+  async (req, res, next) => {
+    try {
+      const db = await getPool();
+      const [[vote]] = await db.query(
+        `SELECT value FROM entryVotes WHERE entryId = ? AND userId = ?`,
+        [req.params.entryId, req.user.id]
+      );
+
+      res.send({
+        status: 'ok',
+        data: {
+          voted: !!vote,
+          value: vote?.value ?? 0,
+        },
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.delete("/entries/:id/votes", authUserController, deleteVote);
+
 
 // Middleware que retorna el listado de todas las entries.
 router.get('/entries', getAllEntries);

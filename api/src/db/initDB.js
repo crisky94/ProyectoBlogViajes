@@ -56,15 +56,18 @@ const main = async () => {
 
         // Tabla de votos.
         await pool.query(`
-            CREATE TABLE IF NOT EXISTS entryVotes (
-                id CHAR(36) PRIMARY KEY NOT NULL,
-                value TINYINT UNSIGNED NOT NULL,
-                userId CHAR(36) NOT NULL,
-                entryId CHAR(36) NOT NULL,
-                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (userId) REFERENCES users(id),
-                FOREIGN KEY (entryId) REFERENCES entries(id)
-            )
+    CREATE TABLE IF NOT EXISTS entryVotes (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    value TINYINT UNSIGNED NOT NULL,
+    userId CHAR(36) NOT NULL,
+    entryId CHAR(36) NOT NULL,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userId) REFERENCES users(id),
+    FOREIGN KEY (entryId) REFERENCES entries(id),
+    UNIQUE KEY unique_vote (userId, entryId)
+)
+
+            
         `);
 
         console.log('¡Tablas creadas!');
