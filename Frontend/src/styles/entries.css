@@ -51,6 +51,7 @@
     object-fit: cover;
 }
 
+
 .entry-title {
     padding: 10px;
     color: #333333;
@@ -83,16 +84,16 @@
     margin-bottom: 10px;
     /* text-align: justify; */
     padding: 10px;
-    background-color: #ffffff;
+    background-color: transparent;
     border: none;
     text-decoration: none;
     color: #333333;
 }
 
 .votes {
-    margin-bottom: 10px;
     /* text-align: justify; */
-    /* padding: 10px; */
+    padding: 10px; 
+    margin-bottom: 8px;
     font-weight: bold;
 }
 
@@ -114,6 +115,8 @@
 .card-footer {
     display: flex;
     align-items: center;
+    gap: 10px;
+    margin: 12px;
 }
 
 .material-symbols-outlined {

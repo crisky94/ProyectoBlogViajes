@@ -33,6 +33,22 @@ function Entries() {
         fetchData();
     }, []);
 
+    const refreshVotes = async (entryId) => {
+        try {
+            const token = localStorage.getItem("token");
+    
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/entries`, {
+                headers: {
+                    Authorization: token ? `Bearer ${token}` : "",
+                },
+            });
+            const body = await response.json();
+            setData(body.data.entries);
+        } catch (err) {
+            console.error("Error actualizando votos:", err);
+        }
+    };
+    
     const getCurrentUserId = () => {
         const token = localStorage.getItem("token");
 
@@ -80,7 +96,7 @@ function Entries() {
                             <Link to={`entries/${entry.id}`}>
                                 <h2 className="entry-title">{entry.title}</h2>
                             </Link>
-                            <p>{entry.place}</p>
+                            <p className="user-description">{entry.place}</p>
                             <p className="user-description">
                                 {entry.sortDescription}
                             </p>
@@ -92,10 +108,11 @@ function Entries() {
 
                             <div className="card-footer">
                                 {currentUser !== entry.userId ? (
-                                    <VoteEntry id={entry.id} />
+                                    <VoteEntry id={entry.id} hasVoted={entry.hasVoted} onVote={() => refreshVotes(entry.id)} />
+
                                 ) : null}
                                 <p className="votes">
-                                    {entry.voteCount} Me gusta
+                                    {entry.voteCount} Me gustas
                                 </p>
                                 {currentUser === entry.userId ? (
                                     <DeleteEntry id={entry.id} />

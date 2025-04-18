@@ -1,38 +1,37 @@
-import voteEntryService from "../services/voteEntryService";
-import deleteEntryService from "../services/deleteEntryService";
 import { useState } from "react";
 
-const VoteEntry = ({ id }) => {
-    const [error, setError] = useState("");
-    const handleVote = async () => {
-        try {
-            const token = localStorage.getItem("token");
-            await voteEntryService({ token, id });
-            console.log("Publicación votada!");
-            window.location.reload();
-        } catch (error) {
-            setError(error.message);
+function VoteEntry({ id, hasVoted, onVote }) {
+  const [voted, setVoted] = useState(hasVoted === 1); // iniciar según el backend
+  const token = localStorage.getItem("token");
+
+  const handleClick = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/entries/${id}/votes`,
+        {
+          method: voted ? "DELETE" : "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-    };
-    const handleDelete = async () => {
-        try {
-            const token = localStorage.getItem("token");
-            await deleteEntryService({ id, token });
+      );
 
-            console.log("Like borrada con exito!");
+      if (!response.ok) {
+        throw new Error("Error al votar");
+      }
 
-            window.location.reload();
-        } catch (error) {
-            setError(error.message);
-        }
-    };
+      setVoted(!voted);
+      onVote(); // actualiza votos en el padre
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    return (
-        <div>
-            <button className="like-button" onClick={handleVote}>
-                <span className="material-symbols-outlined">favorite</span>
-            </button>
-        </div>
-    );
-};
+  return (
+    <button onClick={handleClick} className="like-button">
+      {voted ? "❤️ " : "🤍"}
+    </button>
+  );
+}
+
 export default VoteEntry;
